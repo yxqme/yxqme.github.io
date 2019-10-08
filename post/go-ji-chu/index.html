@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | yxqme</title>
+<title>Golang - 基础入门 | yxqme</title>
 <meta name="description" content="Stay hungry, Stay foolish">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://yxqme.github.io">yxqme</a></h3>
@@ -87,36 +88,161 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="row tags-container">
+          <article class="article">
+            <h1>Golang - 基础入门</h1>
+            <p class="article-meta">
+              2019-10-08
+              
+                <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge secondary">
+                  Golang
+                </a>
+              
+            </p>
             
-              <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge success">
-                CentOS
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge warning">
-                Golang
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge secondary">
-                Linux
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge ">
-                Synology NAS
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge warning">
-                Network
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge secondary">
-                Node.js
-              </a>
-            
-          </div>
+            <div class="post-content">
+              <h2 id="gopath">GOPATH</h2>
+<p><strong>go</strong> 命令依赖一个重要的环境变量：<strong>$GOPATH</strong></p>
+<ul>
+<li><strong>src</strong> 存放源代码（比如：<strong>.go</strong> <strong>.c</strong> <strong>.h</strong> <strong>.s</strong> 等）</li>
+<li><strong>pkg</strong> 编译后生成的文件（比如：<strong>.a</strong>）</li>
+<li><strong>bin</strong> 编译后生成的可执行文件</li>
+</ul>
+<!-- more -->
+<h2 id="定义变量">定义变量</h2>
+<pre><code class="language-go">var variableName type
+// 定义三个类型都是 type 的变量
+var vname1, vname2, vname3 type
+// 定义常量
+const constantName = value
+// 初始化 variableName 的变量为 value 值，类型是 type
+// :=这个符号直接取代了var和type,这种形式叫做简短声明。不过它有一个限制，那就是它只能用在函数内部
+vname1, vname2, vname3 := v1, v2, v3
+// _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃
+_,b := 34, 35
+</code></pre>
+<h2 id="布尔">布尔</h2>
+<p>未指定，默认为 <code>false</code></p>
+<h2 id="数字">数字</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>取决于编译器，目前等于int32，可能会变成int64</td>
+</tr>
+<tr>
+<td>uint</td>
+<td>取决于编译器，目前等于uint32，可能会变成uint64</td>
+</tr>
+<tr>
+<td>uint8</td>
+<td>0~255</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>0~65535</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>0~4294967295</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>0~18446744073709551615</td>
+</tr>
+<tr>
+<td>int8</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>-32768~32767</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>-9223372036854775808~9223372036854775807</td>
+</tr>
+<tr>
+<td>float32</td>
+<td>IEEE-754 32位浮点型数</td>
+</tr>
+<tr>
+<td>float64</td>
+<td>IEEE-754 64位浮点型数</td>
+</tr>
+<tr>
+<td>complex64</td>
+<td>32 位实数和虚数</td>
+</tr>
+<tr>
+<td>complex128</td>
+<td>64 位实数和虚数</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>uint8别名</td>
+</tr>
+<tr>
+<td>rune</td>
+<td>int32别名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="字符串不可变但是可以进行切片">字符串(不可变，但是可以进行切片)</h2>
+<pre><code class="language-go">s := &quot;hello&quot;
+s = &quot;c&quot; + s[1:] // 字符串虽不能更改，但可进行切片操作 使用+操作符来连接两个字符串
+</code></pre>
+<h2 id="错误类型">错误类型</h2>
+<pre><code class="language-go">err := errors.New(&quot;emit macho dwarf: elf header corrupted&quot;)
+if err != nil {
+    fmt.Print(err)
+}
+</code></pre>
+<h2 id="关键字-iota">关键字 iota</h2>
+<p>用来声明 <strong>enum</strong> 的时候采用，它默认开始值是 <strong>0</strong>，每调用一次加 <strong>1</strong></p>
+<pre><code class="language-go">const(
+    x = iota  // x == 0
+    y = iota  // y == 1
+    z = iota  // z == 2
+    w  // 常量声明省略值时，默认和之前一个值的字面相同。这里隐式地说w = iota，因此w == 3。其实上面y和z可同样不用&quot;= iota&quot;
+)
+
+const v = iota // 每遇到一个const关键字，iota就会重置，此时v == 0 
+
+const(
+  e, f, g = iota, iota, iota //e=0,f=0,g=0 iota在同一行值相同
+)
+</code></pre>
+
+            </div>
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://yxqme.github.io/post/kong-api">
+                <h3 class="post-title">
+                   Kong - 分布式 API 网关
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://yxqme.github.io/images/avatar.png?v=1570517448029" class="no-responsive avatar">
@@ -203,27 +329,27 @@
     </div>
     <div class="row">
       
-        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge secondary">
+        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge success">
           CentOS
         </a>
       
-        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge warning">
+        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge secondary">
           Golang
         </a>
       
-        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge ">
+        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge success">
           Linux
         </a>
       
-        <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge secondary">
+        <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge success">
           Synology NAS
         </a>
       
-        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge secondary">
+        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge success">
           Network
         </a>
       
-        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge ">
+        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge secondary">
           Node.js
         </a>
       
@@ -233,7 +359,8 @@
     ©2019 yxqme | <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-  
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title> Kong - 分布式 API 网关 | yxqme</title>
+<meta name="description" content="Stay hungry, Stay foolish">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570517448029">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://yxqme.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://yxqme.github.io">yxqme</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/bin" class="menu">
+                终端命令
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1> Kong - 分布式 API 网关</h1>
+            <p class="article-meta">
+              2018-07-11
+              
+                <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge ">
+                  Linux
+                </a>
+              
+            </p>
+            
+              <img src="https://yxqme.github.io/post-images/kong-api.png" alt=" Kong - 分布式 API 网关">
+            
+            <div class="post-content">
+              <blockquote>
+<p>Kong (https://github.com/Kong/kong) 是一个云原生，高效，可扩展的分布式 API 网关。 自 2015 年在 github 开源后，广泛受到关注，目前已收获 1.68w+ 的 star，其核心价值在于高性能和可扩展性。</p>
+</blockquote>
+<!-- more -->
+<h2 id="数据表迁移">数据表迁移</h2>
+<p>针对版本：kong:1.0.0-alpine</p>
+<pre><code class="language-bash"> docker run --rm \
+     --network=amber_default \
+     -e &quot;KONG_DATABASE=postgres&quot; \
+     -e &quot;KONG_PG_HOST=kong-database&quot; \
+     -e &quot;KONG_PG_USER=yang&quot; \
+     -e &quot;KONG_PG_PASSWORD=BMcDXDP_s7_AaMCne&quot; \
+     kong:1.0.0-alpine kong migrations bootstrap
+</code></pre>
+<blockquote>
+<p>kong &lt; 0.15 版本 使用 <code>kong migrations up</code> 迁移数据</p>
+</blockquote>
+<h2 id="服务services">服务（services）</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>默认值</th>
+<th>必需</th>
+<th>可选值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>服务名称</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>retries</td>
+<td>连接重试次数</td>
+<td>5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>协议</td>
+<td>http</td>
+<td>Y</td>
+<td>http|https</td>
+</tr>
+<tr>
+<td>host</td>
+<td>主机地址</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>port</td>
+<td>端口</td>
+<td>80</td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>path</td>
+<td>路径</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>connect_timeout</td>
+<td>连接超时时长（ms）</td>
+<td>60000</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>write_timeout</td>
+<td>写入超时时长（ms）</td>
+<td>60000</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>read_timeout</td>
+<td>读取超时时长（ms）</td>
+<td>60000</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>url</td>
+<td>简写，一次设置 <code>protocol</code>、<code>port</code>和 <code>path</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="路由routes">路由（routes）</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>默认值</th>
+<th>必需</th>
+<th>可选值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>名称</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protocols</td>
+<td>支持协议</td>
+<td>[&quot;http&quot;,&quot;https&quot;]</td>
+<td>Y</td>
+<td>http|https|tcp|tls...</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>支持的方法</td>
+<td></td>
+<td>-1</td>
+<td>GET|POST...</td>
+</tr>
+<tr>
+<td>hosts</td>
+<td>主机地址</td>
+<td></td>
+<td>-1</td>
+<td></td>
+</tr>
+<tr>
+<td>paths</td>
+<td>路径</td>
+<td></td>
+<td>-1</td>
+<td></td>
+</tr>
+<tr>
+<td>regex_priority</td>
+<td>路由权重</td>
+<td>0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>strip_path</td>
+<td>是否脱掉匹配前缀</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>preserve_host</td>
+<td>是否保护原始请求头里的主机名</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>snis</td>
+<td>SNIs</td>
+<td></td>
+<td>-2</td>
+<td></td>
+</tr>
+<tr>
+<td>sources</td>
+<td>来源 IP 列表</td>
+<td></td>
+<td>-2</td>
+<td></td>
+</tr>
+<tr>
+<td>destinations</td>
+<td>目的地 IP 列表</td>
+<td></td>
+<td>-2</td>
+<td></td>
+</tr>
+<tr>
+<td>service</td>
+<td>所属服务</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>-1</code> 有一项必须指定</p>
+<p><code>-2</code> 当协议类型里，存在 <code>tcp</code> 或者 <code>tls</code> 有一项必须指定</p>
+</blockquote>
+<h2 id="消费者consumers">消费者（consumers）</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>默认值</th>
+<th>必需</th>
+<th>可选值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>用户名</td>
+<td></td>
+<td>-1</td>
+<td></td>
+</tr>
+<tr>
+<td>custom_id</td>
+<td>消费者ID</td>
+<td></td>
+<td>-1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>-1</code>  <code>username</code> 或 <code>custom_id</code> 必需存在一个</p>
+</blockquote>
+<h2 id="插件plugins">插件（plugins）</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>默认值</th>
+<th>必需</th>
+<th>可选值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>名称</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>route</td>
+<td>路由</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>service</td>
+<td>服务</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>consumer</td>
+<td>消费者</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>config</td>
+<td>配置</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>run_on</td>
+<td>什么时候启动</td>
+<td>&quot;first&quot;</td>
+<td>Y</td>
+<td>first|second|all</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>是否可用</td>
+<td>true</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="证书certificates">证书（certificates）</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>默认值</th>
+<th>必需</th>
+<th>可选值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cert</td>
+<td>公开证书</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>key</td>
+<td>私钥</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>snis</td>
+<td>简写，证书对应的主机</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="证书和域名snis">证书和域名（SNIS）</h2>
+<blockquote>
+<p>证书和域名，一对多关系</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>默认值</th>
+<th>必需</th>
+<th>可选值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>名称</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>certificate</td>
+<td>关联证书</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="负载均衡upstreams">负载均衡（upstreams）</h2>
+<blockquote>
+<p>用于对从多个服务传入请求进行负载均衡</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>默认值</th>
+<th>必需</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>主机名称</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>hash_on</td>
+<td>散列</td>
+<td>none</td>
+<td></td>
+<td>none|consumer|ip|header|cookie</td>
+</tr>
+<tr>
+<td>hash_fallback</td>
+<td>备用散列</td>
+<td>none</td>
+<td></td>
+<td>none|consumer|ip|header|cookie</td>
+</tr>
+<tr>
+<td>hash_on_header</td>
+<td>散列标头名称</td>
+<td></td>
+<td>-1</td>
+<td></td>
+</tr>
+<tr>
+<td>hash_fallback_header</td>
+<td>备用散列标头名称</td>
+<td></td>
+<td>-1</td>
+<td></td>
+</tr>
+<tr>
+<td>hash_on_cookie</td>
+<td>散列cookie名称</td>
+<td></td>
+<td>-1</td>
+<td></td>
+</tr>
+<tr>
+<td>hash_on_cookie_path</td>
+<td>散列Cookie路径</td>
+<td></td>
+<td>-1</td>
+<td></td>
+</tr>
+<tr>
+<td>slots</td>
+<td>插槽数</td>
+<td>10000</td>
+<td></td>
+<td>10 - 65536</td>
+</tr>
+</tbody>
+</table>
+<p><code>healthchecks.active.</code> 指示主动执行的健康检查配置选项（全部可选）</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>默认值</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http_path</td>
+<td>/</td>
+<td>路径</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>1</td>
+<td>超时时间（秒）</td>
+</tr>
+<tr>
+<td>https_sni</td>
+<td></td>
+<td>目标主机的证书</td>
+</tr>
+<tr>
+<td>concurrency</td>
+<td>10</td>
+<td>同时运行检查的目标数</td>
+</tr>
+<tr>
+<td>type</td>
+<td>http</td>
+<td>协议类型，可选 tcp | http | https</td>
+</tr>
+<tr>
+<td>https_verify_certificate</td>
+<td>true</td>
+<td>校验证书的有效性</td>
+</tr>
+</tbody>
+</table>
+<p><code>healthchecks.active.healthy.</code> 指示主动执行检查的健康 （全部可选）</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>默认值</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http_statuses</td>
+<td>[200, 302]</td>
+<td>状态码</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>0</td>
+<td>检查间隔（秒），为 <code>0</code> 则不执检查</td>
+</tr>
+<tr>
+<td>successes</td>
+<td>0</td>
+<td>成功次数</td>
+</tr>
+</tbody>
+</table>
+<p><code>healthchecks.active.unhealthy.</code> 指示主动执行检查的不健康 （全部可选）</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>默认值</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http_statuses</td>
+<td>[429, 404, 500, 501, 502, 503, 504, 505]</td>
+<td>状态码</td>
+</tr>
+<tr>
+<td>tcp_failures</td>
+<td>0</td>
+<td>TCP故障数</td>
+</tr>
+<tr>
+<td>timeouts</td>
+<td>0</td>
+<td>超时次数</td>
+</tr>
+<tr>
+<td>http_failures</td>
+<td>0</td>
+<td>HTTP故障数</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>0</td>
+<td>检查间隔（秒），为 <code>0</code> 则不执检查</td>
+</tr>
+</tbody>
+</table>
+<p><code>healthchecks.passive.</code> 指示被动执行检查配置选项（全部可选）</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>默认值</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>http</td>
+<td>协议类型，可选 tcp | http | https</td>
+</tr>
+</tbody>
+</table>
+<p><code>healthchecks.passive.healthy.</code> 指示被动执行检查健康 （全部可选）</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>默认值</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>successes</td>
+<td>0</td>
+<td>成功次数</td>
+</tr>
+<tr>
+<td>http_statuses</td>
+<td>[200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300, 301, 302, 303, 304, 305, 306, 307, 308]</td>
+<td>状态码</td>
+</tr>
+</tbody>
+</table>
+<p><code>healthchecks.passive.unhealthy.</code> 指示被动执行检查不健康 （全部可选）</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>默认值</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http_statuses</td>
+<td>[429, 500, 503]</td>
+<td>状态码</td>
+</tr>
+<tr>
+<td>tcp_failures</td>
+<td>0</td>
+<td>TCP故障数</td>
+</tr>
+<tr>
+<td>timeouts</td>
+<td>0</td>
+<td>超时次数</td>
+</tr>
+<tr>
+<td>http_failures</td>
+<td>0</td>
+<td>HTTP故障数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="目标实例">目标实例</h2>
+<blockquote>
+<p>真实的后端目标实例</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+<th>默认值</th>
+<th>必需</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>target</td>
+<td>目标地址</td>
+<td></td>
+<td>Y</td>
+<td></td>
+</tr>
+<tr>
+<td>weight</td>
+<td>负载权重</td>
+<td>100</td>
+<td>Y</td>
+<td>0 - 1000</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">
+                <h3 class="post-title">
+                  群晖 DSM 使用密钥登录
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://yxqme.github.io/images/avatar.png?v=1570517448029" class="no-responsive avatar">
+    <div class="text-muted">Stay hungry, Stay foolish</div>
+    <div class="social-container">
+      
+        
+          <a href="https://github.com/yxqme" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">CentOS 限制登录连接</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">linux 文件权限</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/go-ji-chu">Golang - 基础入门</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/kong-api"> Kong - 分布式 API 网关</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">群晖 DSM 使用密钥登录</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">Linux 账户管理</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">HTTP缓存机制及原理</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/npm-version">npm  版本号规则</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge success">
+          CentOS
+        </a>
+      
+        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge secondary">
+          Golang
+        </a>
+      
+        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge success">
+          Linux
+        </a>
+      
+        <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge ">
+          Synology NAS
+        </a>
+      
+        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge warning">
+          Network
+        </a>
+      
+        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge success">
+          Node.js
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    ©2019 yxqme | <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

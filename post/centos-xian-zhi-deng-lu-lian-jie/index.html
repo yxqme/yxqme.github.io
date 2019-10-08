@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | yxqme</title>
+<title>CentOS 限制登录连接 | yxqme</title>
 <meta name="description" content="Stay hungry, Stay foolish">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://yxqme.github.io">yxqme</a></h3>
@@ -87,36 +88,73 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="row tags-container">
+          <article class="article">
+            <h1>CentOS 限制登录连接</h1>
+            <p class="article-meta">
+              2019-10-08
+              
+                <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge ">
+                  CentOS
+                </a>
+              
+            </p>
             
-              <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge success">
-                CentOS
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge warning">
-                Golang
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge secondary">
-                Linux
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge ">
-                Synology NAS
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge warning">
-                Network
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge secondary">
-                Node.js
-              </a>
-            
-          </div>
+            <div class="post-content">
+              <h2 id="1禁用-root-登陆">1.禁用 root 登陆</h2>
+<pre><code class="language-bash">vi /etc/ssh/sshd_config
+
+# PermitRootLogin yes // 改为 no 禁用root登陆
+
+service sshd restart
+</code></pre>
+<!-- more -->
+<h2 id="2锁定-ssh-失败的登录尝试">2.锁定 ssh 失败的登录尝试</h2>
+<p>pam_tally2 模块</p>
+<p>参数:</p>
+<ul>
+<li>file=/var/log/tallylog 默认的日志文件是用来保持登录计数。</li>
+<li>deny=3 拒绝后，3次尝试访问和锁定用户。</li>
+<li>even_deny_root  政策也适用于root用户。</li>
+<li>unlock_time=1200 帐户将被锁定，直到20分钟 。 （如果要永久锁定，直到手动解锁，请删除此参数。）</li>
+</ul>
+<pre><code class="language-bash"># 配置文件来配置的登录尝试的访问次数
+/etc/pam.d/password-auth
+
+# 验证部分
+auth        required      pam_tally2.so  file=/var/log/tallylog deny=3 even_deny_root unlock_time=1200
+
+# 账号部分
+account     required      pam_tally2.so
+
+# 验证或检查用户尝试的计数器
+pam_tally2 --user=root
+
+# 重置或解锁用户帐户以再次启用访问
+pam_tally2 --user=root --reset
+</code></pre>
+<h2 id="3利用-iptables-设置防火墙">3.利用 iptables 设置防火墙</h2>
+<p>// todo</p>
+
+            </div>
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">
+                <h3 class="post-title">
+                  linux 文件权限
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://yxqme.github.io/images/avatar.png?v=1570517448029" class="no-responsive avatar">
@@ -203,7 +241,7 @@
     </div>
     <div class="row">
       
-        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge secondary">
+        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge ">
           CentOS
         </a>
       
@@ -211,7 +249,7 @@
           Golang
         </a>
       
-        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge ">
+        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge success">
           Linux
         </a>
       
@@ -219,11 +257,11 @@
           Synology NAS
         </a>
       
-        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge secondary">
+        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge warning">
           Network
         </a>
       
-        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge ">
+        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge secondary">
           Node.js
         </a>
       
@@ -233,7 +271,8 @@
     ©2019 yxqme | <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-  
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

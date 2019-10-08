@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>标签列表 | yxqme</title>
+<title>tmux | yxqme</title>
 <meta name="description" content="Stay hungry, Stay foolish">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://yxqme.github.io">yxqme</a></h3>
@@ -87,36 +88,80 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="tag-list-title">标签列表</h2>
-          <div class="row tags-container">
+          <article class="article">
+            <h1>tmux</h1>
+            <p class="article-meta">
+              2019-10-08
+              
+            </p>
             
-              <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge success">
-                CentOS
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge warning">
-                Golang
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge secondary">
-                Linux
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge ">
-                Synology NAS
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge warning">
-                Network
-              </a>
-            
-              <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge secondary">
-                Node.js
-              </a>
-            
-          </div>
+            <div class="post-content">
+              <h2 id="基本操作">基本操作</h2>
+<pre><code class="language-bash"># 列出所有可以的快捷键和其运行的 tmux 命令
+tmux list-keys
+
+# 列出所有的 tmux 命令及其参数
+tmux list-commands
+
+# 列出所有的 session, window, pane, 运行的进程号，等
+tmux info
+</code></pre>
+<h2 id="会话">会话</h2>
+<pre><code class="language-bash"># 新建一个会话
+tmux 
+
+# 新建一个带名称会话
+tmux new -s myname
+
+# 进入一个会话
+tmux a  #  (or at, or attach)
+
+# 进入一个有名称的会话
+tmux a -t myname
+
+# 列出所有会话
+tmux ls
+
+# 删除一个会话
+tmux kill-session -t myname
+
+# 删除所有的会话
+tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill
+</code></pre>
+<h2 id="使用-ctrlb-进入快捷键模式">使用 <code>ctrl+b</code> 进入快捷键模式</h2>
+<h3 id="会话快捷键">会话快捷键</h3>
+<pre><code>d 退出回话
+s 列出所有的会话
+$ 命名会话
+</code></pre>
+<h3 id="窗口快捷键">窗口快捷键</h3>
+<pre><code>c  新增窗口
+w  列出所有的窗口
+n  下一个窗口
+p  前一个窗口
+f  查找窗口
+,  命名窗口
+&amp;  删除窗口
+</code></pre>
+<h3 id=""></h3>
+<h3 id="面板快捷键">面板快捷键</h3>
+<pre><code>%  垂直拆分面板
+&quot;  水平拆分面板
+
+o  切换面板
+q  显示面板编号
+x  删除面板
+</code></pre>
+
+            </div>
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://yxqme.github.io/images/avatar.png?v=1570517448029" class="no-responsive avatar">
@@ -207,11 +252,11 @@
           CentOS
         </a>
       
-        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge warning">
+        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge success">
           Golang
         </a>
       
-        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge ">
+        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge warning">
           Linux
         </a>
       
@@ -223,7 +268,7 @@
           Network
         </a>
       
-        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge ">
+        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge success">
           Node.js
         </a>
       
@@ -233,7 +278,8 @@
     ©2019 yxqme | <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-  
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

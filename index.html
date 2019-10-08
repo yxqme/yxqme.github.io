@@ -1,162 +1,475 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>yxqme</title>
-<meta name="description" content="Stay hungry, Stay foolish" />
-<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570500455107">
+<meta name="description" content="Stay hungry, Stay foolish">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570517448029">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://yxqme.github.io/styles/main.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://yxqme.github.io">
-  <img class="avatar" src="https://yxqme.github.io/images/avatar.png?v=1570500455107" alt="">
-  </a>
-  <h1 class="site-title">
-    yxqme
-  </h1>
-  <p class="site-description">
-    Stay hungry, Stay foolish
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://yxqme.github.io">yxqme</a></h3>
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/bin" class="menu">
+                终端命令
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
   </div>
+</nav>
+
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">CentOS 限制登录连接</a>
+    </h2>
+    <p class="article-meta">
+      2019-10-08
+      
+        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge success">
+          CentOS
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h2 id="1禁用-root-登陆">1.禁用 root 登陆</h2>
+<pre><code class="language-bash">vi /etc/ssh/sshd_config
+
+# PermitRootLogin yes // 改为 no 禁用root登陆
+
+service sshd restart
+</code></pre>
+
+    </p>
+    <div class="row">
+      <a href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">linux 文件权限</a>
+    </h2>
+    <p class="article-meta">
+      2019-10-08
+      
+    </p>
+    <p class="text-lead">
+      <ul>
+<li><code>chgrp</code> ：改变文件所属群组</li>
+<li><code>chown</code> ：改变文件拥有者</li>
+<li><code>chmod</code> ：改变文件的权限, SUID, SGID, SBIT等等的特性</li>
+</ul>
+
+    </p>
+    <div class="row">
+      <a href="https://yxqme.github.io/post/linux-wen-jian-quan-xian" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://yxqme.github.io/post/go-ji-chu">Golang - 基础入门</a>
+    </h2>
+    <p class="article-meta">
+      2019-10-08
+      
+        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge success">
+          Golang
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h2 id="gopath">GOPATH</h2>
+<p><strong>go</strong> 命令依赖一个重要的环境变量：<strong>$GOPATH</strong></p>
+<ul>
+<li><strong>src</strong> 存放源代码（比如：<strong>.go</strong> <strong>.c</strong> <strong>.h</strong> <strong>.s</strong> 等）</li>
+<li><strong>pkg</strong> 编译后生成的文件（比如：<strong>.a</strong>）</li>
+<li><strong>bin</strong> 编译后生成的可执行文件</li>
+</ul>
+
+    </p>
+    <div class="row">
+      <a href="https://yxqme.github.io/post/go-ji-chu" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://yxqme.github.io/post/kong-api"> Kong - 分布式 API 网关</a>
+    </h2>
+    <p class="article-meta">
+      2018-07-11
+      
+        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge secondary">
+          Linux
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <blockquote>
+<p>Kong (https://github.com/Kong/kong) 是一个云原生，高效，可扩展的分布式 API 网关。 自 2015 年在 github 开源后，广泛受到关注，目前已收获 1.68w+ 的 star，其核心价值在于高性能和可扩展性。</p>
+</blockquote>
+
+    </p>
+    <div class="row">
+      <a href="https://yxqme.github.io/post/kong-api" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">群晖 DSM 使用密钥登录</a>
+    </h2>
+    <p class="article-meta">
+      2018-07-03
+      
+        <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge success">
+          Synology NAS
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h2 id="1-设置里打开家目录服务">1. 设置里打开家目录服务</h2>
+<pre><code class="language-mermaid">graph LR
+    A[用户账号]--&gt;B[高级设置]
+    B[高级设置]--&gt;C[家目录]
+</code></pre>
+
+    </p>
+    <div class="row">
+      <a href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">Linux 账户管理</a>
+    </h2>
+    <p class="article-meta">
+      2018-05-01
+      
+        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge secondary">
+          Linux
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <h2 id="etcpasswd">/etc/passwd</h2>
+<p>管理使用者 UID/GID 等重要参数，格式：</p>
+<pre><code>账号名称:口令:UID:GID:用户信息说明栏:家目录:Shell
+</code></pre>
+
+    </p>
+    <div class="row">
+      <a href="https://yxqme.github.io/post/linux-zhang-hu-guan-li" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">HTTP缓存机制及原理</a>
+    </h2>
+    <p class="article-meta">
+      2016-08-03
+      
+        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge secondary">
+          Network
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p><a name="d61xpr"></a></p>
+<h2 id=""><a href="#d61xpr"></a>前言</h2>
+<p>HTTP报文就是浏览器和服务器间通信时发送及响应的数据块。</p>
+<p>浏览器向服务器请求数据，发送请求 <code>request</code> 报文；服务器向浏览器返回数据，返回响应 <code>response</code> 报文。</p>
+
+    </p>
+    <div class="row">
+      <a href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://yxqme.github.io/post/npm-version">npm  版本号规则</a>
+    </h2>
+    <p class="article-meta">
+      2015-04-10
+      
+        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge success">
+          Node.js
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <table>
+<thead>
+<tr>
+<th>标识</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~</td>
+<td>会匹配最近的小版本依赖包，比如~1.2.3会匹配所有1.2.x版本，但是不包括1.3.0</td>
+</tr>
+<tr>
+<td>^</td>
+<td>会匹配最新的大版本依赖包，比如^1.2.3会匹配所有1.x.x的包，包括1.3.0，但是不包括2.0.0</td>
+</tr>
+</tbody>
+</table>
+
+    </p>
+    <div class="row">
+      <a href="https://yxqme.github.io/post/npm-version" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+
+        </div>
+        
+        <div class="row flex-edges">
+  
+  
 </div>
 
-    
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://yxqme.github.io/post/hello-gridea">
-        <h2 class="post-title">Hello Gridea</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2018-12-12
-        </span>
-        <span>
-          2 min read
-        </span>
+      </div>
+      
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://yxqme.github.io/images/avatar.png?v=1570517448029" class="no-responsive avatar">
+    <div class="text-muted">Stay hungry, Stay foolish</div>
+    <div class="social-container">
+      
         
-          <a href="https://yxqme.github.io/tag/XbzevB-sr" class="post-tag">
-            # Gridea
+          <a href="https://github.com/yxqme" target="_blank">
+            <i class="fab fa-github"></i>
           </a>
         
-      </div>
       
-        <a href="https://yxqme.github.io/post/hello-gridea" class="post-feature-image" style="background-image: url('https://yxqme.github.io/post-images/hello-gridea.png')">
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">CentOS 限制登录连接</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">linux 文件权限</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/go-ji-chu">Golang - 基础入门</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/kong-api"> Kong - 分布式 API 网关</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">群晖 DSM 使用密钥登录</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">Linux 账户管理</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">HTTP缓存机制及原理</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://yxqme.github.io/post/npm-version">npm  版本号规则</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge secondary">
+          CentOS
         </a>
       
-      <div class="post-abstract">
-        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
-      </div>
-    </article>
-  
+        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge ">
+          Golang
+        </a>
+      
+        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge success">
+          Linux
+        </a>
+      
+        <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge secondary">
+          Synology NAS
+        </a>
+      
+        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge secondary">
+          Network
+        </a>
+      
+        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge ">
+          Node.js
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    ©2019 yxqme | <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
 </div>
 
-    
-        <div class="pagination-container">
-  
-  
-</div>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    
-        <div class="site-footer">
-  ©2019 yxqme | 
-  <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
-</div>
+<script type="application/javascript">
 
-<script>
-  hljs.initHighlightingOnLoad()
+AOS.init();
 
-  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-  // This should probably be throttled.
-  // Especially because it triggers during smooth scrolling.
-  // https://lodash.com/docs/4.17.10#throttle
-  // You could do like...
-  // window.addEventListener("scroll", () => {
-  //    _.throttle(doThatStuff, 100);
-  // });
-  // Only not doing it here to keep this Pen dependency-free.
-
-  window.addEventListener("scroll", event => {
-    let fromTop = window.scrollY;
-
-    mainNavLinks.forEach((link, index) => {
-      let section = document.getElementById(decodeURI(link.hash).substring(1));
-      let nextSection = null
-      if (mainNavLinks[index + 1]) {
-        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-      }
-      if (section.offsetTop <= fromTop) {
-        if (nextSection) {
-          if (nextSection.offsetTop > fromTop) {
-            link.classList.add("current");
-          } else {
-            link.classList.remove("current");    
-          }
-        } else {
-          link.classList.add("current");
-        }
-      } else {
-        link.classList.remove("current");
-      }
-    });
-  });
+hljs.initHighlightingOnLoad()
 
 </script>
 
-      </div>
-    </div>
+
+
+
   </body>
 </html>
