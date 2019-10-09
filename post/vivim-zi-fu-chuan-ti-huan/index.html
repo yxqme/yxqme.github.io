@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Golang | yxqme</title>
+<title>vi/vim 字符串替换 | yxqme</title>
 <meta name="description" content="Stay hungry, Stay foolish">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://yxqme.github.io">yxqme</a></h3>
@@ -87,47 +88,61 @@
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          <h2 class="current-tag">标签: Golang</h2>
-          
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://yxqme.github.io/post/go-ji-chu">Golang - 基础入门</a>
-    </h2>
-    <p class="article-meta">
-      2019-10-08
-      
-        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge warning">
-          Golang
-        </a>
-      
-    </p>
-    <p class="text-lead">
-      <h2 id="gopath">GOPATH</h2>
-<p><strong>go</strong> 命令依赖一个重要的环境变量：<strong>$GOPATH</strong></p>
-<ul>
-<li><strong>src</strong> 存放源代码（比如：<strong>.go</strong> <strong>.c</strong> <strong>.h</strong> <strong>.s</strong> 等）</li>
-<li><strong>pkg</strong> 编译后生成的文件（比如：<strong>.a</strong>）</li>
-<li><strong>bin</strong> 编译后生成的可执行文件</li>
-</ul>
+          <article class="article">
+            <h1>vi/vim 字符串替换</h1>
+            <p class="article-meta">
+              2019-10-09
+              
+                <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge warning">
+                  Linux
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <blockquote>
+<p>vi/vim 中可以使用 <code>:s</code> 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法(vi 真是强大啊，还有很多需要学习)，记录几种在此，方便以后查询。</p>
+</blockquote>
+<!-- more -->
+<p>替换当前行所有 <code>vivian</code> 为 <code>sky</code></p>
+<pre><code class="language-shell">:s/vivian/sky/g
+</code></pre>
+<p>替换第 <code>n</code> 行开始到最后一行中每一行的第一个 <code>vivian</code> 为 <code>sky</code></p>
+<pre><code class="language-shell">:n,$s/vivian/sky/
+</code></pre>
+<p>替换第 <code>n</code> 行开始到最后一行中每一行所有 <code>vivian</code> 为 <code>sky</code>；<code>n</code> 为数字，若 <code>n</code> 为 <code>.</code> 表示从当前行开始到最后一行</p>
+<pre><code class="language-shell">:n,$s/vivian/sky/g
+</code></pre>
+<p>替换每一行的第一个 <code>vivian</code> 为 <code>sky</code></p>
+<pre><code class="language-shell">:%s/vivian/sky/
+</code></pre>
+<p>替换每一行中所有 <code>vivian</code> 为 <code>sky</code></p>
+<pre><code class="language-shell">:%s/vivian/sky/g
+</code></pre>
+<blockquote>
+<p>可以使用 <code>#</code> 作为分隔符，此时中间出现的 <code>/</code> 不会作为分隔符 如：<code>:%s#vivian/#sky/#g</code>，表示替换每一行所有 <code>vivian/</code> 为 <code>sky/</code></p>
+</blockquote>
 
-    </p>
-    <div class="row">
-      <a href="https://yxqme.github.io/post/go-ji-chu" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">
+                <h3 class="post-title">
+                  CentOS 限制登录连接
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://yxqme.github.io/images/avatar.png?v=1570587876684" class="no-responsive avatar">
@@ -224,7 +239,7 @@
           Linux
         </a>
       
-        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge secondary">
+        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge ">
           CentOS
         </a>
       
@@ -232,15 +247,15 @@
           Golang
         </a>
       
-        <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge warning">
+        <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge secondary">
           Synology NAS
         </a>
       
-        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge success">
+        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge secondary">
           Network
         </a>
       
-        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge secondary">
+        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge success">
           Node.js
         </a>
       
@@ -250,6 +265,7 @@
     ©2019 yxqme | <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
+
 
     </div>
 
