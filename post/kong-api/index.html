@@ -1,111 +1,99 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title> Kong - 分布式 API 网关 | yxqme</title>
-<meta name="description" content="Stay hungry, Stay foolish">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570589588752">
-
+<meta name="description" content="Stay hungry, Stay foolish" />
+<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570697144017">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://yxqme.github.io/styles/main.css">
 
-
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   </head>
   <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://yxqme.github.io">yxqme</a></h3>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://yxqme.github.io">
+  <img class="avatar" src="https://yxqme.github.io/images/avatar.png?v=1570697144017" alt="">
+  </a>
+  <h1 class="site-title">
+    yxqme
+  </h1>
+  <p class="site-description">
+    Stay hungry, Stay foolish
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/daily" class="menu">
+          日常
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
   </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/bin" class="menu">
-                终端命令
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
-    </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1> Kong - 分布式 API 网关</h1>
-            <p class="article-meta">
-              2018-07-11
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               Kong - 分布式 API 网关
+            </h2>
+            <div class="post-info">
+              <span>
+                2018-07-11
+              </span>
+              <span>
+                5 min read
+              </span>
               
-                <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge success">
-                  Linux
+                <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="post-tag">
+                  # Linux
                 </a>
               
-            </p>
+            </div>
             
-              <img src="https://yxqme.github.io/post-images/kong-api.png" alt=" Kong - 分布式 API 网关">
-            
-            <div class="post-content">
-              <blockquote>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <blockquote>
 <p>Kong (https://github.com/Kong/kong) 是一个云原生，高效，可扩展的分布式 API 网关。 自 2015 年在 github 开源后，广泛受到关注，目前已收获 1.68w+ 的 star，其核心价值在于高性能和可扩展性。</p>
 </blockquote>
-<!-- more -->
 <h2 id="数据表迁移">数据表迁移</h2>
 <p>针对版本：kong:1.0.0-alpine</p>
 <pre><code class="language-bash"> docker run --rm \
@@ -747,164 +735,89 @@
 </tbody>
 </table>
 
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BF%81%E7%A7%BB">数据表迁移</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1services">服务（services）</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1routes">路由（routes）</a></li>
+<li><a href="#%E6%B6%88%E8%B4%B9%E8%80%85consumers">消费者（consumers）</a></li>
+<li><a href="#%E6%8F%92%E4%BB%B6plugins">插件（plugins）</a></li>
+<li><a href="#%E8%AF%81%E4%B9%A6certificates">证书（certificates）</a></li>
+<li><a href="#%E8%AF%81%E4%B9%A6%E5%92%8C%E5%9F%9F%E5%90%8Dsnis">证书和域名（SNIS）</a></li>
+<li><a href="#%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1upstreams">负载均衡（upstreams）</a></li>
+<li><a href="#%E7%9B%AE%E6%A0%87%E5%AE%9E%E4%BE%8B">目标实例</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
             </div>
           </article>
         </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">
-                <h3 class="post-title">
-                  群晖 DSM 使用密钥登录
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-      </div>
 
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://yxqme.github.io/images/avatar.png?v=1570589588752" class="no-responsive avatar">
-    <div class="text-muted">Stay hungry, Stay foolish</div>
-    <div class="social-container">
-      
         
-          <a href="https://github.com/yxqme" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">
+              <h3 class="post-title">
+                群晖 DSM 使用密钥登录
+              </h3>
+            </a>
+          </div>
         
-      
+
         
-      
-        
-      
-        
-      
-        
-      
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan">vi/vim 字符串替换</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">CentOS 限制登录连接</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">linux 文件权限</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/go-ji-chu">Golang - 基础入门</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/kong-api"> Kong - 分布式 API 网关</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">群晖 DSM 使用密钥登录</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">Linux 账户管理</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">HTTP缓存机制及原理</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/npm-version">npm  版本号规则</a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge ">
-          Linux
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge secondary">
-          CentOS
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge success">
-          Golang
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge secondary">
-          Synology NAS
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge secondary">
-          Network
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge warning">
-          Node.js
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    ©2019 yxqme | <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
-  </div>
+
+        <div class="site-footer">
+  ©2019 yxqme | 
+  <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
+<script>
+  hljs.initHighlightingOnLoad()
 
-    </div>
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
 
-<script type="application/javascript">
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
 
-AOS.init();
-
-hljs.initHighlightingOnLoad()
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
 
 </script>
 
-
-
-
+      </div>
+    </div>
   </body>
 </html>

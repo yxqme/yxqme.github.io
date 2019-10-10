@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>群晖 DSM 使用密钥登录 | yxqme</title>
+<title>scp | yxqme</title>
 <meta name="description" content="Stay hungry, Stay foolish" />
 <link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570697144017">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,97 +73,110 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              群晖 DSM 使用密钥登录
+              scp
             </h2>
             <div class="post-info">
               <span>
-                2018-07-03
+                2019-10-10
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
-              
-                <a href="https://yxqme.github.io/tag/clShKbmUa" class="post-tag">
-                  # Synology NAS
-                </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="1-设置里打开家目录服务">1. 设置里打开家目录服务</h2>
-<pre><code class="language-mermaid">graph LR
-    A[用户账号]--&gt;B[高级设置]
-    B[高级设置]--&gt;C[家目录]
+                <p>利用 <code>scp</code> 传输文件</p>
+<pre><code class="language-shell">scp -r ./dist/* [username]:[password]@[host]:[path]
 </code></pre>
-<h2 id="2-打开-ssh-功能">2. 打开 <code>SSH</code> 功能</h2>
-<pre><code class="language-mermaid">graph LR
-    A[终端机和SNMP]--&gt;B[终端机]
-    B[终端机]--&gt;C[启动 SSH 功能]
-</code></pre>
-<h2 id="3-修复家目录相关文件夹权限">3. 修复家目录相关文件夹权限</h2>
-<blockquote>
-<p>用户家目录权限只能允许用户自己可写</p>
-</blockquote>
-<pre><code class="language-bash">sudo chmod 755 [target]
-
-chmod 700 ~/.ssh
-
-chmod 600 ~/.ssh/authorized_keys
-</code></pre>
-<p>复制公钥到 <code>authorized_keys</code></p>
-<pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub [target]
-</code></pre>
-<h2 id="4-设置-ssh-配置">4. 设置 SSH 配置</h2>
-<pre><code class="language-bash">sudo vi /etc/ssh/sshd_config
-</code></pre>
-<p>修改配置</p>
-<pre><code># 去掉注释，打开下面三个配置
-#PubkeyAuthentication yes
-#AuthorizedKeyFiles .ssh/authorized_keys
-#ChallengeResponseAuthentication no
-
-# 可选，禁用密码登录[一定要确定可以SSH登录后在去掉这个，否则以后就登录不了]
-PasswordAuthentication no
-</code></pre>
-<p>重启 SSH 服务</p>
-<pre><code>sudo synoservicectl --restart sshd
-</code></pre>
-<p>配置快速连接 <code>ssh/config</code></p>
-<pre><code>Host nas
-    IdentityFile /Users/yang/.ssh/id_rsa
-    Port 22
-    User yang
-    Hostname nas.xl-inc.cn
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-1</td>
+<td>强制scp命令使用协议ssh1</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>强制scp命令使用协议ssh2</td>
+</tr>
+<tr>
+<td>-4</td>
+<td>强制scp命令只使用IPv4寻址</td>
+</tr>
+<tr>
+<td>-6</td>
+<td>强制scp命令只使用IPv6寻址</td>
+</tr>
+<tr>
+<td>-B</td>
+<td>使用批处理模式（传输过程中不询问传输口令或短语）</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>允许压缩。（将-C标志传递给ssh，从而打开压缩功能）</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>保留原文件的修改时间，访问时间和访问权限。</td>
+</tr>
+<tr>
+<td>-q</td>
+<td>不显示传输进度条。</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>递归复制整个目录。</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>cipher： 以cipher将数据传输进行加密，这个选项将直接传递给ssh。</td>
+</tr>
+<tr>
+<td>-F</td>
+<td>ssh_config： 指定一个替代的ssh配置文件，此参数直接传递给ssh。</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>identity_file： 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>limit： 限定用户所能使用的带宽，以Kbit/s为单位。</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>ssh_option： 如果习惯于使用ssh_config(5)中的参数传递方式，</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>port：注意是大写的P, port是指定数据传输用到的端口号</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>program： 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</td>
+</tr>
+</tbody>
+</table>
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#1-%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%89%93%E5%BC%80%E5%AE%B6%E7%9B%AE%E5%BD%95%E6%9C%8D%E5%8A%A1">1. 设置里打开家目录服务</a></li>
-<li><a href="#2-%E6%89%93%E5%BC%80-ssh-%E5%8A%9F%E8%83%BD">2. 打开 <code>SSH</code> 功能</a></li>
-<li><a href="#3-%E4%BF%AE%E5%A4%8D%E5%AE%B6%E7%9B%AE%E5%BD%95%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9D%83%E9%99%90">3. 修复家目录相关文件夹权限</a></li>
-<li><a href="#4-%E8%AE%BE%E7%BD%AE-ssh-%E9%85%8D%E7%BD%AE">4. 设置 SSH 配置</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
         </div>
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">
-              <h3 class="post-title">
-                Linux 账户管理
-              </h3>
-            </a>
-          </div>
         
 
         

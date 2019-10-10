@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>群晖 DSM 使用密钥登录 | yxqme</title>
+<title>群晖 DSM 备注 | yxqme</title>
 <meta name="description" content="Stay hungry, Stay foolish" />
 <link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570697144017">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,11 +73,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              群晖 DSM 使用密钥登录
+              群晖 DSM 备注
             </h2>
             <div class="post-info">
               <span>
-                2018-07-03
+                2019-10-10
               </span>
               <span>
                 1 min read
@@ -91,61 +91,33 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="1-设置里打开家目录服务">1. 设置里打开家目录服务</h2>
-<pre><code class="language-mermaid">graph LR
-    A[用户账号]--&gt;B[高级设置]
-    B[高级设置]--&gt;C[家目录]
-</code></pre>
-<h2 id="2-打开-ssh-功能">2. 打开 <code>SSH</code> 功能</h2>
-<pre><code class="language-mermaid">graph LR
-    A[终端机和SNMP]--&gt;B[终端机]
-    B[终端机]--&gt;C[启动 SSH 功能]
-</code></pre>
-<h2 id="3-修复家目录相关文件夹权限">3. 修复家目录相关文件夹权限</h2>
-<blockquote>
-<p>用户家目录权限只能允许用户自己可写</p>
-</blockquote>
-<pre><code class="language-bash">sudo chmod 755 [target]
+                <h3 id="路径">路径</h3>
+<pre><code># DDNS 脚本目录
+/usr/syno/bin/ddns
 
-chmod 700 ~/.ssh
+# 群晖证书的保存位置
+/usr/syno/etc/certificate/
 
-chmod 600 ~/.ssh/authorized_keys
+/usr/syno/etc/certificate/_archive/pzvc7R/cert.pem
+/usr/syno/etc/certificate/_archive/pzvc7R/privkey.pem
 </code></pre>
-<p>复制公钥到 <code>authorized_keys</code></p>
-<pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub [target]
-</code></pre>
-<h2 id="4-设置-ssh-配置">4. 设置 SSH 配置</h2>
-<pre><code class="language-bash">sudo vi /etc/ssh/sshd_config
-</code></pre>
-<p>修改配置</p>
-<pre><code># 去掉注释，打开下面三个配置
-#PubkeyAuthentication yes
-#AuthorizedKeyFiles .ssh/authorized_keys
-#ChallengeResponseAuthentication no
-
-# 可选，禁用密码登录[一定要确定可以SSH登录后在去掉这个，否则以后就登录不了]
-PasswordAuthentication no
-</code></pre>
-<p>重启 SSH 服务</p>
-<pre><code>sudo synoservicectl --restart sshd
-</code></pre>
-<p>配置快速连接 <code>ssh/config</code></p>
-<pre><code>Host nas
-    IdentityFile /Users/yang/.ssh/id_rsa
-    Port 22
-    User yang
-    Hostname nas.xl-inc.cn
-</code></pre>
+<h3 id="第三方套件">第三方套件</h3>
+<ul>
+<li><a href="https://synocommunity.com/">synocommunity</a></li>
+<li><a href="http://www.cphub.net">cphub</a></li>
+</ul>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#1-%E8%AE%BE%E7%BD%AE%E9%87%8C%E6%89%93%E5%BC%80%E5%AE%B6%E7%9B%AE%E5%BD%95%E6%9C%8D%E5%8A%A1">1. 设置里打开家目录服务</a></li>
-<li><a href="#2-%E6%89%93%E5%BC%80-ssh-%E5%8A%9F%E8%83%BD">2. 打开 <code>SSH</code> 功能</a></li>
-<li><a href="#3-%E4%BF%AE%E5%A4%8D%E5%AE%B6%E7%9B%AE%E5%BD%95%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6%E5%A4%B9%E6%9D%83%E9%99%90">3. 修复家目录相关文件夹权限</a></li>
-<li><a href="#4-%E8%AE%BE%E7%BD%AE-ssh-%E9%85%8D%E7%BD%AE">4. 设置 SSH 配置</a></li>
+<li>
+<ul>
+<li><a href="#%E8%B7%AF%E5%BE%84">路径</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E5%A5%97%E4%BB%B6">第三方套件</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -158,9 +130,9 @@ PasswordAuthentication no
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">
+            <a href="https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan">
               <h3 class="post-title">
-                Linux 账户管理
+                vi/vim 字符串替换
               </h3>
             </a>
           </div>

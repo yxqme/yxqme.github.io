@@ -1,110 +1,100 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux 账户管理 | yxqme</title>
-<meta name="description" content="Stay hungry, Stay foolish">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570589588752">
-
+<meta name="description" content="Stay hungry, Stay foolish" />
+<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570697144017">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://yxqme.github.io/styles/main.css">
 
-
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
   </head>
   <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://yxqme.github.io">yxqme</a></h3>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://yxqme.github.io">
+  <img class="avatar" src="https://yxqme.github.io/images/avatar.png?v=1570697144017" alt="">
+  </a>
+  <h1 class="site-title">
+    yxqme
+  </h1>
+  <p class="site-description">
+    Stay hungry, Stay foolish
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/daily" class="menu">
+          日常
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
   </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/bin" class="menu">
-                终端命令
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
-    </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>Linux 账户管理</h1>
-            <p class="article-meta">
-              2018-05-01
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Linux 账户管理
+            </h2>
+            <div class="post-info">
+              <span>
+                2018-05-01
+              </span>
+              <span>
+                5 min read
+              </span>
               
-                <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge secondary">
-                  Linux
+                <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="post-tag">
+                  # Linux
                 </a>
               
-            </p>
+            </div>
             
-            <div class="post-content">
-              <h2 id="etcpasswd">/etc/passwd</h2>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="etcpasswd">/etc/passwd</h2>
 <p>管理使用者 UID/GID 等重要参数，格式：</p>
 <pre><code>账号名称:口令:UID:GID:用户信息说明栏:家目录:Shell
 </code></pre>
-<!-- more -->
 <p>详细说明：</p>
 <p>口令：早期 Unix 系统的口令就是放在这字段上！但是因为这个文件的特性是所有的程序都能够读取，这样一来很容易造成口令数据被窃取， 因此后来就将这个字段的口令数据给他改放到 /etc/shadow 中了。所以这里你会看到一个『 x 』，呵呵！</p>
 <p>UID：</p>
@@ -381,164 +371,98 @@
 <pre><code>newgrp &lt;组名&gt;
 </code></pre>
 
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#etcpasswd">/etc/passwd</a></li>
+<li><a href="#etcshadow">/etc/shadow</a></li>
+<li><a href="#etcgroup">/etc/group</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7">添加用户</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7">删除用户</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7">修改用户</a></li>
+<li><a href="#%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E5%8F%8A%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86">用户密码及安全管理</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2%E5%88%B0%E6%9F%90%E4%B8%80%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4">切换到某一用户执行命令</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E7%BB%84">添加组</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E7%BB%84">删除组</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E7%BB%84%E5%8F%82%E6%95%B0">修改组参数</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%88%90%E5%91%98%E5%88%B0%E7%BB%84%E4%B8%AD">添加一个成员到组中</a></li>
+<li><a href="#%E4%BB%8E%E7%BB%84%E4%B8%AD%E5%88%A0%E9%99%A4%E4%B8%80%E4%B8%AA%E6%88%90%E5%91%98">从组中删除一个成员</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E7%BB%84%E6%88%90%E5%91%98%E5%88%97%E8%A1%A8">设置组成员列表</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E7%BB%84%E7%AE%A1%E7%90%86%E5%91%98%E5%88%97%E8%A1%A8">设置组管理员列表</a></li>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E7%BB%84%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81">设置组管理员密码</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E7%BB%84%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81">删除组管理员密码</a></li>
+<li><a href="#%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7%E5%BD%93%E5%89%8D%E7%9A%84%E7%BB%84%E8%BA%AB%E4%BB%BD">切换用户当前的组身份</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
             </div>
           </article>
         </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">
-                <h3 class="post-title">
-                  HTTP缓存机制及原理
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-      </div>
 
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://yxqme.github.io/images/avatar.png?v=1570589588752" class="no-responsive avatar">
-    <div class="text-muted">Stay hungry, Stay foolish</div>
-    <div class="social-container">
-      
         
-          <a href="https://github.com/yxqme" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">
+              <h3 class="post-title">
+                HTTP缓存机制及原理
+              </h3>
+            </a>
+          </div>
         
-      
+
         
-      
-        
-      
-        
-      
-        
-      
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan">vi/vim 字符串替换</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">CentOS 限制登录连接</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">linux 文件权限</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/go-ji-chu">Golang - 基础入门</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/kong-api"> Kong - 分布式 API 网关</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">群晖 DSM 使用密钥登录</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">Linux 账户管理</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">HTTP缓存机制及原理</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://yxqme.github.io/post/npm-version">npm  版本号规则</a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://yxqme.github.io/tag/aJcFZWhHr" class="badge warning">
-          Linux
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/jWTS2mH4f" class="badge success">
-          CentOS
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/iEN4zl7ID" class="badge success">
-          Golang
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/clShKbmUa" class="badge success">
-          Synology NAS
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/RedDN9Rt9" class="badge success">
-          Network
-        </a>
-      
-        <a href="https://yxqme.github.io/tag/kt_LnF6n5" class="badge secondary">
-          Node.js
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    ©2019 yxqme | <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
-  </div>
+
+        <div class="site-footer">
+  ©2019 yxqme | 
+  <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
+<script>
+  hljs.initHighlightingOnLoad()
 
-    </div>
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
 
-<script type="application/javascript">
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
 
-AOS.init();
-
-hljs.initHighlightingOnLoad()
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
 
 </script>
 
-
-
-
+      </div>
+    </div>
   </body>
 </html>

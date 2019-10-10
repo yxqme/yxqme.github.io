@@ -1,0 +1,314 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>tar | yxqme</title>
+<meta name="description" content="Stay hungry, Stay foolish" />
+<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570697144017">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://yxqme.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://yxqme.github.io">
+  <img class="avatar" src="https://yxqme.github.io/images/avatar.png?v=1570697144017" alt="">
+  </a>
+  <h1 class="site-title">
+    yxqme
+  </h1>
+  <p class="site-description">
+    Stay hungry, Stay foolish
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/daily" class="menu">
+          日常
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              tar
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-10-10
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="1命令格式">1．命令格式</h2>
+<pre><code>tar [必要参数][选择参数][文件] 
+</code></pre>
+<h2 id="2命令功能">2．命令功能</h2>
+<p>用来压缩和解压文件。<code>tar</code> 本身不具有压缩功能，它是调用压缩功能实现的。</p>
+<h2 id="3命令参数">3．命令参数</h2>
+<p><strong>必要参数</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-A</td>
+<td>新增压缩文件到已存在的压缩</td>
+</tr>
+<tr>
+<td>-B</td>
+<td>设置区块大小</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>建立新的压缩文件</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>记录文件的差别</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>添加文件到已经压缩的文件</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>添加改变了和现有的文件到已经存在的压缩文件</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>从压缩的文件中提取文件</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>显示压缩文件的内容</td>
+</tr>
+<tr>
+<td>-z</td>
+<td>支持gzip解压文件</td>
+</tr>
+<tr>
+<td>-j</td>
+<td>支持bzip2解压文件</td>
+</tr>
+<tr>
+<td>-Z</td>
+<td>支持compress解压文件</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示操作过程</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>文件系统边界设置</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>保留原有文件不覆盖</td>
+</tr>
+<tr>
+<td>-m</td>
+<td>保留文件不被覆盖</td>
+</tr>
+<tr>
+<td>-W</td>
+<td>确认压缩文件的正确性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>可选参数</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-b</td>
+<td>设置区块数目</td>
+</tr>
+<tr>
+<td>-C</td>
+<td>切换到指定目录</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>指定压缩文件</td>
+</tr>
+<tr>
+<td>--help</td>
+<td>显示帮助信息</td>
+</tr>
+<tr>
+<td>--version</td>
+<td>显示版本信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4常见解压压缩命令">4．常见解压/压缩命令</h2>
+<ul>
+<li><strong>tar文件格式</strong><br>
+解包：<code>tar xvf FileName.tar</code><br>
+打包：<code>tar cvf FileName.tar DirName</code><br>
+(注：<code>tar</code>是打包，不是压缩！)</li>
+<li><strong>.gz文件格式</strong><br>
+解压1：<code>gunzip FileName.gz</code><br>
+解压2：<code>gzip -d FileName.gz</code><br>
+压缩：<code>gzip FileName</code></li>
+<li><strong>.tar.gz 和 .tgz</strong><br>
+解压：<code>tar zxvf FileName.tar.gz</code><br>
+压缩：<code>tar zcvf FileName.tar.gz DirName</code></li>
+<li><strong>.bz2文件格式</strong><br>
+解压1：<code>bzip2 -d FileName.bz2</code><br>
+解压2：<code>bunzip2 FileName.bz2</code><br>
+压缩： <code>bzip2 -z FileName</code></li>
+<li><strong>.tar.bz2文件格式</strong><br>
+解压：<code>tar jxvf FileName.tar.bz2</code><br>
+压缩：<code>tar jcvf FileName.tar.bz2 DirName</code></li>
+<li><strong>.bz文件格式</strong><br>
+解压1：<code>bzip2 -d FileName.bz</code><br>
+解压2：<code>bunzip2 FileName.bz</code><br>
+压缩：未知</li>
+<li><strong>.tar.bz文件格式</strong><br>
+解压：tar jxvf FileName.tar.bz<br>
+压缩：未知</li>
+<li><strong>.Z文件格式</strong><br>
+解压：uncompress FileName.Z<br>
+压缩：compress FileName</li>
+<li><strong>.tar.Z文件格式</strong><br>
+解压：tar Zxvf FileName.tar.Z<br>
+压缩：tar Zcvf FileName.tar.Z DirName</li>
+<li><strong>.zip文件格式</strong><br>
+解压：unzip FileName.zip<br>
+压缩：zip FileName.zip DirName</li>
+<li><strong>.rar</strong><br>
+解压：rar x FileName.rar<br>
+压缩：rar a FileName.rar DirName</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F">1．命令格式</a></li>
+<li><a href="#2%E5%91%BD%E4%BB%A4%E5%8A%9F%E8%83%BD">2．命令功能</a></li>
+<li><a href="#3%E5%91%BD%E4%BB%A4%E5%8F%82%E6%95%B0">3．命令参数</a></li>
+<li><a href="#4%E5%B8%B8%E8%A7%81%E8%A7%A3%E5%8E%8B%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4">4．常见解压/压缩命令</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  ©2019 yxqme | 
+  <a class="rss" href="https://yxqme.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

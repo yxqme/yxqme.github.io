@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yxqme.github.io</id>
     <title>yxqme</title>
-    <updated>2019-10-09T02:53:12.022Z</updated>
+    <updated>2019-10-10T08:46:56.951Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yxqme.github.io"/>
     <link rel="self" href="https://yxqme.github.io/atom.xml"/>
@@ -11,19 +11,37 @@
     <icon>https://yxqme.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, yxqme</rights>
     <entry>
+        <title type="html"><![CDATA[群晖 DSM 备注]]></title>
+        <id>https://yxqme.github.io/post/qun-hui-dsm-bei-zhu</id>
+        <link href="https://yxqme.github.io/post/qun-hui-dsm-bei-zhu">
+        </link>
+        <updated>2019-10-10T07:44:29.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="路径">路径</h3>
+<pre><code># DDNS 脚本目录
+/usr/syno/bin/ddns
+
+# 群晖证书的保存位置
+/usr/syno/etc/certificate/
+
+/usr/syno/etc/certificate/_archive/pzvc7R/cert.pem
+/usr/syno/etc/certificate/_archive/pzvc7R/privkey.pem
+</code></pre>
+<h3 id="第三方套件">第三方套件</h3>
+<ul>
+<li><a href="https://synocommunity.com/">synocommunity</a></li>
+<li><a href="http://www.cphub.net">cphub</a></li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[vi/vim 字符串替换]]></title>
         <id>https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan</id>
         <link href="https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan">
         </link>
         <updated>2019-10-09T02:09:56.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>vi/vim 中可以使用 <code>:s</code> 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法(vi 真是强大啊，还有很多需要学习)，记录几种在此，方便以后查询。</p>
-</blockquote>
-]]></summary>
         <content type="html"><![CDATA[<blockquote>
 <p>vi/vim 中可以使用 <code>:s</code> 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法(vi 真是强大啊，还有很多需要学习)，记录几种在此，方便以后查询。</p>
 </blockquote>
-<!-- more -->
 <p>替换当前行所有 <code>vivian</code> 为 <code>sky</code></p>
 <pre><code class="language-shell">:s/vivian/sky/g
 </code></pre>
@@ -50,14 +68,6 @@
         <link href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">
         </link>
         <updated>2019-10-08T06:20:28.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="1禁用-root-登陆">1.禁用 root 登陆</h2>
-<pre><code class="language-bash">vi /etc/ssh/sshd_config
-
-# PermitRootLogin yes // 改为 no 禁用root登陆
-
-service sshd restart
-</code></pre>
-]]></summary>
         <content type="html"><![CDATA[<h2 id="1禁用-root-登陆">1.禁用 root 登陆</h2>
 <pre><code class="language-bash">vi /etc/ssh/sshd_config
 
@@ -65,7 +75,6 @@ service sshd restart
 
 service sshd restart
 </code></pre>
-<!-- more -->
 <h2 id="2锁定-ssh-失败的登录尝试">2.锁定 ssh 失败的登录尝试</h2>
 <p>pam_tally2 模块</p>
 <p>参数:</p>
@@ -100,18 +109,11 @@ pam_tally2 --user=root --reset
         <link href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">
         </link>
         <updated>2019-10-08T06:18:41.000Z</updated>
-        <summary type="html"><![CDATA[<ul>
-<li><code>chgrp</code> ：改变文件所属群组</li>
-<li><code>chown</code> ：改变文件拥有者</li>
-<li><code>chmod</code> ：改变文件的权限, SUID, SGID, SBIT等等的特性</li>
-</ul>
-]]></summary>
         <content type="html"><![CDATA[<ul>
 <li><code>chgrp</code> ：改变文件所属群组</li>
 <li><code>chown</code> ：改变文件拥有者</li>
 <li><code>chmod</code> ：改变文件的权限, SUID, SGID, SBIT等等的特性</li>
 </ul>
-<!-- more -->
 <pre><code class="language-bash"># chown user:group install.log
 #
 # - r:4
@@ -129,14 +131,6 @@ chmod u=rwx,g=rw,o=r .bashrc
         <link href="https://yxqme.github.io/post/go-ji-chu">
         </link>
         <updated>2019-10-08T06:14:58.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="gopath">GOPATH</h2>
-<p><strong>go</strong> 命令依赖一个重要的环境变量：<strong>$GOPATH</strong></p>
-<ul>
-<li><strong>src</strong> 存放源代码（比如：<strong>.go</strong> <strong>.c</strong> <strong>.h</strong> <strong>.s</strong> 等）</li>
-<li><strong>pkg</strong> 编译后生成的文件（比如：<strong>.a</strong>）</li>
-<li><strong>bin</strong> 编译后生成的可执行文件</li>
-</ul>
-]]></summary>
         <content type="html"><![CDATA[<h2 id="gopath">GOPATH</h2>
 <p><strong>go</strong> 命令依赖一个重要的环境变量：<strong>$GOPATH</strong></p>
 <ul>
@@ -144,7 +138,6 @@ chmod u=rwx,g=rw,o=r .bashrc
 <li><strong>pkg</strong> 编译后生成的文件（比如：<strong>.a</strong>）</li>
 <li><strong>bin</strong> 编译后生成的可执行文件</li>
 </ul>
-<!-- more -->
 <h2 id="定义变量">定义变量</h2>
 <pre><code class="language-go">var variableName type
 // 定义三个类型都是 type 的变量
@@ -267,14 +260,9 @@ const(
         <link href="https://yxqme.github.io/post/kong-api">
         </link>
         <updated>2018-07-11T00:05:39.000Z</updated>
-        <summary type="html"><![CDATA[<blockquote>
-<p>Kong (https://github.com/Kong/kong) 是一个云原生，高效，可扩展的分布式 API 网关。 自 2015 年在 github 开源后，广泛受到关注，目前已收获 1.68w+ 的 star，其核心价值在于高性能和可扩展性。</p>
-</blockquote>
-]]></summary>
         <content type="html"><![CDATA[<blockquote>
 <p>Kong (https://github.com/Kong/kong) 是一个云原生，高效，可扩展的分布式 API 网关。 自 2015 年在 github 开源后，广泛受到关注，目前已收获 1.68w+ 的 star，其核心价值在于高性能和可扩展性。</p>
 </blockquote>
-<!-- more -->
 <h2 id="数据表迁移">数据表迁移</h2>
 <p>针对版本：kong:1.0.0-alpine</p>
 <pre><code class="language-bash"> docker run --rm \
@@ -923,18 +911,11 @@ const(
         <link href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">
         </link>
         <updated>2018-07-03T06:20:51.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="1-设置里打开家目录服务">1. 设置里打开家目录服务</h2>
-<pre><code class="language-mermaid">graph LR
-    A[用户账号]--&gt;B[高级设置]
-    B[高级设置]--&gt;C[家目录]
-</code></pre>
-]]></summary>
         <content type="html"><![CDATA[<h2 id="1-设置里打开家目录服务">1. 设置里打开家目录服务</h2>
 <pre><code class="language-mermaid">graph LR
     A[用户账号]--&gt;B[高级设置]
     B[高级设置]--&gt;C[家目录]
 </code></pre>
-<!-- more -->
 <h2 id="2-打开-ssh-功能">2. 打开 <code>SSH</code> 功能</h2>
 <pre><code class="language-mermaid">graph LR
     A[终端机和SNMP]--&gt;B[终端机]
@@ -983,16 +964,10 @@ PasswordAuthentication no
         <link href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">
         </link>
         <updated>2018-05-01T10:27:03.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="etcpasswd">/etc/passwd</h2>
-<p>管理使用者 UID/GID 等重要参数，格式：</p>
-<pre><code>账号名称:口令:UID:GID:用户信息说明栏:家目录:Shell
-</code></pre>
-]]></summary>
         <content type="html"><![CDATA[<h2 id="etcpasswd">/etc/passwd</h2>
 <p>管理使用者 UID/GID 等重要参数，格式：</p>
 <pre><code>账号名称:口令:UID:GID:用户信息说明栏:家目录:Shell
 </code></pre>
-<!-- more -->
 <p>详细说明：</p>
 <p>口令：早期 Unix 系统的口令就是放在这字段上！但是因为这个文件的特性是所有的程序都能够读取，这样一来很容易造成口令数据被窃取， 因此后来就将这个字段的口令数据给他改放到 /etc/shadow 中了。所以这里你会看到一个『 x 』，呵呵！</p>
 <p>UID：</p>
@@ -1276,16 +1251,10 @@ PasswordAuthentication no
         <link href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">
         </link>
         <updated>2016-08-03T10:41:49.000Z</updated>
-        <summary type="html"><![CDATA[<p><a name="d61xpr"></a></p>
-<h2 id=""><a href="#d61xpr"></a>前言</h2>
-<p>HTTP报文就是浏览器和服务器间通信时发送及响应的数据块。</p>
-<p>浏览器向服务器请求数据，发送请求 <code>request</code> 报文；服务器向浏览器返回数据，返回响应 <code>response</code> 报文。</p>
-]]></summary>
         <content type="html"><![CDATA[<p><a name="d61xpr"></a></p>
 <h2 id=""><a href="#d61xpr"></a>前言</h2>
 <p>HTTP报文就是浏览器和服务器间通信时发送及响应的数据块。</p>
 <p>浏览器向服务器请求数据，发送请求 <code>request</code> 报文；服务器向浏览器返回数据，返回响应 <code>response</code> 报文。</p>
-<!-- more -->
 <p>报文信息主要分为两部分</p>
 <ol>
 <li>
@@ -1361,25 +1330,6 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
         <link href="https://yxqme.github.io/post/npm-version">
         </link>
         <updated>2015-04-10T03:26:07.000Z</updated>
-        <summary type="html"><![CDATA[<table>
-<thead>
-<tr>
-<th>标识</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>~</td>
-<td>会匹配最近的小版本依赖包，比如~1.2.3会匹配所有1.2.x版本，但是不包括1.3.0</td>
-</tr>
-<tr>
-<td>^</td>
-<td>会匹配最新的大版本依赖包，比如^1.2.3会匹配所有1.x.x的包，包括1.3.0，但是不包括2.0.0</td>
-</tr>
-</tbody>
-</table>
-]]></summary>
         <content type="html"><![CDATA[<table>
 <thead>
 <tr>
@@ -1398,7 +1348,6 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 </tr>
 </tbody>
 </table>
-<!-- more -->
 ]]></content>
     </entry>
 </feed>
