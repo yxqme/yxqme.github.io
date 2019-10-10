@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Golang - 基础入门 | yxqme</title>
 <meta name="description" content="Stay hungry, Stay foolish" />
-<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570698925689">
+<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570699254643">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://yxqme.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://yxqme.github.io">
-  <img class="avatar" src="https://yxqme.github.io/images/avatar.png?v=1570698925689" alt="">
+  <img class="avatar" src="https://yxqme.github.io/images/avatar.png?v=1570699254643" alt="">
   </a>
   <h1 class="site-title">
     yxqme
@@ -99,7 +99,7 @@
 <li><strong>bin</strong> 编译后生成的可执行文件</li>
 </ul>
 <h2 id="定义变量">定义变量</h2>
-<pre><code class="language-go">var variableName type
+<pre><code>var variableName type
 // 定义三个类型都是 type 的变量
 var vname1, vname2, vname3 type
 // 定义常量
@@ -188,18 +188,18 @@ _,b := 34, 35
 </tbody>
 </table>
 <h2 id="字符串不可变但是可以进行切片">字符串(不可变，但是可以进行切片)</h2>
-<pre><code class="language-go">s := &quot;hello&quot;
+<pre><code>s := &quot;hello&quot;
 s = &quot;c&quot; + s[1:] // 字符串虽不能更改，但可进行切片操作 使用+操作符来连接两个字符串
 </code></pre>
 <h2 id="错误类型">错误类型</h2>
-<pre><code class="language-go">err := errors.New(&quot;emit macho dwarf: elf header corrupted&quot;)
+<pre><code>err := errors.New(&quot;emit macho dwarf: elf header corrupted&quot;)
 if err != nil {
     fmt.Print(err)
 }
 </code></pre>
 <h2 id="关键字-iota">关键字 iota</h2>
 <p>用来声明 <strong>enum</strong> 的时候采用，它默认开始值是 <strong>0</strong>，每调用一次加 <strong>1</strong></p>
-<pre><code class="language-go">const(
+<pre><code>const(
     x = iota  // x == 0
     y = iota  // y == 1
     z = iota  // z == 2

@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Linux 账户管理 | yxqme</title>
 <meta name="description" content="Stay hungry, Stay foolish" />
-<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570698925689">
+<link rel="shortcut icon" href="https://yxqme.github.io/favicon.ico?v=1570699254643">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://yxqme.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://yxqme.github.io">
-  <img class="avatar" src="https://yxqme.github.io/images/avatar.png?v=1570698925689" alt="">
+  <img class="avatar" src="https://yxqme.github.io/images/avatar.png?v=1570699254643" alt="">
   </a>
   <h1 class="site-title">
     yxqme
@@ -132,7 +132,7 @@
 <pre><code>组名:群组口令:GID:此群组支持的账号名称
 </code></pre>
 <h2 id="添加用户">添加用户</h2>
-<pre><code class="language-text">useradd [选项] &lt;用户名&gt;
+<pre><code>useradd [选项] &lt;用户名&gt;
 </code></pre>
 <table>
 <thead>
@@ -173,7 +173,7 @@
 </tbody>
 </table>
 <h2 id="删除用户">删除用户</h2>
-<pre><code class="language-text">userdel [选项] &lt;用户名&gt;
+<pre><code>userdel [选项] &lt;用户名&gt;
 </code></pre>
 <table>
 <thead>
@@ -194,7 +194,7 @@
 </tbody>
 </table>
 <h2 id="修改用户">修改用户</h2>
-<pre><code class="language-text">usermod [选项] &lt;用户名&gt;
+<pre><code>usermod [选项] &lt;用户名&gt;
 </code></pre>
 <table>
 <thead>
@@ -239,7 +239,7 @@
 </tbody>
 </table>
 <h2 id="用户密码及安全管理">用户密码及安全管理</h2>
-<pre><code class="language-text">passwd [选项] &lt;用户名&gt;
+<pre><code>passwd [选项] &lt;用户名&gt;
 </code></pre>
 <table>
 <thead>
@@ -284,7 +284,7 @@
 </tbody>
 </table>
 <h2 id="切换到某一用户执行命令">切换到某一用户执行命令</h2>
-<pre><code class="language-reStructuredText">sudo [选项] &lt;命令&gt;
+<pre><code>sudo [选项] &lt;命令&gt;
 </code></pre>
 <table>
 <thead>
@@ -305,7 +305,7 @@
 </tbody>
 </table>
 <h2 id="添加组">添加组</h2>
-<pre><code class="language-text">groupadd [选项] &lt;组名&gt;
+<pre><code>groupadd [选项] &lt;组名&gt;
 </code></pre>
 <table>
 <thead>
@@ -326,10 +326,10 @@
 </tbody>
 </table>
 <h2 id="删除组">删除组</h2>
-<pre><code class="language-text">groupdel &lt;组名&gt;
+<pre><code>groupdel &lt;组名&gt;
 </code></pre>
 <h2 id="修改组参数">修改组参数</h2>
-<pre><code class="language-text">groupmod [选项] &lt;组名&gt;
+<pre><code>groupmod [选项] &lt;组名&gt;
 </code></pre>
 <table>
 <thead>
@@ -350,22 +350,22 @@
 </tbody>
 </table>
 <h2 id="添加一个成员到组中">添加一个成员到组中</h2>
-<pre><code class="language-text">gpasswd -a &lt;用户名&gt; &lt;组名&gt;
+<pre><code>gpasswd -a &lt;用户名&gt; &lt;组名&gt;
 </code></pre>
 <h2 id="从组中删除一个成员">从组中删除一个成员</h2>
-<pre><code class="language-text">gpasswd -d &lt;用户名&gt; &lt;组名&gt;
+<pre><code>gpasswd -d &lt;用户名&gt; &lt;组名&gt;
 </code></pre>
 <h2 id="设置组成员列表">设置组成员列表</h2>
-<pre><code class="language-text">gpasswd -M &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
+<pre><code>gpasswd -M &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
 </code></pre>
 <h2 id="设置组管理员列表">设置组管理员列表</h2>
-<pre><code class="language-text">gpasswd -A &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
+<pre><code>gpasswd -A &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
 </code></pre>
 <h2 id="设置组管理员密码">设置组管理员密码</h2>
-<pre><code class="language-text">gpasswd &lt;组名&gt;
+<pre><code>gpasswd &lt;组名&gt;
 </code></pre>
 <h2 id="删除组管理员密码">删除组管理员密码</h2>
-<pre><code class="language-text">gpasswd -r &lt;组名&gt;
+<pre><code>gpasswd -r &lt;组名&gt;
 </code></pre>
 <h2 id="切换用户当前的组身份">切换用户当前的组身份</h2>
 <pre><code>newgrp &lt;组名&gt;

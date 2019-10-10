@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yxqme.github.io</id>
     <title>yxqme</title>
-    <updated>2019-10-10T09:15:28.834Z</updated>
+    <updated>2019-10-10T09:21:22.366Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yxqme.github.io"/>
     <link rel="self" href="https://yxqme.github.io/atom.xml"/>
@@ -698,7 +698,7 @@
 <li><strong>bin</strong> 编译后生成的可执行文件</li>
 </ul>
 <h2 id="定义变量">定义变量</h2>
-<pre><code class="language-go">var variableName type
+<pre><code>var variableName type
 // 定义三个类型都是 type 的变量
 var vname1, vname2, vname3 type
 // 定义常量
@@ -787,18 +787,18 @@ _,b := 34, 35
 </tbody>
 </table>
 <h2 id="字符串不可变但是可以进行切片">字符串(不可变，但是可以进行切片)</h2>
-<pre><code class="language-go">s := &quot;hello&quot;
+<pre><code>s := &quot;hello&quot;
 s = &quot;c&quot; + s[1:] // 字符串虽不能更改，但可进行切片操作 使用+操作符来连接两个字符串
 </code></pre>
 <h2 id="错误类型">错误类型</h2>
-<pre><code class="language-go">err := errors.New(&quot;emit macho dwarf: elf header corrupted&quot;)
+<pre><code>err := errors.New(&quot;emit macho dwarf: elf header corrupted&quot;)
 if err != nil {
     fmt.Print(err)
 }
 </code></pre>
 <h2 id="关键字-iota">关键字 iota</h2>
 <p>用来声明 <strong>enum</strong> 的时候采用，它默认开始值是 <strong>0</strong>，每调用一次加 <strong>1</strong></p>
-<pre><code class="language-go">const(
+<pre><code>const(
     x = iota  // x == 0
     y = iota  // y == 1
     z = iota  // z == 2
@@ -1062,7 +1062,7 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 <pre><code>组名:群组口令:GID:此群组支持的账号名称
 </code></pre>
 <h2 id="添加用户">添加用户</h2>
-<pre><code class="language-text">useradd [选项] &lt;用户名&gt;
+<pre><code>useradd [选项] &lt;用户名&gt;
 </code></pre>
 <table>
 <thead>
@@ -1103,7 +1103,7 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 </tbody>
 </table>
 <h2 id="删除用户">删除用户</h2>
-<pre><code class="language-text">userdel [选项] &lt;用户名&gt;
+<pre><code>userdel [选项] &lt;用户名&gt;
 </code></pre>
 <table>
 <thead>
@@ -1124,7 +1124,7 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 </tbody>
 </table>
 <h2 id="修改用户">修改用户</h2>
-<pre><code class="language-text">usermod [选项] &lt;用户名&gt;
+<pre><code>usermod [选项] &lt;用户名&gt;
 </code></pre>
 <table>
 <thead>
@@ -1169,7 +1169,7 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 </tbody>
 </table>
 <h2 id="用户密码及安全管理">用户密码及安全管理</h2>
-<pre><code class="language-text">passwd [选项] &lt;用户名&gt;
+<pre><code>passwd [选项] &lt;用户名&gt;
 </code></pre>
 <table>
 <thead>
@@ -1214,7 +1214,7 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 </tbody>
 </table>
 <h2 id="切换到某一用户执行命令">切换到某一用户执行命令</h2>
-<pre><code class="language-reStructuredText">sudo [选项] &lt;命令&gt;
+<pre><code>sudo [选项] &lt;命令&gt;
 </code></pre>
 <table>
 <thead>
@@ -1235,7 +1235,7 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 </tbody>
 </table>
 <h2 id="添加组">添加组</h2>
-<pre><code class="language-text">groupadd [选项] &lt;组名&gt;
+<pre><code>groupadd [选项] &lt;组名&gt;
 </code></pre>
 <table>
 <thead>
@@ -1256,10 +1256,10 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 </tbody>
 </table>
 <h2 id="删除组">删除组</h2>
-<pre><code class="language-text">groupdel &lt;组名&gt;
+<pre><code>groupdel &lt;组名&gt;
 </code></pre>
 <h2 id="修改组参数">修改组参数</h2>
-<pre><code class="language-text">groupmod [选项] &lt;组名&gt;
+<pre><code>groupmod [选项] &lt;组名&gt;
 </code></pre>
 <table>
 <thead>
@@ -1280,22 +1280,22 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 </tbody>
 </table>
 <h2 id="添加一个成员到组中">添加一个成员到组中</h2>
-<pre><code class="language-text">gpasswd -a &lt;用户名&gt; &lt;组名&gt;
+<pre><code>gpasswd -a &lt;用户名&gt; &lt;组名&gt;
 </code></pre>
 <h2 id="从组中删除一个成员">从组中删除一个成员</h2>
-<pre><code class="language-text">gpasswd -d &lt;用户名&gt; &lt;组名&gt;
+<pre><code>gpasswd -d &lt;用户名&gt; &lt;组名&gt;
 </code></pre>
 <h2 id="设置组成员列表">设置组成员列表</h2>
-<pre><code class="language-text">gpasswd -M &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
+<pre><code>gpasswd -M &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
 </code></pre>
 <h2 id="设置组管理员列表">设置组管理员列表</h2>
-<pre><code class="language-text">gpasswd -A &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
+<pre><code>gpasswd -A &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
 </code></pre>
 <h2 id="设置组管理员密码">设置组管理员密码</h2>
-<pre><code class="language-text">gpasswd &lt;组名&gt;
+<pre><code>gpasswd &lt;组名&gt;
 </code></pre>
 <h2 id="删除组管理员密码">删除组管理员密码</h2>
-<pre><code class="language-text">gpasswd -r &lt;组名&gt;
+<pre><code>gpasswd -r &lt;组名&gt;
 </code></pre>
 <h2 id="切换用户当前的组身份">切换用户当前的组身份</h2>
 <pre><code>newgrp &lt;组名&gt;
