@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yxqme.github.io</id>
     <title>yxqme</title>
-    <updated>2019-10-10T08:46:56.951Z</updated>
+    <updated>2019-10-10T09:08:15.057Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yxqme.github.io"/>
     <link rel="self" href="https://yxqme.github.io/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>https://yxqme.github.io/post/qun-hui-dsm-bei-zhu</id>
         <link href="https://yxqme.github.io/post/qun-hui-dsm-bei-zhu">
         </link>
-        <updated>2019-10-10T07:44:29.000Z</updated>
+        <updated>2018-08-18T07:44:29.000Z</updated>
         <content type="html"><![CDATA[<h3 id="路径">路径</h3>
 <pre><code># DDNS 脚本目录
 /usr/syno/bin/ddns
@@ -31,227 +31,6 @@
 <li><a href="https://synocommunity.com/">synocommunity</a></li>
 <li><a href="http://www.cphub.net">cphub</a></li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[vi/vim 字符串替换]]></title>
-        <id>https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan</id>
-        <link href="https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan">
-        </link>
-        <updated>2019-10-09T02:09:56.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>vi/vim 中可以使用 <code>:s</code> 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法(vi 真是强大啊，还有很多需要学习)，记录几种在此，方便以后查询。</p>
-</blockquote>
-<p>替换当前行所有 <code>vivian</code> 为 <code>sky</code></p>
-<pre><code class="language-shell">:s/vivian/sky/g
-</code></pre>
-<p>替换第 <code>n</code> 行开始到最后一行中每一行的第一个 <code>vivian</code> 为 <code>sky</code></p>
-<pre><code class="language-shell">:n,$s/vivian/sky/
-</code></pre>
-<p>替换第 <code>n</code> 行开始到最后一行中每一行所有 <code>vivian</code> 为 <code>sky</code>；<code>n</code> 为数字，若 <code>n</code> 为 <code>.</code> 表示从当前行开始到最后一行</p>
-<pre><code class="language-shell">:n,$s/vivian/sky/g
-</code></pre>
-<p>替换每一行的第一个 <code>vivian</code> 为 <code>sky</code></p>
-<pre><code class="language-shell">:%s/vivian/sky/
-</code></pre>
-<p>替换每一行中所有 <code>vivian</code> 为 <code>sky</code></p>
-<pre><code class="language-shell">:%s/vivian/sky/g
-</code></pre>
-<blockquote>
-<p>可以使用 <code>#</code> 作为分隔符，此时中间出现的 <code>/</code> 不会作为分隔符 如：<code>:%s#vivian/#sky/#g</code>，表示替换每一行所有 <code>vivian/</code> 为 <code>sky/</code></p>
-</blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CentOS 限制登录连接]]></title>
-        <id>https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie</id>
-        <link href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">
-        </link>
-        <updated>2019-10-08T06:20:28.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1禁用-root-登陆">1.禁用 root 登陆</h2>
-<pre><code class="language-bash">vi /etc/ssh/sshd_config
-
-# PermitRootLogin yes // 改为 no 禁用root登陆
-
-service sshd restart
-</code></pre>
-<h2 id="2锁定-ssh-失败的登录尝试">2.锁定 ssh 失败的登录尝试</h2>
-<p>pam_tally2 模块</p>
-<p>参数:</p>
-<ul>
-<li>file=/var/log/tallylog 默认的日志文件是用来保持登录计数。</li>
-<li>deny=3 拒绝后，3次尝试访问和锁定用户。</li>
-<li>even_deny_root  政策也适用于root用户。</li>
-<li>unlock_time=1200 帐户将被锁定，直到20分钟 。 （如果要永久锁定，直到手动解锁，请删除此参数。）</li>
-</ul>
-<pre><code class="language-bash"># 配置文件来配置的登录尝试的访问次数
-/etc/pam.d/password-auth
-
-# 验证部分
-auth        required      pam_tally2.so  file=/var/log/tallylog deny=3 even_deny_root unlock_time=1200
-
-# 账号部分
-account     required      pam_tally2.so
-
-# 验证或检查用户尝试的计数器
-pam_tally2 --user=root
-
-# 重置或解锁用户帐户以再次启用访问
-pam_tally2 --user=root --reset
-</code></pre>
-<h2 id="3利用-iptables-设置防火墙">3.利用 iptables 设置防火墙</h2>
-<p>// todo</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[linux 文件权限]]></title>
-        <id>https://yxqme.github.io/post/linux-wen-jian-quan-xian</id>
-        <link href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">
-        </link>
-        <updated>2019-10-08T06:18:41.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li><code>chgrp</code> ：改变文件所属群组</li>
-<li><code>chown</code> ：改变文件拥有者</li>
-<li><code>chmod</code> ：改变文件的权限, SUID, SGID, SBIT等等的特性</li>
-</ul>
-<pre><code class="language-bash"># chown user:group install.log
-#
-# - r:4
-# - w:2
-# - x:1
-
-chmod 777 .bashrc
-chmod u=rwx,g=rw,o=r .bashrc
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Golang - 基础入门]]></title>
-        <id>https://yxqme.github.io/post/go-ji-chu</id>
-        <link href="https://yxqme.github.io/post/go-ji-chu">
-        </link>
-        <updated>2019-10-08T06:14:58.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="gopath">GOPATH</h2>
-<p><strong>go</strong> 命令依赖一个重要的环境变量：<strong>$GOPATH</strong></p>
-<ul>
-<li><strong>src</strong> 存放源代码（比如：<strong>.go</strong> <strong>.c</strong> <strong>.h</strong> <strong>.s</strong> 等）</li>
-<li><strong>pkg</strong> 编译后生成的文件（比如：<strong>.a</strong>）</li>
-<li><strong>bin</strong> 编译后生成的可执行文件</li>
-</ul>
-<h2 id="定义变量">定义变量</h2>
-<pre><code class="language-go">var variableName type
-// 定义三个类型都是 type 的变量
-var vname1, vname2, vname3 type
-// 定义常量
-const constantName = value
-// 初始化 variableName 的变量为 value 值，类型是 type
-// :=这个符号直接取代了var和type,这种形式叫做简短声明。不过它有一个限制，那就是它只能用在函数内部
-vname1, vname2, vname3 := v1, v2, v3
-// _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃
-_,b := 34, 35
-</code></pre>
-<h2 id="布尔">布尔</h2>
-<p>未指定，默认为 <code>false</code></p>
-<h2 id="数字">数字</h2>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>范围</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>int</td>
-<td>取决于编译器，目前等于int32，可能会变成int64</td>
-</tr>
-<tr>
-<td>uint</td>
-<td>取决于编译器，目前等于uint32，可能会变成uint64</td>
-</tr>
-<tr>
-<td>uint8</td>
-<td>0~255</td>
-</tr>
-<tr>
-<td>uint16</td>
-<td>0~65535</td>
-</tr>
-<tr>
-<td>uint32</td>
-<td>0~4294967295</td>
-</tr>
-<tr>
-<td>uint64</td>
-<td>0~18446744073709551615</td>
-</tr>
-<tr>
-<td>int8</td>
-<td>-128~127</td>
-</tr>
-<tr>
-<td>int16</td>
-<td>-32768~32767</td>
-</tr>
-<tr>
-<td>int32</td>
-<td>-2147483648~2147483647</td>
-</tr>
-<tr>
-<td>int64</td>
-<td>-9223372036854775808~9223372036854775807</td>
-</tr>
-<tr>
-<td>float32</td>
-<td>IEEE-754 32位浮点型数</td>
-</tr>
-<tr>
-<td>float64</td>
-<td>IEEE-754 64位浮点型数</td>
-</tr>
-<tr>
-<td>complex64</td>
-<td>32 位实数和虚数</td>
-</tr>
-<tr>
-<td>complex128</td>
-<td>64 位实数和虚数</td>
-</tr>
-<tr>
-<td>byte</td>
-<td>uint8别名</td>
-</tr>
-<tr>
-<td>rune</td>
-<td>int32别名</td>
-</tr>
-</tbody>
-</table>
-<h2 id="字符串不可变但是可以进行切片">字符串(不可变，但是可以进行切片)</h2>
-<pre><code class="language-go">s := &quot;hello&quot;
-s = &quot;c&quot; + s[1:] // 字符串虽不能更改，但可进行切片操作 使用+操作符来连接两个字符串
-</code></pre>
-<h2 id="错误类型">错误类型</h2>
-<pre><code class="language-go">err := errors.New(&quot;emit macho dwarf: elf header corrupted&quot;)
-if err != nil {
-    fmt.Print(err)
-}
-</code></pre>
-<h2 id="关键字-iota">关键字 iota</h2>
-<p>用来声明 <strong>enum</strong> 的时候采用，它默认开始值是 <strong>0</strong>，每调用一次加 <strong>1</strong></p>
-<pre><code class="language-go">const(
-    x = iota  // x == 0
-    y = iota  // y == 1
-    z = iota  // z == 2
-    w  // 常量声明省略值时，默认和之前一个值的字面相同。这里隐式地说w = iota，因此w == 3。其实上面y和z可同样不用&quot;= iota&quot;
-)
-
-const v = iota // 每遇到一个const关键字，iota就会重置，此时v == 0 
-
-const(
-  e, f, g = iota, iota, iota //e=0,f=0,g=0 iota在同一行值相同
-)
-</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -906,11 +685,140 @@ const(
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Golang - 基础入门]]></title>
+        <id>https://yxqme.github.io/post/go-ji-chu</id>
+        <link href="https://yxqme.github.io/post/go-ji-chu">
+        </link>
+        <updated>2018-02-08T06:14:58.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="gopath">GOPATH</h2>
+<p><strong>go</strong> 命令依赖一个重要的环境变量：<strong>$GOPATH</strong></p>
+<ul>
+<li><strong>src</strong> 存放源代码（比如：<strong>.go</strong> <strong>.c</strong> <strong>.h</strong> <strong>.s</strong> 等）</li>
+<li><strong>pkg</strong> 编译后生成的文件（比如：<strong>.a</strong>）</li>
+<li><strong>bin</strong> 编译后生成的可执行文件</li>
+</ul>
+<h2 id="定义变量">定义变量</h2>
+<pre><code class="language-go">var variableName type
+// 定义三个类型都是 type 的变量
+var vname1, vname2, vname3 type
+// 定义常量
+const constantName = value
+// 初始化 variableName 的变量为 value 值，类型是 type
+// :=这个符号直接取代了var和type,这种形式叫做简短声明。不过它有一个限制，那就是它只能用在函数内部
+vname1, vname2, vname3 := v1, v2, v3
+// _（下划线）是个特殊的变量名，任何赋予它的值都会被丢弃
+_,b := 34, 35
+</code></pre>
+<h2 id="布尔">布尔</h2>
+<p>未指定，默认为 <code>false</code></p>
+<h2 id="数字">数字</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>取决于编译器，目前等于int32，可能会变成int64</td>
+</tr>
+<tr>
+<td>uint</td>
+<td>取决于编译器，目前等于uint32，可能会变成uint64</td>
+</tr>
+<tr>
+<td>uint8</td>
+<td>0~255</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>0~65535</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>0~4294967295</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>0~18446744073709551615</td>
+</tr>
+<tr>
+<td>int8</td>
+<td>-128~127</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>-32768~32767</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>-9223372036854775808~9223372036854775807</td>
+</tr>
+<tr>
+<td>float32</td>
+<td>IEEE-754 32位浮点型数</td>
+</tr>
+<tr>
+<td>float64</td>
+<td>IEEE-754 64位浮点型数</td>
+</tr>
+<tr>
+<td>complex64</td>
+<td>32 位实数和虚数</td>
+</tr>
+<tr>
+<td>complex128</td>
+<td>64 位实数和虚数</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>uint8别名</td>
+</tr>
+<tr>
+<td>rune</td>
+<td>int32别名</td>
+</tr>
+</tbody>
+</table>
+<h2 id="字符串不可变但是可以进行切片">字符串(不可变，但是可以进行切片)</h2>
+<pre><code class="language-go">s := &quot;hello&quot;
+s = &quot;c&quot; + s[1:] // 字符串虽不能更改，但可进行切片操作 使用+操作符来连接两个字符串
+</code></pre>
+<h2 id="错误类型">错误类型</h2>
+<pre><code class="language-go">err := errors.New(&quot;emit macho dwarf: elf header corrupted&quot;)
+if err != nil {
+    fmt.Print(err)
+}
+</code></pre>
+<h2 id="关键字-iota">关键字 iota</h2>
+<p>用来声明 <strong>enum</strong> 的时候采用，它默认开始值是 <strong>0</strong>，每调用一次加 <strong>1</strong></p>
+<pre><code class="language-go">const(
+    x = iota  // x == 0
+    y = iota  // y == 1
+    z = iota  // z == 2
+    w  // 常量声明省略值时，默认和之前一个值的字面相同。这里隐式地说w = iota，因此w == 3。其实上面y和z可同样不用&quot;= iota&quot;
+)
+
+const v = iota // 每遇到一个const关键字，iota就会重置，此时v == 0 
+
+const(
+  e, f, g = iota, iota, iota //e=0,f=0,g=0 iota在同一行值相同
+)
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[群晖 DSM 使用密钥登录]]></title>
         <id>https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu</id>
         <link href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">
         </link>
-        <updated>2018-07-03T06:20:51.000Z</updated>
+        <updated>2017-07-03T06:20:51.000Z</updated>
         <content type="html"><![CDATA[<h2 id="1-设置里打开家目录服务">1. 设置里打开家目录服务</h2>
 <pre><code class="language-mermaid">graph LR
     A[用户账号]--&gt;B[高级设置]
@@ -959,11 +867,160 @@ PasswordAuthentication no
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[CentOS 限制登录连接]]></title>
+        <id>https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie</id>
+        <link href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">
+        </link>
+        <updated>2016-10-20T06:20:28.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1禁用-root-登陆">1.禁用 root 登陆</h2>
+<pre><code class="language-bash">vi /etc/ssh/sshd_config
+
+# PermitRootLogin yes // 改为 no 禁用root登陆
+
+service sshd restart
+</code></pre>
+<h2 id="2锁定-ssh-失败的登录尝试">2.锁定 ssh 失败的登录尝试</h2>
+<p>pam_tally2 模块</p>
+<p>参数:</p>
+<ul>
+<li>file=/var/log/tallylog 默认的日志文件是用来保持登录计数。</li>
+<li>deny=3 拒绝后，3次尝试访问和锁定用户。</li>
+<li>even_deny_root  政策也适用于root用户。</li>
+<li>unlock_time=1200 帐户将被锁定，直到20分钟 。 （如果要永久锁定，直到手动解锁，请删除此参数。）</li>
+</ul>
+<pre><code class="language-bash"># 配置文件来配置的登录尝试的访问次数
+/etc/pam.d/password-auth
+
+# 验证部分
+auth        required      pam_tally2.so  file=/var/log/tallylog deny=3 even_deny_root unlock_time=1200
+
+# 账号部分
+account     required      pam_tally2.so
+
+# 验证或检查用户尝试的计数器
+pam_tally2 --user=root
+
+# 重置或解锁用户帐户以再次启用访问
+pam_tally2 --user=root --reset
+</code></pre>
+<h2 id="3利用-iptables-设置防火墙">3.利用 iptables 设置防火墙</h2>
+<p>// todo</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[HTTP缓存机制及原理]]></title>
+        <id>https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li</id>
+        <link href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">
+        </link>
+        <updated>2016-08-03T10:41:49.000Z</updated>
+        <content type="html"><![CDATA[<p><a name="d61xpr"></a></p>
+<h2 id=""><a href="#d61xpr"></a>前言</h2>
+<p>HTTP报文就是浏览器和服务器间通信时发送及响应的数据块。</p>
+<p>浏览器向服务器请求数据，发送请求 <code>request</code> 报文；服务器向浏览器返回数据，返回响应 <code>response</code> 报文。</p>
+<p>报文信息主要分为两部分</p>
+<ol>
+<li>
+<p>包含属性的首部(header)--------------------------附加信息（cookie，缓存信息等）与缓存相关的规则信息，均包含在header中</p>
+</li>
+<li>
+<p>包含数据的主体部分(body)-----------------------HTTP请求真正想要传输的部分</p>
+</li>
+</ol>
+<p><a name="x06ddw"></a></p>
+<h2 id="-2"><a href="#x06ddw"></a>缓存规则解析</h2>
+<p>在客户端第一次请求数据时，此时缓存数据库中没有对应的缓存数据，需要请求服务器，服务器返回后，将数据存储至缓存数据库中。</p>
+<figure data-type="image" tabindex="1"><img src="http://img.hb.aicdn.com/7e93298ad1223b85691c9c6b8f4f080b3e794b964870-fxkGqh_fw658#width=" alt=""></figure>
+<p>HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来分类，我将其分为两大类(强制缓存，对比缓存)</p>
+<p>在详细介绍这两种规则之前，先通过时序图的方式，让大家对这两种规则有个简单了解。</p>
+<p>已存在缓存数据时，仅基于强制缓存，请求数据的流程如下</p>
+<figure data-type="image" tabindex="2"><img src="http://img.hb.aicdn.com/6ec39ad243db8ca1184c60dcb75d60ad9e6dc69e62fc-C44146_fw658#width=" alt=""></figure>
+<p>已存在缓存数据时，仅基于对比缓存，请求数据的流程如下</p>
+<figure data-type="image" tabindex="3"><img src="http://img.hb.aicdn.com/86413155aaaedebfca2ab45e73b761cfd23506397631-H9aj6e_fw658#width=" alt=""></figure>
+<p>对缓存机制不太了解的同学可能会问，基于对比缓存的流程下，不管是否使用缓存，都需要向服务器发送请求，那么还用缓存干什么？<br />这个问题，我们暂且放下，后文在详细介绍每种缓存规则的时候，会带给大家答案。</p>
+<p>我们可以看到两类缓存规则的不同，强制缓存如果生效，不需要再和服务器发生交互，而对比缓存不管是否生效，都需要与服务端发生交互。<br />两类缓存规则可以同时存在，强制缓存优先级高于对比缓存，也就是说，当执行强制缓存的规则时，如果缓存生效，直接使用缓存，不再执行对比缓存规则。</p>
+<p><a name="t29zvk"></a></p>
+<h2 id="-3"><a href="#t29zvk"></a>强制缓存</h2>
+<p>从上文我们得知，强制缓存，在缓存数据未失效的情况下，可以直接使用缓存数据，那么浏览器是如何判断缓存数据是否失效呢？<br />我们知道，在没有缓存数据的时候，浏览器向服务器请求数据时，服务器会将数据和缓存规则一并返回，缓存规则信息包含在响应header中。</p>
+<p>对于强制缓存来说，响应header中会有两个字段来标明失效规则 <code>Expires/Cache-Control</code><br />使用chrome的开发者工具，可以很明显的看到对于强制缓存生效时，网络请求的情况</p>
+<figure data-type="image" tabindex="4"><img src="http://img.hb.aicdn.com/9721829af0f1fd854a6e2f71d5a8acb424831ed853cb-5Z5Xbt_fw658#width=" alt=""></figure>
+<pre><code>Expires
+　　Expires的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。
+不过Expires 是HTTP 1.0的东西，现在默认浏览器均默认使用HTTP 1.1，所以它的作用基本忽略。
+另一个问题是，到期时间是由服务端生成的，但是客户端时间可能跟服务端时间有误差，这就会导致缓存命中的误差。
+所以HTTP 1.1 的版本，使用Cache-Control替代。
+
+Cache-Control
+Cache-Control 是最重要的规则。常见的取值有private、public、no-cache、max-age，no-store，默认为private。
+private:             客户端可以缓存
+public:              客户端和代理服务器都可缓存（前端的同学，可以认为public和private是一样的）
+max-age=xxx:   缓存的内容将在 xxx 秒后失效
+no-cache:          需要使用对比缓存来验证缓存数据（后面介绍）
+no-store:           所有内容都不会缓存，强制缓存，对比缓存都不会触发（对于前端开发来说，缓存越多越好，so...基本上和它说886）
+</code></pre>
+<p>举个板栗</p>
+<figure data-type="image" tabindex="5"><img src="http://img.hb.aicdn.com/d79aaaf536b1b3a390d6b4aac3c82be1730d15b633c1-ydbjId_fw658#width=" alt=""></figure>
+<p>图中 <code>Cache-Control</code> 仅指定了 <code>max-age</code>，所以默认为 <code>private</code> ，缓存时间为 <code>31536000秒（365天）</code><br />也就是说，在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。</p>
+<p><a name="b89ewd"></a></p>
+<h2 id="-4"><a href="#b89ewd"></a>对比缓存</h2>
+<p>对比缓存，顾名思义，需要进行比较判断是否可以使用缓存。<br />浏览器第一次请求数据时，服务器会将缓存标识与数据一起返回给客户端，客户端将二者备份至缓存数据库中。<br />再次请求数据时，客户端将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回 <code>304</code> 状态码，通知客户端比较成功，可以使用缓存数据。</p>
+<p>第一次访问：</p>
+<figure data-type="image" tabindex="6"><img src="http://img.hb.aicdn.com/7fdaa4e99ee15c1f26ca9bc4da34f6451bdc750324f5-1lEYv0_fw658#width=" alt=""></figure>
+<p>再次访问：</p>
+<figure data-type="image" tabindex="7"><img src="http://img.hb.aicdn.com/ccf10d16e2fbe2fc39f6f4e0afc54a589eca6575256e-Emf3Bk_fw658#width=" alt=""></figure>
+<p>通过两图的对比，我们可以很清楚的发现，在对比缓存生效时，状态码为 <code>304</code>，并且报文大小和请求时间大大减少。<br />原因是，服务端在进行标识比较后，只返回 <code>header</code> 部分，通过状态码通知客户端使用缓存，不再需要将报文主体部分返回给客户端。</p>
+<p>对于对比缓存来说，缓存标识的传递是我们着重需要理解的，它在 <code>请求header</code> 和 <code>响应header</code> 间进行传递，<br />一共分为两种标识传递，接下来，我们分开介绍。</p>
+<p>Last-Modified  /  If-Modified-Since<br />Last-Modified：<br />服务器在响应请求时，告诉浏览器资源的最后修改时间。</p>
+<figure data-type="image" tabindex="8"><img src="http://img.hb.aicdn.com/d8d37594b4d48c2660d795199a63241a0f9d1c6350bf-iekXQ6_fw658#width=" alt=""></figure>
+<p>If-Modified-Since：<br />再次请求服务器时，通过此字段通知服务器上次请求时，服务器返回的资源最后修改时间。<br />服务器收到请求后发现有头If-Modified-Since 则与被请求资源的最后修改时间进行比对。<br />若资源的最后修改时间大于If-Modified-Since，说明资源又被改动过，则响应整片资源内容，返回状态码 <code>200</code>；<br />若资源的最后修改时间小于或等于If-Modified-Since，说明资源无新修改，则响应HTTP <code>304</code>，告知浏览器继续使用所保存的 <code>cache</code>。</p>
+<figure data-type="image" tabindex="9"><img src="http://img.hb.aicdn.com/d795d84d6a407d71c9a5b436dbdbca94959308fb6034-WoWtqO_fw658#width=" alt=""></figure>
+<p>Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）<br />Etag：<br />服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。</p>
+<figure data-type="image" tabindex="10"><img src="http://img.hb.aicdn.com/cada955fbc6914bd7b09b0428fbaabc60c4c5cfa4f5f-iyTUV8_fw658#width=" alt=""></figure>
+<p>If-None-Match：<br />再次请求服务器时，通过此字段通知服务器客户段缓存数据的唯一标识。<br />服务器收到请求后发现有头If-None-Match 则与被请求资源的唯一标识进行比对，<br />不同，说明资源又被改动过，则响应整片资源内容，返回状态码200；<br />相同，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。</p>
+<figure data-type="image" tabindex="11"><img src="http://img.hb.aicdn.com/b54b39a94d9ddd9fda5f3e894eae2e9d69bf659f5c90-JHmhI4_fw658#width=" alt=""></figure>
+<p><a name="7elygp"></a></p>
+<h2 id="-5"><a href="#7elygp"></a>总结</h2>
+<p>对于强制缓存，服务器通知浏览器一个缓存时间，在缓存时间内，下次请求，直接用缓存，不在时间内，执行比较缓存策略。<br />对于比较缓存，将缓存信息中的 <code>Etag</code> 和<code>Last-Modified</code> 通过请求发送给服务器，由服务器校验，返回 <code>304</code> 状态码时，浏览器直接使用缓存。</p>
+<p>浏览器第一次请求：</p>
+<figure data-type="image" tabindex="12"><img src="http://img.hb.aicdn.com/e29a152e6dcc77eedc25d464b17ff56789f2b28b43ca-kA79KC_fw658#width=" alt=""></figure>
+<p>浏览器再次请求时：</p>
+<figure data-type="image" tabindex="13"><img src="http://img.hb.aicdn.com/fd52fe629f72fd6d508f699b4e0c13309e0892bb8a46-6E66Dw_fw658#width=" alt=""></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vi/vim 字符串替换]]></title>
+        <id>https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan</id>
+        <link href="https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan">
+        </link>
+        <updated>2016-06-09T02:09:56.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>vi/vim 中可以使用 <code>:s</code> 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法(vi 真是强大啊，还有很多需要学习)，记录几种在此，方便以后查询。</p>
+</blockquote>
+<p>替换当前行所有 <code>vivian</code> 为 <code>sky</code></p>
+<pre><code class="language-shell">:s/vivian/sky/g
+</code></pre>
+<p>替换第 <code>n</code> 行开始到最后一行中每一行的第一个 <code>vivian</code> 为 <code>sky</code></p>
+<pre><code class="language-shell">:n,$s/vivian/sky/
+</code></pre>
+<p>替换第 <code>n</code> 行开始到最后一行中每一行所有 <code>vivian</code> 为 <code>sky</code>；<code>n</code> 为数字，若 <code>n</code> 为 <code>.</code> 表示从当前行开始到最后一行</p>
+<pre><code class="language-shell">:n,$s/vivian/sky/g
+</code></pre>
+<p>替换每一行的第一个 <code>vivian</code> 为 <code>sky</code></p>
+<pre><code class="language-shell">:%s/vivian/sky/
+</code></pre>
+<p>替换每一行中所有 <code>vivian</code> 为 <code>sky</code></p>
+<pre><code class="language-shell">:%s/vivian/sky/g
+</code></pre>
+<blockquote>
+<p>可以使用 <code>#</code> 作为分隔符，此时中间出现的 <code>/</code> 不会作为分隔符 如：<code>:%s#vivian/#sky/#g</code>，表示替换每一行所有 <code>vivian/</code> 为 <code>sky/</code></p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Linux 账户管理]]></title>
         <id>https://yxqme.github.io/post/linux-zhang-hu-guan-li</id>
         <link href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">
         </link>
-        <updated>2018-05-01T10:27:03.000Z</updated>
+        <updated>2016-05-01T10:27:03.000Z</updated>
         <content type="html"><![CDATA[<h2 id="etcpasswd">/etc/passwd</h2>
 <p>管理使用者 UID/GID 等重要参数，格式：</p>
 <pre><code>账号名称:口令:UID:GID:用户信息说明栏:家目录:Shell
@@ -1246,82 +1303,25 @@ PasswordAuthentication no
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[HTTP缓存机制及原理]]></title>
-        <id>https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li</id>
-        <link href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">
+        <title type="html"><![CDATA[linux 文件权限]]></title>
+        <id>https://yxqme.github.io/post/linux-wen-jian-quan-xian</id>
+        <link href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">
         </link>
-        <updated>2016-08-03T10:41:49.000Z</updated>
-        <content type="html"><![CDATA[<p><a name="d61xpr"></a></p>
-<h2 id=""><a href="#d61xpr"></a>前言</h2>
-<p>HTTP报文就是浏览器和服务器间通信时发送及响应的数据块。</p>
-<p>浏览器向服务器请求数据，发送请求 <code>request</code> 报文；服务器向浏览器返回数据，返回响应 <code>response</code> 报文。</p>
-<p>报文信息主要分为两部分</p>
-<ol>
-<li>
-<p>包含属性的首部(header)--------------------------附加信息（cookie，缓存信息等）与缓存相关的规则信息，均包含在header中</p>
-</li>
-<li>
-<p>包含数据的主体部分(body)-----------------------HTTP请求真正想要传输的部分</p>
-</li>
-</ol>
-<p><a name="x06ddw"></a></p>
-<h2 id="-2"><a href="#x06ddw"></a>缓存规则解析</h2>
-<p>在客户端第一次请求数据时，此时缓存数据库中没有对应的缓存数据，需要请求服务器，服务器返回后，将数据存储至缓存数据库中。</p>
-<figure data-type="image" tabindex="1"><img src="http://img.hb.aicdn.com/7e93298ad1223b85691c9c6b8f4f080b3e794b964870-fxkGqh_fw658#width=" alt=""></figure>
-<p>HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来分类，我将其分为两大类(强制缓存，对比缓存)</p>
-<p>在详细介绍这两种规则之前，先通过时序图的方式，让大家对这两种规则有个简单了解。</p>
-<p>已存在缓存数据时，仅基于强制缓存，请求数据的流程如下</p>
-<figure data-type="image" tabindex="2"><img src="http://img.hb.aicdn.com/6ec39ad243db8ca1184c60dcb75d60ad9e6dc69e62fc-C44146_fw658#width=" alt=""></figure>
-<p>已存在缓存数据时，仅基于对比缓存，请求数据的流程如下</p>
-<figure data-type="image" tabindex="3"><img src="http://img.hb.aicdn.com/86413155aaaedebfca2ab45e73b761cfd23506397631-H9aj6e_fw658#width=" alt=""></figure>
-<p>对缓存机制不太了解的同学可能会问，基于对比缓存的流程下，不管是否使用缓存，都需要向服务器发送请求，那么还用缓存干什么？<br />这个问题，我们暂且放下，后文在详细介绍每种缓存规则的时候，会带给大家答案。</p>
-<p>我们可以看到两类缓存规则的不同，强制缓存如果生效，不需要再和服务器发生交互，而对比缓存不管是否生效，都需要与服务端发生交互。<br />两类缓存规则可以同时存在，强制缓存优先级高于对比缓存，也就是说，当执行强制缓存的规则时，如果缓存生效，直接使用缓存，不再执行对比缓存规则。</p>
-<p><a name="t29zvk"></a></p>
-<h2 id="-3"><a href="#t29zvk"></a>强制缓存</h2>
-<p>从上文我们得知，强制缓存，在缓存数据未失效的情况下，可以直接使用缓存数据，那么浏览器是如何判断缓存数据是否失效呢？<br />我们知道，在没有缓存数据的时候，浏览器向服务器请求数据时，服务器会将数据和缓存规则一并返回，缓存规则信息包含在响应header中。</p>
-<p>对于强制缓存来说，响应header中会有两个字段来标明失效规则 <code>Expires/Cache-Control</code><br />使用chrome的开发者工具，可以很明显的看到对于强制缓存生效时，网络请求的情况</p>
-<figure data-type="image" tabindex="4"><img src="http://img.hb.aicdn.com/9721829af0f1fd854a6e2f71d5a8acb424831ed853cb-5Z5Xbt_fw658#width=" alt=""></figure>
-<pre><code>Expires
-　　Expires的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。
-不过Expires 是HTTP 1.0的东西，现在默认浏览器均默认使用HTTP 1.1，所以它的作用基本忽略。
-另一个问题是，到期时间是由服务端生成的，但是客户端时间可能跟服务端时间有误差，这就会导致缓存命中的误差。
-所以HTTP 1.1 的版本，使用Cache-Control替代。
+        <updated>2016-01-08T06:18:41.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li><code>chgrp</code> ：改变文件所属群组</li>
+<li><code>chown</code> ：改变文件拥有者</li>
+<li><code>chmod</code> ：改变文件的权限, SUID, SGID, SBIT等等的特性</li>
+</ul>
+<pre><code class="language-bash"># chown user:group install.log
+#
+# - r:4
+# - w:2
+# - x:1
 
-Cache-Control
-Cache-Control 是最重要的规则。常见的取值有private、public、no-cache、max-age，no-store，默认为private。
-private:             客户端可以缓存
-public:              客户端和代理服务器都可缓存（前端的同学，可以认为public和private是一样的）
-max-age=xxx:   缓存的内容将在 xxx 秒后失效
-no-cache:          需要使用对比缓存来验证缓存数据（后面介绍）
-no-store:           所有内容都不会缓存，强制缓存，对比缓存都不会触发（对于前端开发来说，缓存越多越好，so...基本上和它说886）
+chmod 777 .bashrc
+chmod u=rwx,g=rw,o=r .bashrc
 </code></pre>
-<p>举个板栗</p>
-<figure data-type="image" tabindex="5"><img src="http://img.hb.aicdn.com/d79aaaf536b1b3a390d6b4aac3c82be1730d15b633c1-ydbjId_fw658#width=" alt=""></figure>
-<p>图中 <code>Cache-Control</code> 仅指定了 <code>max-age</code>，所以默认为 <code>private</code> ，缓存时间为 <code>31536000秒（365天）</code><br />也就是说，在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。</p>
-<p><a name="b89ewd"></a></p>
-<h2 id="-4"><a href="#b89ewd"></a>对比缓存</h2>
-<p>对比缓存，顾名思义，需要进行比较判断是否可以使用缓存。<br />浏览器第一次请求数据时，服务器会将缓存标识与数据一起返回给客户端，客户端将二者备份至缓存数据库中。<br />再次请求数据时，客户端将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回 <code>304</code> 状态码，通知客户端比较成功，可以使用缓存数据。</p>
-<p>第一次访问：</p>
-<figure data-type="image" tabindex="6"><img src="http://img.hb.aicdn.com/7fdaa4e99ee15c1f26ca9bc4da34f6451bdc750324f5-1lEYv0_fw658#width=" alt=""></figure>
-<p>再次访问：</p>
-<figure data-type="image" tabindex="7"><img src="http://img.hb.aicdn.com/ccf10d16e2fbe2fc39f6f4e0afc54a589eca6575256e-Emf3Bk_fw658#width=" alt=""></figure>
-<p>通过两图的对比，我们可以很清楚的发现，在对比缓存生效时，状态码为 <code>304</code>，并且报文大小和请求时间大大减少。<br />原因是，服务端在进行标识比较后，只返回 <code>header</code> 部分，通过状态码通知客户端使用缓存，不再需要将报文主体部分返回给客户端。</p>
-<p>对于对比缓存来说，缓存标识的传递是我们着重需要理解的，它在 <code>请求header</code> 和 <code>响应header</code> 间进行传递，<br />一共分为两种标识传递，接下来，我们分开介绍。</p>
-<p>Last-Modified  /  If-Modified-Since<br />Last-Modified：<br />服务器在响应请求时，告诉浏览器资源的最后修改时间。</p>
-<figure data-type="image" tabindex="8"><img src="http://img.hb.aicdn.com/d8d37594b4d48c2660d795199a63241a0f9d1c6350bf-iekXQ6_fw658#width=" alt=""></figure>
-<p>If-Modified-Since：<br />再次请求服务器时，通过此字段通知服务器上次请求时，服务器返回的资源最后修改时间。<br />服务器收到请求后发现有头If-Modified-Since 则与被请求资源的最后修改时间进行比对。<br />若资源的最后修改时间大于If-Modified-Since，说明资源又被改动过，则响应整片资源内容，返回状态码 <code>200</code>；<br />若资源的最后修改时间小于或等于If-Modified-Since，说明资源无新修改，则响应HTTP <code>304</code>，告知浏览器继续使用所保存的 <code>cache</code>。</p>
-<figure data-type="image" tabindex="9"><img src="http://img.hb.aicdn.com/d795d84d6a407d71c9a5b436dbdbca94959308fb6034-WoWtqO_fw658#width=" alt=""></figure>
-<p>Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）<br />Etag：<br />服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。</p>
-<figure data-type="image" tabindex="10"><img src="http://img.hb.aicdn.com/cada955fbc6914bd7b09b0428fbaabc60c4c5cfa4f5f-iyTUV8_fw658#width=" alt=""></figure>
-<p>If-None-Match：<br />再次请求服务器时，通过此字段通知服务器客户段缓存数据的唯一标识。<br />服务器收到请求后发现有头If-None-Match 则与被请求资源的唯一标识进行比对，<br />不同，说明资源又被改动过，则响应整片资源内容，返回状态码200；<br />相同，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。</p>
-<figure data-type="image" tabindex="11"><img src="http://img.hb.aicdn.com/b54b39a94d9ddd9fda5f3e894eae2e9d69bf659f5c90-JHmhI4_fw658#width=" alt=""></figure>
-<p><a name="7elygp"></a></p>
-<h2 id="-5"><a href="#7elygp"></a>总结</h2>
-<p>对于强制缓存，服务器通知浏览器一个缓存时间，在缓存时间内，下次请求，直接用缓存，不在时间内，执行比较缓存策略。<br />对于比较缓存，将缓存信息中的 <code>Etag</code> 和<code>Last-Modified</code> 通过请求发送给服务器，由服务器校验，返回 <code>304</code> 状态码时，浏览器直接使用缓存。</p>
-<p>浏览器第一次请求：</p>
-<figure data-type="image" tabindex="12"><img src="http://img.hb.aicdn.com/e29a152e6dcc77eedc25d464b17ff56789f2b28b43ca-kA79KC_fw658#width=" alt=""></figure>
-<p>浏览器再次请求时：</p>
-<figure data-type="image" tabindex="13"><img src="http://img.hb.aicdn.com/fd52fe629f72fd6d508f699b4e0c13309e0892bb8a46-6E66Dw_fw658#width=" alt=""></figure>
 ]]></content>
     </entry>
     <entry>
