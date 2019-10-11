@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://yxqme.github.io</id>
+    <id>https://yxq.me</id>
     <title>yxqme</title>
-    <updated>2019-10-10T09:21:22.366Z</updated>
+    <updated>2019-10-11T08:33:42.732Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://yxqme.github.io"/>
-    <link rel="self" href="https://yxqme.github.io/atom.xml"/>
+    <link rel="alternate" href="https://yxq.me"/>
+    <link rel="self" href="https://yxq.me/atom.xml"/>
     <subtitle>Stay hungry, Stay foolish</subtitle>
-    <logo>https://yxqme.github.io/images/avatar.png</logo>
-    <icon>https://yxqme.github.io/favicon.ico</icon>
+    <logo>https://yxq.me/images/avatar.png</logo>
+    <icon>https://yxq.me/favicon.ico</icon>
     <rights>All rights reserved 2019, yxqme</rights>
     <entry>
         <title type="html"><![CDATA[群晖 DSM 备注]]></title>
-        <id>https://yxqme.github.io/post/qun-hui-dsm-bei-zhu</id>
-        <link href="https://yxqme.github.io/post/qun-hui-dsm-bei-zhu">
+        <id>https://yxq.me/post/qun-hui-dsm-bei-zhu</id>
+        <link href="https://yxq.me/post/qun-hui-dsm-bei-zhu">
         </link>
         <updated>2018-08-18T07:44:29.000Z</updated>
         <content type="html"><![CDATA[<h3 id="路径">路径</h3>
@@ -35,8 +35,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[ Kong - 分布式 API 网关]]></title>
-        <id>https://yxqme.github.io/post/kong-api</id>
-        <link href="https://yxqme.github.io/post/kong-api">
+        <id>https://yxq.me/post/kong-api</id>
+        <link href="https://yxq.me/post/kong-api">
         </link>
         <updated>2018-07-11T00:05:39.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -686,8 +686,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Golang - 基础入门]]></title>
-        <id>https://yxqme.github.io/post/go-ji-chu</id>
-        <link href="https://yxqme.github.io/post/go-ji-chu">
+        <id>https://yxq.me/post/go-ji-chu</id>
+        <link href="https://yxq.me/post/go-ji-chu">
         </link>
         <updated>2018-02-08T06:14:58.000Z</updated>
         <content type="html"><![CDATA[<h2 id="gopath">GOPATH</h2>
@@ -815,8 +815,8 @@ const(
     </entry>
     <entry>
         <title type="html"><![CDATA[群晖 DSM 使用密钥登录]]></title>
-        <id>https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu</id>
-        <link href="https://yxqme.github.io/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">
+        <id>https://yxq.me/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu</id>
+        <link href="https://yxq.me/post/qun-hui-dsm-shi-yong-mi-yao-ti-dai-mi-ma-deng-lu">
         </link>
         <updated>2017-07-03T06:20:51.000Z</updated>
         <content type="html"><![CDATA[<h2 id="1-设置里打开家目录服务">1. 设置里打开家目录服务</h2>
@@ -868,8 +868,8 @@ PasswordAuthentication no
     </entry>
     <entry>
         <title type="html"><![CDATA[CentOS 限制登录连接]]></title>
-        <id>https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie</id>
-        <link href="https://yxqme.github.io/post/centos-xian-zhi-deng-lu-lian-jie">
+        <id>https://yxq.me/post/centos-xian-zhi-deng-lu-lian-jie</id>
+        <link href="https://yxq.me/post/centos-xian-zhi-deng-lu-lian-jie">
         </link>
         <updated>2016-10-20T06:20:28.000Z</updated>
         <content type="html"><![CDATA[<h2 id="1禁用-root-登陆">1.禁用 root 登陆</h2>
@@ -909,8 +909,8 @@ pam_tally2 --user=root --reset
     </entry>
     <entry>
         <title type="html"><![CDATA[HTTP缓存机制及原理]]></title>
-        <id>https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li</id>
-        <link href="https://yxqme.github.io/post/http-huan-cun-ji-zhi-ji-yuan-li">
+        <id>https://yxq.me/post/http-huan-cun-ji-zhi-ji-yuan-li</id>
+        <link href="https://yxq.me/post/http-huan-cun-ji-zhi-ji-yuan-li">
         </link>
         <updated>2016-08-03T10:41:49.000Z</updated>
         <content type="html"><![CDATA[<p><a name="d61xpr"></a></p>
@@ -988,8 +988,8 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
     </entry>
     <entry>
         <title type="html"><![CDATA[vi/vim 字符串替换]]></title>
-        <id>https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan</id>
-        <link href="https://yxqme.github.io/post/vivim-zi-fu-chuan-ti-huan">
+        <id>https://yxq.me/post/vivim-zi-fu-chuan-ti-huan</id>
+        <link href="https://yxq.me/post/vivim-zi-fu-chuan-ti-huan">
         </link>
         <updated>2016-06-09T02:09:56.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -1017,8 +1017,8 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
     </entry>
     <entry>
         <title type="html"><![CDATA[Linux 账户管理]]></title>
-        <id>https://yxqme.github.io/post/linux-zhang-hu-guan-li</id>
-        <link href="https://yxqme.github.io/post/linux-zhang-hu-guan-li">
+        <id>https://yxq.me/post/linux-zhang-hu-guan-li</id>
+        <link href="https://yxq.me/post/linux-zhang-hu-guan-li">
         </link>
         <updated>2016-05-01T10:27:03.000Z</updated>
         <content type="html"><![CDATA[<h2 id="etcpasswd">/etc/passwd</h2>
@@ -1304,8 +1304,8 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
     </entry>
     <entry>
         <title type="html"><![CDATA[linux 文件权限]]></title>
-        <id>https://yxqme.github.io/post/linux-wen-jian-quan-xian</id>
-        <link href="https://yxqme.github.io/post/linux-wen-jian-quan-xian">
+        <id>https://yxq.me/post/linux-wen-jian-quan-xian</id>
+        <link href="https://yxq.me/post/linux-wen-jian-quan-xian">
         </link>
         <updated>2016-01-08T06:18:41.000Z</updated>
         <content type="html"><![CDATA[<ul>
@@ -1326,8 +1326,8 @@ chmod u=rwx,g=rw,o=r .bashrc
     </entry>
     <entry>
         <title type="html"><![CDATA[npm  版本号规则]]></title>
-        <id>https://yxqme.github.io/post/npm-version</id>
-        <link href="https://yxqme.github.io/post/npm-version">
+        <id>https://yxq.me/post/npm-version</id>
+        <link href="https://yxq.me/post/npm-version">
         </link>
         <updated>2015-04-10T03:26:07.000Z</updated>
         <content type="html"><![CDATA[<table>
