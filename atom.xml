@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yxq.me</id>
     <title>yxqme</title>
-    <updated>2019-10-11T10:44:05.732Z</updated>
+    <updated>2019-10-11T10:49:26.937Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yxq.me"/>
     <link rel="self" href="https://yxq.me/atom.xml"/>
@@ -685,6 +685,87 @@
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[docker - 概念]]></title>
+        <id>https://yxq.me/post/docker-gai-nian</id>
+        <link href="https://yxq.me/post/docker-gai-nian">
+        </link>
+        <updated>2018-04-09T10:45:16.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="架构">架构</h2>
+<h3 id="传统虚拟机">传统虚拟机</h3>
+<pre><code class="language-mermaid">graph LR
+    A1[APP1] --&gt; L1[bin/libs]
+    L1 --&gt; VO1[Virtual OS]
+    
+    VO1 --&gt; H[Hypervisior]
+    
+    A2[APP2] --&gt; L2[bin/libs]
+    L2 --&gt; VO2[Virtual OS]
+    
+    VO2 --&gt; H[Hypervisior]
+    
+    H[Hypervisior] --&gt; O[OS]
+    O --&gt; S[Server]
+</code></pre>
+<h3 id="docker">docker</h3>
+<pre><code class="language-mermaid">graph LR
+    A1[APP1] --&gt; L1[bin/libs]
+    L1 --&gt; D[Docker]
+    
+    A2[APP2] --&gt; L2[bin/libs]
+    L2 --&gt; D
+    
+    D --&gt; O[OS]
+    O --&gt; S[Server]
+</code></pre>
+<h3 id="why">why</h3>
+<ul>
+<li>更高效的利用系统资源</li>
+<li>更快速的启动时间</li>
+<li>一致的运行环境</li>
+<li>持续交付和部署</li>
+<li>更轻松的迁移</li>
+<li>更轻松的维护和扩展</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特性</th>
+<th style="text-align:left">容器</th>
+<th style="text-align:left">虚拟机</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">启动</td>
+<td style="text-align:left">秒级</td>
+<td style="text-align:left">分钟级</td>
+</tr>
+<tr>
+<td style="text-align:left">硬盘使用</td>
+<td style="text-align:left">一般为 <code>MB</code></td>
+<td style="text-align:left">一般为 <code>GB</code></td>
+</tr>
+<tr>
+<td style="text-align:left">性能</td>
+<td style="text-align:left">接近原生</td>
+<td style="text-align:left">弱于</td>
+</tr>
+<tr>
+<td style="text-align:left">系统支持量</td>
+<td style="text-align:left">单机支持上千个容器</td>
+<td style="text-align:left">一般几十个</td>
+</tr>
+</tbody>
+</table>
+<h2 id="基本概念">基本概念</h2>
+<ul>
+<li>镜像（Image）</li>
+<li>容器（Container）</li>
+<li>仓库（Repository）</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Golang - 基础入门]]></title>
         <id>https://yxq.me/post/go-ji-chu</id>
         <link href="https://yxq.me/post/go-ji-chu">
@@ -1322,32 +1403,6 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 chmod 777 .bashrc
 chmod u=rwx,g=rw,o=r .bashrc
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[npm  版本号规则]]></title>
-        <id>https://yxq.me/post/npm-version</id>
-        <link href="https://yxq.me/post/npm-version">
-        </link>
-        <updated>2015-04-10T03:26:07.000Z</updated>
-        <content type="html"><![CDATA[<table>
-<thead>
-<tr>
-<th>标识</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>~</td>
-<td>会匹配最近的小版本依赖包，比如~1.2.3会匹配所有1.2.x版本，但是不包括1.3.0</td>
-</tr>
-<tr>
-<td>^</td>
-<td>会匹配最新的大版本依赖包，比如^1.2.3会匹配所有1.x.x的包，包括1.3.0，但是不包括2.0.0</td>
-</tr>
-</tbody>
-</table>
 ]]></content>
     </entry>
 </feed>
