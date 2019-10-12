@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CentOS 限制登录连接 | yxqme</title>
+<title>yxqme</title>
 <meta name="description" content="Stay hungry, Stay foolish" />
 <link
   rel="shortcut icon"
@@ -85,91 +85,43 @@
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              CentOS 限制登录连接
-            </h2>
-            <div class="post-info">
-              <span>
-                2016-10-20
-              </span>
-              <span>
-                1 min read
-              </span>
-              
-                <a href="https://yxq.me/tag/jWTS2mH4f" class="post-tag">
-                  # CentOS
-                </a>
-              
-            </div>
-            
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h2 id="1禁用-root-登陆">1.禁用 root 登陆</h2>
-<pre><code class="language-bash">vi /etc/ssh/sshd_config
-
-# PermitRootLogin yes // 改为 no 禁用root登陆
-
-service sshd restart
-</code></pre>
-<h2 id="2锁定-ssh-失败的登录尝试">2.锁定 ssh 失败的登录尝试</h2>
-<p>pam_tally2 模块</p>
-<p>参数:</p>
-<ul>
-<li>file=/var/log/tallylog 默认的日志文件是用来保持登录计数。</li>
-<li>deny=3 拒绝后，3次尝试访问和锁定用户。</li>
-<li>even_deny_root  政策也适用于root用户。</li>
-<li>unlock_time=1200 帐户将被锁定，直到20分钟 。 （如果要永久锁定，直到手动解锁，请删除此参数。）</li>
-</ul>
-<pre><code class="language-bash"># 配置文件来配置的登录尝试的访问次数
-/etc/pam.d/password-auth
-
-# 验证部分
-auth        required      pam_tally2.so  file=/var/log/tallylog deny=3 even_deny_root unlock_time=1200
-
-# 账号部分
-account     required      pam_tally2.so
-
-# 验证或检查用户尝试的计数器
-pam_tally2 --user=root
-
-# 重置或解锁用户帐户以再次启用访问
-pam_tally2 --user=root --reset
-</code></pre>
-<h2 id="3利用-iptables-设置防火墙">3.利用 iptables 设置防火墙</h2>
-<p>// todo</p>
-
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#1%E7%A6%81%E7%94%A8-root-%E7%99%BB%E9%99%86">1.禁用 root 登陆</a></li>
-<li><a href="#2%E9%94%81%E5%AE%9A-ssh-%E5%A4%B1%E8%B4%A5%E7%9A%84%E7%99%BB%E5%BD%95%E5%B0%9D%E8%AF%95">2.锁定 ssh 失败的登录尝试</a></li>
-<li><a href="#3%E5%88%A9%E7%94%A8-iptables-%E8%AE%BE%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99">3.利用 iptables 设置防火墙</a></li>
-</ul>
-</li>
-</ul>
-
-              </div>
-            </div>
-          </article>
-        </div>
-
+    
+        <div class="post-container">
+  
+    <article class="post">
+      <a href="https://yxq.me/post/npm-version">
+        <h2 class="post-title">npm  版本号规则</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2015-04-10
+        </span>
+        <span>
+          1 min read
+        </span>
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://yxq.me/post/http-huan-cun-ji-zhi-ji-yuan-li">
-              <h3 class="post-title">
-                HTTP缓存机制及原理
-              </h3>
-            </a>
-          </div>
+          <a href="https://yxq.me/tag/kt_LnF6n5" class="post-tag">
+            # Node.js
+          </a>
         
-
+      </div>
+      
+      <div class="post-abstract">
         
+      </div>
+    </article>
+  
+</div>
 
+    
+        <div class="pagination-container">
+  
+    <a href="https://yxq.me/page/4/" class="prev-page">上一页</a>
+  
+  
+</div>
+
+    
         <div class="site-footer">
   ©2019 yxqme |
   <a class="rss" href="https://yxq.me/atom.xml" target="_blank"

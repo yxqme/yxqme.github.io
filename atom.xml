@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yxq.me</id>
     <title>yxqme</title>
-    <updated>2019-10-11T10:49:26.937Z</updated>
+    <updated>2019-10-12T06:20:03.252Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yxq.me"/>
     <link rel="self" href="https://yxq.me/atom.xml"/>
@@ -685,6 +685,68 @@
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[typescript 编译选项]]></title>
+        <id>https://yxq.me/post/typescript-bian-yi-xuan-xiang</id>
+        <link href="https://yxq.me/post/typescript-bian-yi-xuan-xiang">
+        </link>
+        <updated>2018-06-01T03:38:04.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>{
+  &quot;compilerOptions&quot;: {
+
+    /* 基本选项 */
+    &quot;target&quot;: &quot;es5&quot;,                       // 指定 ECMAScript 目标版本: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'
+    &quot;module&quot;: &quot;commonjs&quot;,                  // 指定使用模块: 'commonjs', 'amd', 'system', 'umd' or 'es2015'
+    &quot;lib&quot;: [],                             // 指定要包含在编译中的库文件
+    &quot;allowJs&quot;: true,                       // 允许编译 javascript 文件
+    &quot;checkJs&quot;: true,                       // 报告 javascript 文件中的错误
+    &quot;jsx&quot;: &quot;preserve&quot;,                     // 指定 jsx 代码的生成: 'preserve', 'react-native', or 'react'
+    &quot;declaration&quot;: true,                   // 生成相应的 '.d.ts' 文件
+    &quot;sourceMap&quot;: true,                     // 生成相应的 '.map' 文件
+    &quot;outFile&quot;: &quot;./&quot;,                       // 将输出文件合并为一个文件
+    &quot;outDir&quot;: &quot;./&quot;,                        // 指定输出目录
+    &quot;rootDir&quot;: &quot;./&quot;,                       // 用来控制输出目录结构 --outDir.
+    &quot;removeComments&quot;: true,                // 删除编译后的所有的注释
+    &quot;noEmit&quot;: true,                        // 不生成输出文件
+    &quot;importHelpers&quot;: true,                 // 从 tslib 导入辅助工具函数
+    &quot;isolatedModules&quot;: true,               // 将每个文件做为单独的模块 （与 'ts.transpileModule' 类似）.
+
+    /* 严格的类型检查选项 */
+    &quot;strict&quot;: true,                        // 启用所有严格类型检查选项
+    &quot;noImplicitAny&quot;: true,                 // 在表达式和声明上有隐含的 any类型时报错
+    &quot;strictNullChecks&quot;: true,              // 启用严格的 null 检查
+    &quot;noImplicitThis&quot;: true,                // 当 this 表达式值为 any 类型的时候，生成一个错误
+    &quot;alwaysStrict&quot;: true,                  // 以严格模式检查每个模块，并在每个文件里加入 'use strict'
+
+    /* 额外的检查 */
+    &quot;noUnusedLocals&quot;: true,                // 有未使用的变量时，抛出错误
+    &quot;noUnusedParameters&quot;: true,            // 有未使用的参数时，抛出错误
+    &quot;noImplicitReturns&quot;: true,             // 并不是所有函数里的代码都有返回值时，抛出错误
+    &quot;noFallthroughCasesInSwitch&quot;: true,    // 报告 switch 语句的 fallthrough 错误。（即，不允许 switch 的 case 语句贯穿）
+
+    /* 模块解析选项 */
+    &quot;moduleResolution&quot;: &quot;node&quot;,            // 选择模块解析策略： 'node' (Node.js) or 'classic' (TypeScript pre-1.6)
+    &quot;baseUrl&quot;: &quot;./&quot;,                       // 用于解析非相对模块名称的基目录
+    &quot;paths&quot;: {},                           // 模块名到基于 baseUrl 的路径映射的列表
+    &quot;rootDirs&quot;: [],                        // 根文件夹列表，其组合内容表示项目运行时的结构内容
+    &quot;typeRoots&quot;: [],                       // 包含类型声明的文件列表
+    &quot;types&quot;: [],                           // 需要包含的类型声明文件名列表
+    &quot;allowSyntheticDefaultImports&quot;: true,  // 允许从没有设置默认导出的模块中默认导入。
+
+    /* Source Map Options */
+    &quot;sourceRoot&quot;: &quot;./&quot;,                    // 指定调试器应该找到 TypeScript 文件而不是源文件的位置
+    &quot;mapRoot&quot;: &quot;./&quot;,                       // 指定调试器应该找到映射文件而不是生成文件的位置
+    &quot;inlineSourceMap&quot;: true,               // 生成单个 soucemaps 文件，而不是将 sourcemaps 生成不同的文件
+    &quot;inlineSources&quot;: true,                 // 将代码与 sourcemaps 生成到一个文件中，要求同时设置了 --inlineSourceMap 或 --sourceMap 属性
+
+    /* 其他选项 */
+    &quot;experimentalDecorators&quot;: true,        // 启用装饰器
+    &quot;emitDecoratorMetadata&quot;: true          // 为装饰器提供元数据的支持
+  }
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[docker - 概念]]></title>
         <id>https://yxq.me/post/docker-gai-nian</id>
         <link href="https://yxq.me/post/docker-gai-nian">
@@ -948,6 +1010,31 @@ PasswordAuthentication no
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[读写分离架构设计]]></title>
+        <id>https://yxq.me/post/yi-ge-ji-chu-jia-gou</id>
+        <link href="https://yxq.me/post/yi-ge-ji-chu-jia-gou">
+        </link>
+        <updated>2017-06-14T03:32:54.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-mermaid">graph LR
+1[Client]
+	1 --&gt; 2[DNS]
+	1 --&gt; 3[CDN]
+	1 --&gt; 4(Kongs) 
+	
+  4 --&gt; 5(Write Services)
+  4 --&gt; 6(Read Services)
+  
+  5 --&gt; 9(redis)
+  6 --&gt; 9(redis)
+  
+  5 --&gt; 7(SQL Write Master-Slave)
+  6 --&gt; 8(SQL Read Replicas)
+  
+  7 -.- 8
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[CentOS 限制登录连接]]></title>
         <id>https://yxq.me/post/centos-xian-zhi-deng-lu-lian-jie</id>
         <link href="https://yxq.me/post/centos-xian-zhi-deng-lu-lian-jie">
@@ -1094,315 +1181,6 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 <blockquote>
 <p>可以使用 <code>#</code> 作为分隔符，此时中间出现的 <code>/</code> 不会作为分隔符 如：<code>:%s#vivian/#sky/#g</code>，表示替换每一行所有 <code>vivian/</code> 为 <code>sky/</code></p>
 </blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Linux 账户管理]]></title>
-        <id>https://yxq.me/post/linux-zhang-hu-guan-li</id>
-        <link href="https://yxq.me/post/linux-zhang-hu-guan-li">
-        </link>
-        <updated>2016-05-01T10:27:03.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="etcpasswd">/etc/passwd</h2>
-<p>管理使用者 UID/GID 等重要参数，格式：</p>
-<pre><code>账号名称:口令:UID:GID:用户信息说明栏:家目录:Shell
-</code></pre>
-<p>详细说明：</p>
-<p>口令：早期 Unix 系统的口令就是放在这字段上！但是因为这个文件的特性是所有的程序都能够读取，这样一来很容易造成口令数据被窃取， 因此后来就将这个字段的口令数据给他改放到 /etc/shadow 中了。所以这里你会看到一个『 x 』，呵呵！</p>
-<p>UID：</p>
-<table>
-<thead>
-<tr>
-<th>id 范围</th>
-<th>该 ID 使用者特性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>系统管理员</td>
-</tr>
-<tr>
-<td>1~499</td>
-<td>保留给系统使用的 ID 1~99：由 distributions 自行创建的系统账号； 100~499：若用户有系统账号需求时，可以使用的账号 UID。</td>
-</tr>
-<tr>
-<td>500~65535</td>
-<td>给一般使用者用的，linux 核心 (2.6.x 版)已经可以支持到 4294967295</td>
-</tr>
-</tbody>
-</table>
-<p>GID: 分组ID</p>
-<p>Shell：指定shell，有一个 shell 可以用来替代成让账号无法取得 shell 环境的登陆动作！那就是 <code>/sbin/nologin</code> 这个东西！</p>
-<h2 id="etcshadow">/etc/shadow</h2>
-<p>我们知道很多程序的运行都与权限有关，而权限与 UID/GID 有关！因此各程序当然需要读取 /etc/passwd 来了解不同账号的权限</p>
-<p>格式：</p>
-<pre><code>账号名称:口令:最近更动口令的日期:口令不可被更动的天数:口令需要重新变更的天数:口令需要变更期限前的警告天数:口令过期后的账号宽限时间(口令失效日):账号失效日期:保留
-</code></pre>
-<h2 id="etcgroup">/etc/group</h2>
-<p>格式：</p>
-<pre><code>组名:群组口令:GID:此群组支持的账号名称
-</code></pre>
-<h2 id="添加用户">添加用户</h2>
-<pre><code>useradd [选项] &lt;用户名&gt;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-d &lt;目录&gt;</td>
-<td>指定家目录位置</td>
-</tr>
-<tr>
-<td>-M</td>
-<td>不创建家目录</td>
-</tr>
-<tr>
-<td>-s &lt;SHELL 路径&gt;</td>
-<td>指定默认shell</td>
-</tr>
-<tr>
-<td>-u <UID></td>
-<td>指定用户 ID</td>
-</tr>
-<tr>
-<td>-g <GID>|&lt;组名&gt;</td>
-<td>指定用户主要的组ID或名称（若不指定，默认创建一个和用户名相同的组作为主要组）</td>
-</tr>
-<tr>
-<td>-G &lt;组名1&gt;[&lt;组名2&gt;...]</td>
-<td>指定加入的附加组列表</td>
-</tr>
-<tr>
-<td>-c &lt;描述&gt;</td>
-<td>为用户添加描述</td>
-</tr>
-</tbody>
-</table>
-<h2 id="删除用户">删除用户</h2>
-<pre><code>userdel [选项] &lt;用户名&gt;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-r</td>
-<td>删除用户的家目录和邮件目录</td>
-</tr>
-<tr>
-<td>-f</td>
-<td>强制删除用户（可以删除已登录的用户，不建议使用）</td>
-</tr>
-</tbody>
-</table>
-<h2 id="修改用户">修改用户</h2>
-<pre><code>usermod [选项] &lt;用户名&gt;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-d &lt;目录&gt;</td>
-<td>更改家目录位置</td>
-</tr>
-<tr>
-<td>-M</td>
-<td>不创建家目录</td>
-</tr>
-<tr>
-<td>-s &lt;SHELL 路径&gt;</td>
-<td>更改默认shell</td>
-</tr>
-<tr>
-<td>-u <UID></td>
-<td>更改用户 ID</td>
-</tr>
-<tr>
-<td>-g <GID>|&lt;组名&gt;</td>
-<td>更改用户主要的组ID或名称（若不指定，默认创建一个和用户名相同的组作为主要组）</td>
-</tr>
-<tr>
-<td>-G &lt;组名1&gt;[&lt;组名2&gt;...]</td>
-<td>追加附加组列表</td>
-</tr>
-<tr>
-<td>-c &lt;描述&gt;</td>
-<td>更改用户添加描述</td>
-</tr>
-<tr>
-<td>-l &lt;用户名&gt;</td>
-<td>修改用户名</td>
-</tr>
-</tbody>
-</table>
-<h2 id="用户密码及安全管理">用户密码及安全管理</h2>
-<pre><code>passwd [选项] &lt;用户名&gt;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>(无)</td>
-<td>修改密码（可不指定用户名，不指定用户名将修改当前用户的密码）</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>锁定用户（仅限 root 使用）</td>
-</tr>
-<tr>
-<td>-u</td>
-<td>解锁用户（仅限 root 使用）</td>
-</tr>
-<tr>
-<td>-x &lt;天数&gt;</td>
-<td>设置密码最长使用天数（以修改密码日为基准，仅限 root 使用）</td>
-</tr>
-<tr>
-<td>-n &lt;天数&gt;</td>
-<td>设置密码最短使用天数（以修改密码日为基准，仅限 root 使用）</td>
-</tr>
-<tr>
-<td>-w &lt;天数&gt;</td>
-<td>设置密码过期前提醒天数（以修改密码日为基准，仅限 root 使用）</td>
-</tr>
-<tr>
-<td>-i &lt;天数&gt;</td>
-<td>设置密码过期后宽限天数（以修改密码日为基准，仅限 root 使用）</td>
-</tr>
-<tr>
-<td>-S</td>
-<td>查看用户安全状态</td>
-</tr>
-</tbody>
-</table>
-<h2 id="切换到某一用户执行命令">切换到某一用户执行命令</h2>
-<pre><code>sudo [选项] &lt;命令&gt;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-u &lt;用户名&gt;</td>
-<td>以某一用户的身份执行命令，不指定默认 root</td>
-</tr>
-<tr>
-<td>-i</td>
-<td>运行指定用户的默认SHELL</td>
-</tr>
-</tbody>
-</table>
-<h2 id="添加组">添加组</h2>
-<pre><code>groupadd [选项] &lt;组名&gt;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-g <GID></td>
-<td>指定组ID</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>创建系统组（也就是指定组ID为系统组的范围）</td>
-</tr>
-</tbody>
-</table>
-<h2 id="删除组">删除组</h2>
-<pre><code>groupdel &lt;组名&gt;
-</code></pre>
-<h2 id="修改组参数">修改组参数</h2>
-<pre><code>groupmod [选项] &lt;组名&gt;
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-n &lt;组名&gt;</td>
-<td>修改组名</td>
-</tr>
-<tr>
-<td>-g <GID></td>
-<td>修改组ID</td>
-</tr>
-</tbody>
-</table>
-<h2 id="添加一个成员到组中">添加一个成员到组中</h2>
-<pre><code>gpasswd -a &lt;用户名&gt; &lt;组名&gt;
-</code></pre>
-<h2 id="从组中删除一个成员">从组中删除一个成员</h2>
-<pre><code>gpasswd -d &lt;用户名&gt; &lt;组名&gt;
-</code></pre>
-<h2 id="设置组成员列表">设置组成员列表</h2>
-<pre><code>gpasswd -M &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
-</code></pre>
-<h2 id="设置组管理员列表">设置组管理员列表</h2>
-<pre><code>gpasswd -A &lt;用户名1&gt;[,&lt;用户名2&gt;,...] &lt;组名&gt;
-</code></pre>
-<h2 id="设置组管理员密码">设置组管理员密码</h2>
-<pre><code>gpasswd &lt;组名&gt;
-</code></pre>
-<h2 id="删除组管理员密码">删除组管理员密码</h2>
-<pre><code>gpasswd -r &lt;组名&gt;
-</code></pre>
-<h2 id="切换用户当前的组身份">切换用户当前的组身份</h2>
-<pre><code>newgrp &lt;组名&gt;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[linux 文件权限]]></title>
-        <id>https://yxq.me/post/linux-wen-jian-quan-xian</id>
-        <link href="https://yxq.me/post/linux-wen-jian-quan-xian">
-        </link>
-        <updated>2016-01-08T06:18:41.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li><code>chgrp</code> ：改变文件所属群组</li>
-<li><code>chown</code> ：改变文件拥有者</li>
-<li><code>chmod</code> ：改变文件的权限, SUID, SGID, SBIT等等的特性</li>
-</ul>
-<pre><code class="language-bash"># chown user:group install.log
-#
-# - r:4
-# - w:2
-# - x:1
-
-chmod 777 .bashrc
-chmod u=rwx,g=rw,o=r .bashrc
-</code></pre>
 ]]></content>
     </entry>
 </feed>

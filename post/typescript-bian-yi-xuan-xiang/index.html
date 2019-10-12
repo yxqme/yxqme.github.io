@@ -1,0 +1,248 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>typescript 编译选项 | yxqme</title>
+<meta name="description" content="Stay hungry, Stay foolish" />
+<link
+  rel="shortcut icon"
+  href="https://yxq.me/favicon.ico?v=1570860570515"
+/>
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+/>
+<link rel="stylesheet" href="https://yxq.me/styles/main.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700"
+/>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://yxq.me">
+  <img class="avatar" src="https://yxq.me/images/avatar.png?v=1570860570515" alt="">
+  </a>
+  <h1 class="site-title">
+    yxqme
+  </h1>
+  <p class="site-description">
+    Stay hungry, Stay foolish
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/daily" class="menu">
+          日常
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              typescript 编译选项
+            </h2>
+            <div class="post-info">
+              <span>
+                2018-06-01
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://yxq.me/tag/WKKhmMu2K" class="post-tag">
+                  # TypeScript
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <pre><code>{
+  &quot;compilerOptions&quot;: {
+
+    /* 基本选项 */
+    &quot;target&quot;: &quot;es5&quot;,                       // 指定 ECMAScript 目标版本: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'
+    &quot;module&quot;: &quot;commonjs&quot;,                  // 指定使用模块: 'commonjs', 'amd', 'system', 'umd' or 'es2015'
+    &quot;lib&quot;: [],                             // 指定要包含在编译中的库文件
+    &quot;allowJs&quot;: true,                       // 允许编译 javascript 文件
+    &quot;checkJs&quot;: true,                       // 报告 javascript 文件中的错误
+    &quot;jsx&quot;: &quot;preserve&quot;,                     // 指定 jsx 代码的生成: 'preserve', 'react-native', or 'react'
+    &quot;declaration&quot;: true,                   // 生成相应的 '.d.ts' 文件
+    &quot;sourceMap&quot;: true,                     // 生成相应的 '.map' 文件
+    &quot;outFile&quot;: &quot;./&quot;,                       // 将输出文件合并为一个文件
+    &quot;outDir&quot;: &quot;./&quot;,                        // 指定输出目录
+    &quot;rootDir&quot;: &quot;./&quot;,                       // 用来控制输出目录结构 --outDir.
+    &quot;removeComments&quot;: true,                // 删除编译后的所有的注释
+    &quot;noEmit&quot;: true,                        // 不生成输出文件
+    &quot;importHelpers&quot;: true,                 // 从 tslib 导入辅助工具函数
+    &quot;isolatedModules&quot;: true,               // 将每个文件做为单独的模块 （与 'ts.transpileModule' 类似）.
+
+    /* 严格的类型检查选项 */
+    &quot;strict&quot;: true,                        // 启用所有严格类型检查选项
+    &quot;noImplicitAny&quot;: true,                 // 在表达式和声明上有隐含的 any类型时报错
+    &quot;strictNullChecks&quot;: true,              // 启用严格的 null 检查
+    &quot;noImplicitThis&quot;: true,                // 当 this 表达式值为 any 类型的时候，生成一个错误
+    &quot;alwaysStrict&quot;: true,                  // 以严格模式检查每个模块，并在每个文件里加入 'use strict'
+
+    /* 额外的检查 */
+    &quot;noUnusedLocals&quot;: true,                // 有未使用的变量时，抛出错误
+    &quot;noUnusedParameters&quot;: true,            // 有未使用的参数时，抛出错误
+    &quot;noImplicitReturns&quot;: true,             // 并不是所有函数里的代码都有返回值时，抛出错误
+    &quot;noFallthroughCasesInSwitch&quot;: true,    // 报告 switch 语句的 fallthrough 错误。（即，不允许 switch 的 case 语句贯穿）
+
+    /* 模块解析选项 */
+    &quot;moduleResolution&quot;: &quot;node&quot;,            // 选择模块解析策略： 'node' (Node.js) or 'classic' (TypeScript pre-1.6)
+    &quot;baseUrl&quot;: &quot;./&quot;,                       // 用于解析非相对模块名称的基目录
+    &quot;paths&quot;: {},                           // 模块名到基于 baseUrl 的路径映射的列表
+    &quot;rootDirs&quot;: [],                        // 根文件夹列表，其组合内容表示项目运行时的结构内容
+    &quot;typeRoots&quot;: [],                       // 包含类型声明的文件列表
+    &quot;types&quot;: [],                           // 需要包含的类型声明文件名列表
+    &quot;allowSyntheticDefaultImports&quot;: true,  // 允许从没有设置默认导出的模块中默认导入。
+
+    /* Source Map Options */
+    &quot;sourceRoot&quot;: &quot;./&quot;,                    // 指定调试器应该找到 TypeScript 文件而不是源文件的位置
+    &quot;mapRoot&quot;: &quot;./&quot;,                       // 指定调试器应该找到映射文件而不是生成文件的位置
+    &quot;inlineSourceMap&quot;: true,               // 生成单个 soucemaps 文件，而不是将 sourcemaps 生成不同的文件
+    &quot;inlineSources&quot;: true,                 // 将代码与 sourcemaps 生成到一个文件中，要求同时设置了 --inlineSourceMap 或 --sourceMap 属性
+
+    /* 其他选项 */
+    &quot;experimentalDecorators&quot;: true,        // 启用装饰器
+    &quot;emitDecoratorMetadata&quot;: true          // 为装饰器提供元数据的支持
+  }
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://yxq.me/post/docker-gai-nian">
+              <h3 class="post-title">
+                docker - 概念
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  ©2019 yxqme |
+  <a class="rss" href="https://yxq.me/atom.xml" target="_blank"
+    >RSS</a
+  >
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad();
+
+  document.querySelectorAll(".language-mermaid").forEach(node => {
+    const newEL = document.createElement("div");
+    newEL.className = "mermaid";
+    newEL.textContent = node.textContent;
+    node.parentNode.parentNode.replaceChild(newEL, node.parentNode);
+  });
+
+  // mermaidAPI.initialize({
+  //   securityLevel: "loose"
+  // });
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null;
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(
+          decodeURI(mainNavLinks[index + 1].hash).substring(1)
+        );
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
