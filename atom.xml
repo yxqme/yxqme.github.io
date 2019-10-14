@@ -2,14 +2,71 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yxq.me</id>
     <title>yxqme</title>
-    <updated>2019-10-12T06:20:03.252Z</updated>
+    <updated>2019-10-14T01:49:03.986Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yxq.me"/>
     <link rel="self" href="https://yxq.me/atom.xml"/>
-    <subtitle>Stay hungry, Stay foolish</subtitle>
+    <subtitle>全力以赴，认真生活</subtitle>
     <logo>https://yxq.me/images/avatar.png</logo>
     <icon>https://yxq.me/favicon.ico</icon>
     <rights>All rights reserved 2019, yxqme</rights>
+    <entry>
+        <title type="html"><![CDATA[TCP/IP 相关词汇整理]]></title>
+        <id>https://yxq.me/post/tcpip-xiang-guan-ci-hui-zheng-li</id>
+        <link href="https://yxq.me/post/tcpip-xiang-guan-ci-hui-zheng-li">
+        </link>
+        <updated>2019-10-12T07:22:59.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="分组交换协议">分组交换协议</h2>
+<p>指将大数据分割为一个个叫包的较小单位进行传输的方法</p>
+<h2 id="osi-参考模型">OSI 参考模型</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">层级</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">针对特定应用的协议</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">表示层</td>
+<td style="text-align:left">设备固有数据格式和网络标准数据格式的转换</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">会话层</td>
+<td style="text-align:left">通信管理。管理传输层以下的分层</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">管理两个节点之间的数据传输</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">网络层</td>
+<td style="text-align:left">地址管理和路由选择</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">数据链路层</td>
+<td style="text-align:left">互连设备之前传送和识别数据帧</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">物理层</td>
+<td style="text-align:left">以 <strong>0</strong> <strong>1</strong> 代表电压的高低、灯光的闪灭。界定连接器和网线的规格</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[群晖 DSM 备注]]></title>
         <id>https://yxq.me/post/qun-hui-dsm-bei-zhu</id>
@@ -1152,35 +1209,6 @@ no-store:           所有内容都不会缓存，强制缓存，对比缓存都
 <figure data-type="image" tabindex="12"><img src="http://img.hb.aicdn.com/e29a152e6dcc77eedc25d464b17ff56789f2b28b43ca-kA79KC_fw658#width=" alt=""></figure>
 <p>浏览器再次请求时：</p>
 <figure data-type="image" tabindex="13"><img src="http://img.hb.aicdn.com/fd52fe629f72fd6d508f699b4e0c13309e0892bb8a46-6E66Dw_fw658#width=" alt=""></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[vi/vim 字符串替换]]></title>
-        <id>https://yxq.me/post/vivim-zi-fu-chuan-ti-huan</id>
-        <link href="https://yxq.me/post/vivim-zi-fu-chuan-ti-huan">
-        </link>
-        <updated>2016-06-09T02:09:56.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>vi/vim 中可以使用 <code>:s</code> 命令来替换字符串。以前只会使用一种格式来全文替换，今天发现该命令有很多种写法(vi 真是强大啊，还有很多需要学习)，记录几种在此，方便以后查询。</p>
-</blockquote>
-<p>替换当前行所有 <code>vivian</code> 为 <code>sky</code></p>
-<pre><code class="language-shell">:s/vivian/sky/g
-</code></pre>
-<p>替换第 <code>n</code> 行开始到最后一行中每一行的第一个 <code>vivian</code> 为 <code>sky</code></p>
-<pre><code class="language-shell">:n,$s/vivian/sky/
-</code></pre>
-<p>替换第 <code>n</code> 行开始到最后一行中每一行所有 <code>vivian</code> 为 <code>sky</code>；<code>n</code> 为数字，若 <code>n</code> 为 <code>.</code> 表示从当前行开始到最后一行</p>
-<pre><code class="language-shell">:n,$s/vivian/sky/g
-</code></pre>
-<p>替换每一行的第一个 <code>vivian</code> 为 <code>sky</code></p>
-<pre><code class="language-shell">:%s/vivian/sky/
-</code></pre>
-<p>替换每一行中所有 <code>vivian</code> 为 <code>sky</code></p>
-<pre><code class="language-shell">:%s/vivian/sky/g
-</code></pre>
-<blockquote>
-<p>可以使用 <code>#</code> 作为分隔符，此时中间出现的 <code>/</code> 不会作为分隔符 如：<code>:%s#vivian/#sky/#g</code>，表示替换每一行所有 <code>vivian/</code> 为 <code>sky/</code></p>
-</blockquote>
 ]]></content>
     </entry>
 </feed>

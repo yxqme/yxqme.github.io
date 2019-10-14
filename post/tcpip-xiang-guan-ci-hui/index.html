@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>读写分离架构设计 | yxqme</title>
+<title>TCP/IP 相关词汇 | yxqme</title>
 <meta name="description" content="全力以赴，认真生活" />
 <link
   rel="shortcut icon"
@@ -88,41 +88,85 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              读写分离架构设计
+              TCP/IP 相关词汇
             </h2>
             <div class="post-info">
               <span>
-                2017-06-14
+                2015-09-12
               </span>
               <span>
                 1 min read
               </span>
               
+                <a href="https://yxq.me/tag/RedDN9Rt9" class="post-tag">
+                  # Network
+                </a>
+              
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <pre><code class="language-mermaid">graph LR
-1[Client]
-	1 --&gt; 2[DNS]
-	1 --&gt; 3[CDN]
-	1 --&gt; 4(Kongs) 
-	
-  4 --&gt; 5(Write Services)
-  4 --&gt; 6(Read Services)
-  
-  5 --&gt; 9(redis)
-  6 --&gt; 9(redis)
-  
-  5 --&gt; 7(SQL Write Master-Slave)
-  6 --&gt; 8(SQL Read Replicas)
-  
-  7 -.- 8
-</code></pre>
+                <h2 id="分组交换协议">分组交换协议</h2>
+<p>指将大数据分割为一个个叫包的较小单位进行传输的方法</p>
+<h2 id="osi-参考模型">OSI 参考模型</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">层级</th>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">应用层</td>
+<td style="text-align:left">针对特定应用的协议</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">表示层</td>
+<td style="text-align:left">设备固有数据格式和网络标准数据格式的转换</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">会话层</td>
+<td style="text-align:left">通信管理。管理传输层以下的分层</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">传输层</td>
+<td style="text-align:left">管理两个节点之间的数据传输</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">网络层</td>
+<td style="text-align:left">地址管理和路由选择</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">数据链路层</td>
+<td style="text-align:left">互连设备之前传送和识别数据帧</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">物理层</td>
+<td style="text-align:left">以 <strong>0</strong> <strong>1</strong> 代表电压的高低、灯光的闪灭。界定连接器和网线的规格</td>
+</tr>
+</tbody>
+</table>
 
               </div>
               <div class="toc-container">
-                
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E5%8D%8F%E8%AE%AE">分组交换协议</a></li>
+<li><a href="#osi-%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B">OSI 参考模型</a></li>
+</ul>
+</li>
+</ul>
+
               </div>
             </div>
           </article>
@@ -131,9 +175,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://yxq.me/post/centos-xian-zhi-deng-lu-lian-jie">
+            <a href="https://yxq.me/post/npm-version">
               <h3 class="post-title">
-                CentOS 限制登录连接
+                npm  版本号规则
               </h3>
             </a>
           </div>
