@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yxq.me</id>
     <title>yxqme</title>
-    <updated>2019-10-14T10:01:16.556Z</updated>
+    <updated>2019-10-15T03:07:48.829Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yxq.me"/>
     <link rel="self" href="https://yxq.me/atom.xml"/>
@@ -10,6 +10,170 @@
     <logo>https://yxq.me/images/avatar.png</logo>
     <icon>https://yxq.me/favicon.ico</icon>
     <rights>All rights reserved 2019, yxqme</rights>
+    <entry>
+        <title type="html"><![CDATA[Dockerfile - 指令学习]]></title>
+        <id>https://yxq.me/post/dockerfile-zhi-ling-xue-xi</id>
+        <link href="https://yxq.me/post/dockerfile-zhi-ling-xue-xi">
+        </link>
+        <updated>2019-10-15T03:06:05.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="copy">COPY</h2>
+<p>格式：</p>
+<pre><code>COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;源路径&gt;... &lt;目标路径&gt;
+COPY [--chown=&lt;user&gt;:&lt;group&gt;] [&quot;&lt;源路径1&gt;&quot;,... &quot;&lt;目标路径&gt;&quot;]
+</code></pre>
+<p>示例：</p>
+<blockquote>
+<p>其通配符规则要满足 Go 的 <a href="https://golang.org/pkg/path/filepath/#Match"><code>filepath.Match</code></a> 规则</p>
+<p>还可以加上 <code>--chown=&lt;user&gt;:&lt;group&gt;</code> 选项来改变文件的所属用户及所属组</p>
+</blockquote>
+<pre><code>COPY package.json /usr/src/app/
+
+COPY hom* /mydir/
+COPY hom?.txt /mydir/
+
+COPY --chown=55:mygroup files* /mydir/
+COPY --chown=bin files* /mydir/
+COPY --chown=1 files* /mydir/
+COPY --chown=10:11 files* /mydir/
+</code></pre>
+<h2 id="add">ADD</h2>
+<p><code>ADD</code> 指令和 <code>COPY</code> 的格式和性质基本一致。但是在 <code>COPY</code> 基础上增加了 <code>&lt;源路径&gt;</code> 可以是一个 <code>URL</code> 的功能</p>
+<blockquote>
+<ul>
+<li>
+<p>下载后文件权限自动设置为 <code>600</code></p>
+</li>
+<li>
+<p><code>&lt;源路径&gt;</code> 为一个 <code>tar</code> 压缩文件的话，压缩格式为 <code>gzip</code>, <code>bzip2</code> 以及 <code>xz</code> 的情况下，<code>ADD</code> 指令将会自动解压缩这个压缩文件到 <code>&lt;目标路径&gt;</code> 去</p>
+</li>
+<li>
+<p>尽可能的使用 <code>COPY</code>，因为 <code>COPY</code> 的语义很明确，就是复制文件而已，而 <code>ADD</code> 则包含了更复杂的功能，其行为也不一定很清晰。最适合使用 <code>ADD</code> 的场合，就是所提及的需要自动解压缩的场合</p>
+</li>
+<li>
+<p><code>ADD</code> 指令会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="cmd">CMD</h2>
+<p><code>CMD</code> 指令的格式和 <code>RUN</code> 相似，有两种格式：</p>
+<pre><code>CMD &lt;命令&gt; # shell 格式
+CMD [&quot;可执行文件&quot;, &quot;参数1&quot;, &quot;参数2&quot;...] # exec 格式
+</code></pre>
+<blockquote>
+<ul>
+<li>
+<p>Docker 不是虚拟机，容器就是进程。既然是进程，那么在启动容器的时候，需要指定所运行的程序及参数。<code>CMD</code> 指令就是用于指定默认的容器主进程的启动命令的。</p>
+</li>
+<li>
+<p>一般推荐使用 <code>exec</code> 格式，这类格式在解析时会被解析为 JSON 数组，因此一定要使用双引号 <code>&quot;</code>，而不要使用单引号</p>
+</li>
+<li>
+<p>使用 <code>shell</code> 格式的话，实际的命令会被包装为 <code>sh -c</code> 的参数的形式进行执行，例如 <code>CMD echo $HOME</code> 实际执行中，会变为 <code>CMD [&quot;sh&quot;, &quot;-C&quot;, &quot;echo $HOME&quot;]</code></p>
+</li>
+<li>
+<p>Docker 不是虚拟机，容器中的应用都应该以前台执行，而不是像虚拟机、物理机里面那样，用 <code>systemd</code> 去启动后台服务，容器内没有后台服务的概念</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="entrypoint">ENTRYPOINT</h2>
+<p><code>ENTRYPOINT</code> 的格式和 <code>RUN</code> 指令格式一样，分为 <code>exec</code> 格式和 <code>shell</code> 格式。</p>
+<p><code>ENTRYPOINT</code> 的目的和 <code>CMD</code> 一样，都是在指定容器启动程序及参数。<code>ENTRYPOINT</code> 在运行时也可以替代，不过比 <code>CMD</code> 要略显繁琐，需要通过 <code>docker run</code> 的参数 <code>--entrypoint</code> 来指定。</p>
+<p>当指定了 <code>ENTRYPOINT</code> 后，<code>CMD</code> 的含义就发生了改变，不再是直接的运行其命令，而是将 <code>CMD</code> 的内容作为参数传给 <code>ENTRYPOINT</code> 指令，换句话说实际执行时，将变为：</p>
+<pre><code>&lt;ENTRYPOINT&gt; &quot;&lt;CMD&gt;&quot;
+</code></pre>
+<p>为什么要使用 <code>ENTRYPOINT</code></p>
+<ul>
+<li>让镜像变成像命令一样使用</li>
+<li>应用运行前的准备工作</li>
+</ul>
+<h2 id="env">ENV</h2>
+<p>设置环境变量，格式如下：</p>
+<pre><code>ENV &lt;key&gt; &lt;value&gt;
+ENV &lt;key1&gt;=&lt;value1&gt; &lt;key2&gt;=&lt;value2&gt;...
+</code></pre>
+<h2 id="arg">ARG</h2>
+<p>构建参数和 <code>ENV</code> 的效果一样，都是设置环境变量。所不同的是，<code>ARG</code> 所设置的构建环境的环境变量，在将来容器运行时是不会存在这些环境变量的。但是不要因此就使用 <code>ARG</code> 保存密码之类的信息，因为 <code>docker history</code> 还是可以看到所有值的</p>
+<pre><code>ARG &lt;参数名&gt;[=&lt;默认值&gt;]
+</code></pre>
+<h2 id="volume">VOLUME</h2>
+<p>定义匿名卷，格式如下：</p>
+<pre><code>VOLUME [&quot;&lt;路径1&gt;&quot;, &quot;&lt;路径2&gt;&quot;...]
+VOLUME &lt;路径&gt;
+</code></pre>
+<blockquote>
+<p>事先指定某些目录挂载为匿名卷，这样在运行时如果用户不指定挂载，其应用也可以正常运行，不会向容器存储层写入大量数据</p>
+</blockquote>
+<h2 id="expose">EXPOSE</h2>
+<p>声明端口，格式为：</p>
+<pre><code>EXPOSE &lt;端口1&gt; [&lt;端口2&gt;...]
+</code></pre>
+<p><code>EXPOSE</code> 指令是声明运行时容器提供服务端口，这只是一个声明，在运行时并不会因为这个声明应用就会开启这个端口的服务</p>
+<p>好处：</p>
+<ul>
+<li>
+<p>帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射</p>
+</li>
+<li>
+<p>在运行时使用随机端口映射时，也就是 <code>docker run -P</code> 时，会自动随机映射 <code>EXPOSE</code> 的端口</p>
+</li>
+</ul>
+<blockquote>
+<p>要将 <code>EXPOSE</code> 和在运行时使用 <code>-p &lt;宿主端口&gt;:&lt;容器端口&gt;</code> 区分开来。<code>-p</code>，是映射宿主端口和容器端口，换句话说，就是将容器的对应端口服务公开给外界访问，而 <code>EXPOSE</code> 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射</p>
+</blockquote>
+<h2 id="workdir">WORKDIR</h2>
+<p>指定工作目录，格式为：</p>
+<pre><code>WORKDIR &lt;工作目录路径&gt;
+</code></pre>
+<p>使用 <code>WORKDIR</code> 指令可以来指定工作目录（或者称为当前目录），以后各层的当前目录就被改为指定的目录，如该目录不存在，<code>WORKDIR</code> 会帮你建立目录</p>
+<blockquote>
+<p>在 Shell 中，连续两行是同一个进程执行环境，因此前一个命令修改的内存状态，会直接影响后一个命令；而在 <code>Dockerfile</code> 中，这两行 <code>RUN</code> 命令的执行环境根本不同，是两个完全不同的容器。因此如果需要改变以后各层的工作目录的位置，那么应该使用 <code>WORKDIR</code> 指令</p>
+</blockquote>
+<h2 id="user">USER</h2>
+<p>指定当前用户，格式为：</p>
+<pre><code>USER &lt;用户名&gt;[:&lt;用户组&gt;]
+</code></pre>
+<p><code>USER</code> 指令和 <code>WORKDIR</code> 相似，都是改变环境状态并影响以后的层。<code>WORKDIR</code> 是改变工作目录，<code>USER</code> 则是改变之后层的执行 <code>RUN</code>, <code>CMD</code> 以及 <code>ENTRYPOINT</code> 这类命令的身份</p>
+<p>当然，和 <code>WORKDIR</code> 一样，<code>USER</code> 只是帮助你切换到指定用户而已，这个用户必须是事先建立好的，否则无法切换</p>
+<blockquote>
+<p>如果以 <code>root</code> 执行的脚本，在执行期间希望改变身份，比如希望以某个已经建立好的用户来运行某个服务进程，不要使用 <code>su</code> 或者 <code>sudo</code>，这些都需要比较麻烦的配置，而且在 TTY 缺失的环境下经常出错。建议使用 <a href="https://github.com/tianon/gosu"><code>gosu</code></a></p>
+</blockquote>
+<h2 id="healthcheck">HEALTHCHECK</h2>
+<p>健康检查，格式为：</p>
+<pre><code>HEALTHCHECK [选项] CMD &lt;命令&gt; # 设置检查容器健康状况的命令
+HEALTHCHECK NONE # 如果基础镜像有健康检查指令，使用这行可以屏蔽掉其健康检查指令
+</code></pre>
+<p>命令选项：</p>
+<ul>
+<li><code>--interval=&lt;间隔&gt;</code>：两次健康检查的间隔，默认为 30 秒；</li>
+<li><code>--timeout=&lt;时长&gt;</code>：健康检查命令运行超时时间，如果超过这个时间，本次健康检查就被视为失败，默认 30 秒；</li>
+<li><code>--retries=&lt;次数&gt;</code>：当连续失败指定次数后，则将容器状态视为 <code>unhealthy</code>，默认 3 次。</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<p>告诉 Docker 应该如何进行判断容器的状态是否正常</p>
+</li>
+<li>
+<p>和 <code>CMD</code>, <code>ENTRYPOINT</code> 一样，<code>HEALTHCHECK</code> 只可以出现一次，如果写了多个，只有最后一个生效</p>
+</li>
+<li>
+<p>命令的返回值决定了该次健康检查的成功与否：<code>0</code>：成功；<code>1</code>：失败；<code>2</code>：保留，不要使用这个值。</p>
+</li>
+</ul>
+</blockquote>
+<p>示例，假设我们有个镜像是个最简单的 Web 服务，我们希望增加健康检查来判断其 Web 服务是否在正常工作，我们可以用 <code>curl</code> 来帮助判断，其 <code>Dockerfile</code> 的 <code>HEALTHCHECK</code> 可以这么写：</p>
+<pre><code>FROM nginx
+RUN apt-get update &amp;&amp; apt-get install -y curl &amp;&amp; rm -rf /var/lib/apt/lists/*
+HEALTHCHECK --interval=5s --timeout=3s \
+  CMD curl -fs http://localhost/ || exit 1
+</code></pre>
+<h2 id="onbuild">ONBUILD</h2>
+<p>为他人作嫁衣裳，格式为：</p>
+<pre><code>ONBUILD &lt;其它指令&gt;
+</code></pre>
+<p><code>ONBUILD</code> 是一个特殊的指令，它后面跟的是其它指令，比如 <code>RUN</code>, <code>COPY</code> 等，而这些指令，在当前镜像构建时并不会被执行。只有当以当前镜像为基础镜像，去构建下一级镜像的时候才会被执行</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[TCP/IP 相关词汇整理]]></title>
         <id>https://yxq.me/post/tcpip-xiang-guan-ci-hui-zheng-li</id>
@@ -1130,85 +1294,6 @@ pam_tally2 --user=root --reset
 </code></pre>
 <h2 id="3利用-iptables-设置防火墙">3.利用 iptables 设置防火墙</h2>
 <p>// todo</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[HTTP缓存机制及原理]]></title>
-        <id>https://yxq.me/post/http-huan-cun-ji-zhi-ji-yuan-li</id>
-        <link href="https://yxq.me/post/http-huan-cun-ji-zhi-ji-yuan-li">
-        </link>
-        <updated>2016-08-03T10:41:49.000Z</updated>
-        <content type="html"><![CDATA[<p><a name="d61xpr"></a></p>
-<h2 id=""><a href="#d61xpr"></a>前言</h2>
-<p>HTTP报文就是浏览器和服务器间通信时发送及响应的数据块。</p>
-<p>浏览器向服务器请求数据，发送请求 <code>request</code> 报文；服务器向浏览器返回数据，返回响应 <code>response</code> 报文。</p>
-<p>报文信息主要分为两部分</p>
-<ol>
-<li>
-<p>包含属性的首部(header)--------------------------附加信息（cookie，缓存信息等）与缓存相关的规则信息，均包含在header中</p>
-</li>
-<li>
-<p>包含数据的主体部分(body)-----------------------HTTP请求真正想要传输的部分</p>
-</li>
-</ol>
-<p><a name="x06ddw"></a></p>
-<h2 id="-2"><a href="#x06ddw"></a>缓存规则解析</h2>
-<p>在客户端第一次请求数据时，此时缓存数据库中没有对应的缓存数据，需要请求服务器，服务器返回后，将数据存储至缓存数据库中。</p>
-<figure data-type="image" tabindex="1"><img src="http://img.hb.aicdn.com/7e93298ad1223b85691c9c6b8f4f080b3e794b964870-fxkGqh_fw658#width=" alt=""></figure>
-<p>HTTP缓存有多种规则，根据是否需要重新向服务器发起请求来分类，我将其分为两大类(强制缓存，对比缓存)</p>
-<p>在详细介绍这两种规则之前，先通过时序图的方式，让大家对这两种规则有个简单了解。</p>
-<p>已存在缓存数据时，仅基于强制缓存，请求数据的流程如下</p>
-<figure data-type="image" tabindex="2"><img src="http://img.hb.aicdn.com/6ec39ad243db8ca1184c60dcb75d60ad9e6dc69e62fc-C44146_fw658#width=" alt=""></figure>
-<p>已存在缓存数据时，仅基于对比缓存，请求数据的流程如下</p>
-<figure data-type="image" tabindex="3"><img src="http://img.hb.aicdn.com/86413155aaaedebfca2ab45e73b761cfd23506397631-H9aj6e_fw658#width=" alt=""></figure>
-<p>对缓存机制不太了解的同学可能会问，基于对比缓存的流程下，不管是否使用缓存，都需要向服务器发送请求，那么还用缓存干什么？<br />这个问题，我们暂且放下，后文在详细介绍每种缓存规则的时候，会带给大家答案。</p>
-<p>我们可以看到两类缓存规则的不同，强制缓存如果生效，不需要再和服务器发生交互，而对比缓存不管是否生效，都需要与服务端发生交互。<br />两类缓存规则可以同时存在，强制缓存优先级高于对比缓存，也就是说，当执行强制缓存的规则时，如果缓存生效，直接使用缓存，不再执行对比缓存规则。</p>
-<p><a name="t29zvk"></a></p>
-<h2 id="-3"><a href="#t29zvk"></a>强制缓存</h2>
-<p>从上文我们得知，强制缓存，在缓存数据未失效的情况下，可以直接使用缓存数据，那么浏览器是如何判断缓存数据是否失效呢？<br />我们知道，在没有缓存数据的时候，浏览器向服务器请求数据时，服务器会将数据和缓存规则一并返回，缓存规则信息包含在响应header中。</p>
-<p>对于强制缓存来说，响应header中会有两个字段来标明失效规则 <code>Expires/Cache-Control</code><br />使用chrome的开发者工具，可以很明显的看到对于强制缓存生效时，网络请求的情况</p>
-<figure data-type="image" tabindex="4"><img src="http://img.hb.aicdn.com/9721829af0f1fd854a6e2f71d5a8acb424831ed853cb-5Z5Xbt_fw658#width=" alt=""></figure>
-<pre><code>Expires
-　　Expires的值为服务端返回的到期时间，即下一次请求时，请求时间小于服务端返回的到期时间，直接使用缓存数据。
-不过Expires 是HTTP 1.0的东西，现在默认浏览器均默认使用HTTP 1.1，所以它的作用基本忽略。
-另一个问题是，到期时间是由服务端生成的，但是客户端时间可能跟服务端时间有误差，这就会导致缓存命中的误差。
-所以HTTP 1.1 的版本，使用Cache-Control替代。
-
-Cache-Control
-Cache-Control 是最重要的规则。常见的取值有private、public、no-cache、max-age，no-store，默认为private。
-private:             客户端可以缓存
-public:              客户端和代理服务器都可缓存（前端的同学，可以认为public和private是一样的）
-max-age=xxx:   缓存的内容将在 xxx 秒后失效
-no-cache:          需要使用对比缓存来验证缓存数据（后面介绍）
-no-store:           所有内容都不会缓存，强制缓存，对比缓存都不会触发（对于前端开发来说，缓存越多越好，so...基本上和它说886）
-</code></pre>
-<p>举个板栗</p>
-<figure data-type="image" tabindex="5"><img src="http://img.hb.aicdn.com/d79aaaf536b1b3a390d6b4aac3c82be1730d15b633c1-ydbjId_fw658#width=" alt=""></figure>
-<p>图中 <code>Cache-Control</code> 仅指定了 <code>max-age</code>，所以默认为 <code>private</code> ，缓存时间为 <code>31536000秒（365天）</code><br />也就是说，在365天内再次请求这条数据，都会直接获取缓存数据库中的数据，直接使用。</p>
-<p><a name="b89ewd"></a></p>
-<h2 id="-4"><a href="#b89ewd"></a>对比缓存</h2>
-<p>对比缓存，顾名思义，需要进行比较判断是否可以使用缓存。<br />浏览器第一次请求数据时，服务器会将缓存标识与数据一起返回给客户端，客户端将二者备份至缓存数据库中。<br />再次请求数据时，客户端将备份的缓存标识发送给服务器，服务器根据缓存标识进行判断，判断成功后，返回 <code>304</code> 状态码，通知客户端比较成功，可以使用缓存数据。</p>
-<p>第一次访问：</p>
-<figure data-type="image" tabindex="6"><img src="http://img.hb.aicdn.com/7fdaa4e99ee15c1f26ca9bc4da34f6451bdc750324f5-1lEYv0_fw658#width=" alt=""></figure>
-<p>再次访问：</p>
-<figure data-type="image" tabindex="7"><img src="http://img.hb.aicdn.com/ccf10d16e2fbe2fc39f6f4e0afc54a589eca6575256e-Emf3Bk_fw658#width=" alt=""></figure>
-<p>通过两图的对比，我们可以很清楚的发现，在对比缓存生效时，状态码为 <code>304</code>，并且报文大小和请求时间大大减少。<br />原因是，服务端在进行标识比较后，只返回 <code>header</code> 部分，通过状态码通知客户端使用缓存，不再需要将报文主体部分返回给客户端。</p>
-<p>对于对比缓存来说，缓存标识的传递是我们着重需要理解的，它在 <code>请求header</code> 和 <code>响应header</code> 间进行传递，<br />一共分为两种标识传递，接下来，我们分开介绍。</p>
-<p>Last-Modified  /  If-Modified-Since<br />Last-Modified：<br />服务器在响应请求时，告诉浏览器资源的最后修改时间。</p>
-<figure data-type="image" tabindex="8"><img src="http://img.hb.aicdn.com/d8d37594b4d48c2660d795199a63241a0f9d1c6350bf-iekXQ6_fw658#width=" alt=""></figure>
-<p>If-Modified-Since：<br />再次请求服务器时，通过此字段通知服务器上次请求时，服务器返回的资源最后修改时间。<br />服务器收到请求后发现有头If-Modified-Since 则与被请求资源的最后修改时间进行比对。<br />若资源的最后修改时间大于If-Modified-Since，说明资源又被改动过，则响应整片资源内容，返回状态码 <code>200</code>；<br />若资源的最后修改时间小于或等于If-Modified-Since，说明资源无新修改，则响应HTTP <code>304</code>，告知浏览器继续使用所保存的 <code>cache</code>。</p>
-<figure data-type="image" tabindex="9"><img src="http://img.hb.aicdn.com/d795d84d6a407d71c9a5b436dbdbca94959308fb6034-WoWtqO_fw658#width=" alt=""></figure>
-<p>Etag  /  If-None-Match（优先级高于Last-Modified  /  If-Modified-Since）<br />Etag：<br />服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。</p>
-<figure data-type="image" tabindex="10"><img src="http://img.hb.aicdn.com/cada955fbc6914bd7b09b0428fbaabc60c4c5cfa4f5f-iyTUV8_fw658#width=" alt=""></figure>
-<p>If-None-Match：<br />再次请求服务器时，通过此字段通知服务器客户段缓存数据的唯一标识。<br />服务器收到请求后发现有头If-None-Match 则与被请求资源的唯一标识进行比对，<br />不同，说明资源又被改动过，则响应整片资源内容，返回状态码200；<br />相同，说明资源无新修改，则响应HTTP 304，告知浏览器继续使用所保存的cache。</p>
-<figure data-type="image" tabindex="11"><img src="http://img.hb.aicdn.com/b54b39a94d9ddd9fda5f3e894eae2e9d69bf659f5c90-JHmhI4_fw658#width=" alt=""></figure>
-<p><a name="7elygp"></a></p>
-<h2 id="-5"><a href="#7elygp"></a>总结</h2>
-<p>对于强制缓存，服务器通知浏览器一个缓存时间，在缓存时间内，下次请求，直接用缓存，不在时间内，执行比较缓存策略。<br />对于比较缓存，将缓存信息中的 <code>Etag</code> 和<code>Last-Modified</code> 通过请求发送给服务器，由服务器校验，返回 <code>304</code> 状态码时，浏览器直接使用缓存。</p>
-<p>浏览器第一次请求：</p>
-<figure data-type="image" tabindex="12"><img src="http://img.hb.aicdn.com/e29a152e6dcc77eedc25d464b17ff56789f2b28b43ca-kA79KC_fw658#width=" alt=""></figure>
-<p>浏览器再次请求时：</p>
-<figure data-type="image" tabindex="13"><img src="http://img.hb.aicdn.com/fd52fe629f72fd6d508f699b4e0c13309e0892bb8a46-6E66Dw_fw658#width=" alt=""></figure>
 ]]></content>
     </entry>
 </feed>

@@ -1,0 +1,368 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dockerfile - 指令学习 | yxqme</title>
+<meta name="description" content="最渺小的我，有大大的梦" />
+<link
+  rel="shortcut icon"
+  href="https://yxq.me/favicon.ico?v=1571108791637"
+/>
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+/>
+<link rel="stylesheet" href="https://yxq.me/styles/main.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700"
+/>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://yxq.me">
+  <img class="avatar" src="https://yxq.me/images/avatar.png?v=1571108791637" alt="">
+  </a>
+  <h1 class="site-title">
+    yxqme
+  </h1>
+  <p class="site-description">
+    最渺小的我，有大大的梦
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/daily" class="menu">
+          日常
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Dockerfile - 指令学习
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-10-15
+              </span>
+              <span>
+                8 min read
+              </span>
+              
+                <a href="https://yxq.me/tag/aJcFZWhHr" class="post-tag">
+                  # Linux
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="copy">COPY</h2>
+<p>格式：</p>
+<pre><code>COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;源路径&gt;... &lt;目标路径&gt;
+COPY [--chown=&lt;user&gt;:&lt;group&gt;] [&quot;&lt;源路径1&gt;&quot;,... &quot;&lt;目标路径&gt;&quot;]
+</code></pre>
+<p>示例：</p>
+<blockquote>
+<p>其通配符规则要满足 Go 的 <a href="https://golang.org/pkg/path/filepath/#Match"><code>filepath.Match</code></a> 规则</p>
+<p>还可以加上 <code>--chown=&lt;user&gt;:&lt;group&gt;</code> 选项来改变文件的所属用户及所属组</p>
+</blockquote>
+<pre><code>COPY package.json /usr/src/app/
+
+COPY hom* /mydir/
+COPY hom?.txt /mydir/
+
+COPY --chown=55:mygroup files* /mydir/
+COPY --chown=bin files* /mydir/
+COPY --chown=1 files* /mydir/
+COPY --chown=10:11 files* /mydir/
+</code></pre>
+<h2 id="add">ADD</h2>
+<p><code>ADD</code> 指令和 <code>COPY</code> 的格式和性质基本一致。但是在 <code>COPY</code> 基础上增加了 <code>&lt;源路径&gt;</code> 可以是一个 <code>URL</code> 的功能</p>
+<blockquote>
+<ul>
+<li>
+<p>下载后文件权限自动设置为 <code>600</code></p>
+</li>
+<li>
+<p><code>&lt;源路径&gt;</code> 为一个 <code>tar</code> 压缩文件的话，压缩格式为 <code>gzip</code>, <code>bzip2</code> 以及 <code>xz</code> 的情况下，<code>ADD</code> 指令将会自动解压缩这个压缩文件到 <code>&lt;目标路径&gt;</code> 去</p>
+</li>
+<li>
+<p>尽可能的使用 <code>COPY</code>，因为 <code>COPY</code> 的语义很明确，就是复制文件而已，而 <code>ADD</code> 则包含了更复杂的功能，其行为也不一定很清晰。最适合使用 <code>ADD</code> 的场合，就是所提及的需要自动解压缩的场合</p>
+</li>
+<li>
+<p><code>ADD</code> 指令会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="cmd">CMD</h2>
+<p><code>CMD</code> 指令的格式和 <code>RUN</code> 相似，有两种格式：</p>
+<pre><code>CMD &lt;命令&gt; # shell 格式
+CMD [&quot;可执行文件&quot;, &quot;参数1&quot;, &quot;参数2&quot;...] # exec 格式
+</code></pre>
+<blockquote>
+<ul>
+<li>
+<p>Docker 不是虚拟机，容器就是进程。既然是进程，那么在启动容器的时候，需要指定所运行的程序及参数。<code>CMD</code> 指令就是用于指定默认的容器主进程的启动命令的。</p>
+</li>
+<li>
+<p>一般推荐使用 <code>exec</code> 格式，这类格式在解析时会被解析为 JSON 数组，因此一定要使用双引号 <code>&quot;</code>，而不要使用单引号</p>
+</li>
+<li>
+<p>使用 <code>shell</code> 格式的话，实际的命令会被包装为 <code>sh -c</code> 的参数的形式进行执行，例如 <code>CMD echo $HOME</code> 实际执行中，会变为 <code>CMD [&quot;sh&quot;, &quot;-C&quot;, &quot;echo $HOME&quot;]</code></p>
+</li>
+<li>
+<p>Docker 不是虚拟机，容器中的应用都应该以前台执行，而不是像虚拟机、物理机里面那样，用 <code>systemd</code> 去启动后台服务，容器内没有后台服务的概念</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="entrypoint">ENTRYPOINT</h2>
+<p><code>ENTRYPOINT</code> 的格式和 <code>RUN</code> 指令格式一样，分为 <code>exec</code> 格式和 <code>shell</code> 格式。</p>
+<p><code>ENTRYPOINT</code> 的目的和 <code>CMD</code> 一样，都是在指定容器启动程序及参数。<code>ENTRYPOINT</code> 在运行时也可以替代，不过比 <code>CMD</code> 要略显繁琐，需要通过 <code>docker run</code> 的参数 <code>--entrypoint</code> 来指定。</p>
+<p>当指定了 <code>ENTRYPOINT</code> 后，<code>CMD</code> 的含义就发生了改变，不再是直接的运行其命令，而是将 <code>CMD</code> 的内容作为参数传给 <code>ENTRYPOINT</code> 指令，换句话说实际执行时，将变为：</p>
+<pre><code>&lt;ENTRYPOINT&gt; &quot;&lt;CMD&gt;&quot;
+</code></pre>
+<p>为什么要使用 <code>ENTRYPOINT</code></p>
+<ul>
+<li>让镜像变成像命令一样使用</li>
+<li>应用运行前的准备工作</li>
+</ul>
+<h2 id="env">ENV</h2>
+<p>设置环境变量，格式如下：</p>
+<pre><code>ENV &lt;key&gt; &lt;value&gt;
+ENV &lt;key1&gt;=&lt;value1&gt; &lt;key2&gt;=&lt;value2&gt;...
+</code></pre>
+<h2 id="arg">ARG</h2>
+<p>构建参数和 <code>ENV</code> 的效果一样，都是设置环境变量。所不同的是，<code>ARG</code> 所设置的构建环境的环境变量，在将来容器运行时是不会存在这些环境变量的。但是不要因此就使用 <code>ARG</code> 保存密码之类的信息，因为 <code>docker history</code> 还是可以看到所有值的</p>
+<pre><code>ARG &lt;参数名&gt;[=&lt;默认值&gt;]
+</code></pre>
+<h2 id="volume">VOLUME</h2>
+<p>定义匿名卷，格式如下：</p>
+<pre><code>VOLUME [&quot;&lt;路径1&gt;&quot;, &quot;&lt;路径2&gt;&quot;...]
+VOLUME &lt;路径&gt;
+</code></pre>
+<blockquote>
+<p>事先指定某些目录挂载为匿名卷，这样在运行时如果用户不指定挂载，其应用也可以正常运行，不会向容器存储层写入大量数据</p>
+</blockquote>
+<h2 id="expose">EXPOSE</h2>
+<p>声明端口，格式为：</p>
+<pre><code>EXPOSE &lt;端口1&gt; [&lt;端口2&gt;...]
+</code></pre>
+<p><code>EXPOSE</code> 指令是声明运行时容器提供服务端口，这只是一个声明，在运行时并不会因为这个声明应用就会开启这个端口的服务</p>
+<p>好处：</p>
+<ul>
+<li>
+<p>帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射</p>
+</li>
+<li>
+<p>在运行时使用随机端口映射时，也就是 <code>docker run -P</code> 时，会自动随机映射 <code>EXPOSE</code> 的端口</p>
+</li>
+</ul>
+<blockquote>
+<p>要将 <code>EXPOSE</code> 和在运行时使用 <code>-p &lt;宿主端口&gt;:&lt;容器端口&gt;</code> 区分开来。<code>-p</code>，是映射宿主端口和容器端口，换句话说，就是将容器的对应端口服务公开给外界访问，而 <code>EXPOSE</code> 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射</p>
+</blockquote>
+<h2 id="workdir">WORKDIR</h2>
+<p>指定工作目录，格式为：</p>
+<pre><code>WORKDIR &lt;工作目录路径&gt;
+</code></pre>
+<p>使用 <code>WORKDIR</code> 指令可以来指定工作目录（或者称为当前目录），以后各层的当前目录就被改为指定的目录，如该目录不存在，<code>WORKDIR</code> 会帮你建立目录</p>
+<blockquote>
+<p>在 Shell 中，连续两行是同一个进程执行环境，因此前一个命令修改的内存状态，会直接影响后一个命令；而在 <code>Dockerfile</code> 中，这两行 <code>RUN</code> 命令的执行环境根本不同，是两个完全不同的容器。因此如果需要改变以后各层的工作目录的位置，那么应该使用 <code>WORKDIR</code> 指令</p>
+</blockquote>
+<h2 id="user">USER</h2>
+<p>指定当前用户，格式为：</p>
+<pre><code>USER &lt;用户名&gt;[:&lt;用户组&gt;]
+</code></pre>
+<p><code>USER</code> 指令和 <code>WORKDIR</code> 相似，都是改变环境状态并影响以后的层。<code>WORKDIR</code> 是改变工作目录，<code>USER</code> 则是改变之后层的执行 <code>RUN</code>, <code>CMD</code> 以及 <code>ENTRYPOINT</code> 这类命令的身份</p>
+<p>当然，和 <code>WORKDIR</code> 一样，<code>USER</code> 只是帮助你切换到指定用户而已，这个用户必须是事先建立好的，否则无法切换</p>
+<blockquote>
+<p>如果以 <code>root</code> 执行的脚本，在执行期间希望改变身份，比如希望以某个已经建立好的用户来运行某个服务进程，不要使用 <code>su</code> 或者 <code>sudo</code>，这些都需要比较麻烦的配置，而且在 TTY 缺失的环境下经常出错。建议使用 <a href="https://github.com/tianon/gosu"><code>gosu</code></a></p>
+</blockquote>
+<h2 id="healthcheck">HEALTHCHECK</h2>
+<p>健康检查，格式为：</p>
+<pre><code>HEALTHCHECK [选项] CMD &lt;命令&gt; # 设置检查容器健康状况的命令
+HEALTHCHECK NONE # 如果基础镜像有健康检查指令，使用这行可以屏蔽掉其健康检查指令
+</code></pre>
+<p>命令选项：</p>
+<ul>
+<li><code>--interval=&lt;间隔&gt;</code>：两次健康检查的间隔，默认为 30 秒；</li>
+<li><code>--timeout=&lt;时长&gt;</code>：健康检查命令运行超时时间，如果超过这个时间，本次健康检查就被视为失败，默认 30 秒；</li>
+<li><code>--retries=&lt;次数&gt;</code>：当连续失败指定次数后，则将容器状态视为 <code>unhealthy</code>，默认 3 次。</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<p>告诉 Docker 应该如何进行判断容器的状态是否正常</p>
+</li>
+<li>
+<p>和 <code>CMD</code>, <code>ENTRYPOINT</code> 一样，<code>HEALTHCHECK</code> 只可以出现一次，如果写了多个，只有最后一个生效</p>
+</li>
+<li>
+<p>命令的返回值决定了该次健康检查的成功与否：<code>0</code>：成功；<code>1</code>：失败；<code>2</code>：保留，不要使用这个值。</p>
+</li>
+</ul>
+</blockquote>
+<p>示例，假设我们有个镜像是个最简单的 Web 服务，我们希望增加健康检查来判断其 Web 服务是否在正常工作，我们可以用 <code>curl</code> 来帮助判断，其 <code>Dockerfile</code> 的 <code>HEALTHCHECK</code> 可以这么写：</p>
+<pre><code>FROM nginx
+RUN apt-get update &amp;&amp; apt-get install -y curl &amp;&amp; rm -rf /var/lib/apt/lists/*
+HEALTHCHECK --interval=5s --timeout=3s \
+  CMD curl -fs http://localhost/ || exit 1
+</code></pre>
+<h2 id="onbuild">ONBUILD</h2>
+<p>为他人作嫁衣裳，格式为：</p>
+<pre><code>ONBUILD &lt;其它指令&gt;
+</code></pre>
+<p><code>ONBUILD</code> 是一个特殊的指令，它后面跟的是其它指令，比如 <code>RUN</code>, <code>COPY</code> 等，而这些指令，在当前镜像构建时并不会被执行。只有当以当前镜像为基础镜像，去构建下一级镜像的时候才会被执行</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#copy">COPY</a></li>
+<li><a href="#add">ADD</a></li>
+<li><a href="#cmd">CMD</a></li>
+<li><a href="#entrypoint">ENTRYPOINT</a></li>
+<li><a href="#env">ENV</a></li>
+<li><a href="#arg">ARG</a></li>
+<li><a href="#volume">VOLUME</a></li>
+<li><a href="#expose">EXPOSE</a></li>
+<li><a href="#workdir">WORKDIR</a></li>
+<li><a href="#user">USER</a></li>
+<li><a href="#healthcheck">HEALTHCHECK</a></li>
+<li><a href="#onbuild">ONBUILD</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://yxq.me/post/tcpip-xiang-guan-ci-hui-zheng-li">
+              <h3 class="post-title">
+                TCP/IP 相关词汇整理
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  ©2019 yxqme |
+  <a class="rss" href="https://yxq.me/atom.xml" target="_blank"
+    >RSS</a
+  >
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad();
+
+  document.querySelectorAll(".language-mermaid").forEach(node => {
+    const newEL = document.createElement("div");
+    newEL.className = "mermaid";
+    newEL.textContent = node.textContent;
+    node.parentNode.parentNode.replaceChild(newEL, node.parentNode);
+  });
+
+  // mermaidAPI.initialize({
+  //   securityLevel: "loose"
+  // });
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null;
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(
+          decodeURI(mainNavLinks[index + 1].hash).substring(1)
+        );
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
