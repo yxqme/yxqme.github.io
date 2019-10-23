@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://yxq.me</id>
     <title>yxqme</title>
-    <updated>2019-10-15T10:00:23.612Z</updated>
+    <updated>2019-10-23T02:37:28.980Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://yxq.me"/>
     <link rel="self" href="https://yxq.me/atom.xml"/>
@@ -10,6 +10,213 @@
     <logo>https://yxq.me/images/avatar.png</logo>
     <icon>https://yxq.me/favicon.ico</icon>
     <rights>All rights reserved 2019, yxqme</rights>
+    <entry>
+        <title type="html"><![CDATA[ MySQL 数据类型]]></title>
+        <id>https://yxq.me/post/mysql-shu-ju-lei-xing</id>
+        <link href="https://yxq.me/post/mysql-shu-ju-lei-xing">
+        </link>
+        <updated>2019-10-23T01:45:26.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="数值类型">数值类型</h2>
+<h3 id="整数类型">整数类型</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用存储(Bytes)</th>
+<th>最小值(Signed)</th>
+<th>最大值(Signed)</th>
+<th>最小值(Unsigned)</th>
+<th>最大值(Unsigned)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td>1</td>
+<td>-128</td>
+<td>127</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr>
+<td>SAMLLINT</td>
+<td>2</td>
+<td>-32768</td>
+<td>32767</td>
+<td>0</td>
+<td>65535</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3</td>
+<td>-8388608</td>
+<td>8388607</td>
+<td>0</td>
+<td>16777215</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>4</td>
+<td>-2147483648</td>
+<td>2147483647</td>
+<td>0</td>
+<td>4294967295</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8</td>
+<td>-9223372036854775808</td>
+<td>9223372036854775807</td>
+<td>0</td>
+<td>18446744073709551615</td>
+</tr>
+</tbody>
+</table>
+<h3 id="定点数">定点数</h3>
+<p><code>DECIMAL</code> 和 <code>NUMERIC</code> 在MySQL中视为相同的类型。它们用于保存必须为确切精度的值</p>
+<p>使用方式：</p>
+<pre><code>salary DECIMAL(M,D)
+</code></pre>
+<p>其中</p>
+<ul>
+<li><code>M</code> 表示十进制数字总的个数，默认值为 <code>10</code></li>
+<li><code>D</code> 表示小数点后面数字的位数，默认值为 <code>0</code></li>
+</ul>
+<blockquote>
+<p>存储时，整数部分超出了范围，会报错；</p>
+<p>小数点部分若超出范围，分为以下几种情况：</p>
+<ul>
+<li>若四舍五入后，整数部分没有超出范围，则只警告</li>
+<li>若四舍五入后，整数部分超出范围，则MySql报错，并拒绝处理</li>
+</ul>
+<p><code>M</code> 的取值范围为1~65，取0时会被设为默认值，超出范围会报错</p>
+<p><code>D</code> 的取值范围为0~30，而且必须&lt;=M，超出范围会报错</p>
+</blockquote>
+<h3 id="浮点数">浮点数</h3>
+<p>浮点类型有 <code>FLOAT</code>和  <code>DOUBLE</code> ，它们的定义方式如下：</p>
+<pre><code>FLOAT(M,D)
+DOUBLE(M,D)
+</code></pre>
+<p><code>FLOAT</code>  和 <code>DOUBLE</code> 中的 <code>M</code> 和 <code>D</code> 的取值默认都为 <code>0</code>，即除了最大最小值，不限制位数</p>
+<h3 id="bit">BIT</h3>
+<p><code>BIT</code> 数据类型可用来保存位字段值。<code>BIT(M)</code> 类型允许存储 <code>M</code> 位值。<code>M</code> 范围为 <code>1~64</code>，默认为 <code>1</code></p>
+<h2 id="字符类型">字符类型</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CHAR</td>
+<td>0-255字节</td>
+<td>定长字符串</td>
+</tr>
+<tr>
+<td>VARCHAR</td>
+<td>0-65535 字节</td>
+<td>变长字符串</td>
+</tr>
+<tr>
+<td>TINYBLOB</td>
+<td>0-255字节</td>
+<td>不超过 255 个字符的二进制字符串</td>
+</tr>
+<tr>
+<td>TINYTEXT</td>
+<td>0-255字节</td>
+<td>短文本字符串</td>
+</tr>
+<tr>
+<td>BLOB</td>
+<td>0-65 535字节</td>
+<td>二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>0-65 535字节</td>
+<td>长文本数据</td>
+</tr>
+<tr>
+<td>MEDIUMBLOB</td>
+<td>0-16 777 215字节</td>
+<td>二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td>MEDIUMTEXT</td>
+<td>0-16 777 215字节</td>
+<td>中等长度文本数据</td>
+</tr>
+<tr>
+<td>LONGBLOB</td>
+<td>0-4 294 967 295字节</td>
+<td>二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>0-4 294 967 295字节</td>
+<td>极大文本数据</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>UTF－8</strong>：一个汉字＝3个字节</p>
+<p><strong>GBK</strong>：一个汉字＝2个字节</p>
+</blockquote>
+<h2 id="日期和时间类型">日期和时间类型</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小（字节）</th>
+<th>范围</th>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DATE</td>
+<td>3</td>
+<td>1000-01-01/9999-12-31</td>
+<td>YYYY-MM-DD</td>
+<td>日期值</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>3</td>
+<td>'-838:59:59'/'838:59:59'</td>
+<td>HH:MM:SS</td>
+<td>时间值或持续时间</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>1</td>
+<td>1901/2155</td>
+<td>YYYY</td>
+<td>年份值</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>8</td>
+<td>1000-01-01 00:00:00/9999-12-31 23:59:59</td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>混合日期和时间值</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>4</td>
+<td>1970-01-01 00:00:00/2038</td>
+<td>YYYYMMDD HHMMSS</td>
+<td>混合日期和时间值，时间戳</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Dockerfile - 指令学习]]></title>
         <id>https://yxq.me/post/dockerfile-zhi-ling-xue-xi</id>
@@ -1253,47 +1460,6 @@ PasswordAuthentication no
   
   7 -.- 8
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CentOS 限制登录连接]]></title>
-        <id>https://yxq.me/post/centos-xian-zhi-deng-lu-lian-jie</id>
-        <link href="https://yxq.me/post/centos-xian-zhi-deng-lu-lian-jie">
-        </link>
-        <updated>2016-10-20T06:20:28.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1禁用-root-登陆">1.禁用 root 登陆</h2>
-<pre><code class="language-bash">vi /etc/ssh/sshd_config
-
-# PermitRootLogin yes // 改为 no 禁用root登陆
-
-service sshd restart
-</code></pre>
-<h2 id="2锁定-ssh-失败的登录尝试">2.锁定 ssh 失败的登录尝试</h2>
-<p>pam_tally2 模块</p>
-<p>参数:</p>
-<ul>
-<li>file=/var/log/tallylog 默认的日志文件是用来保持登录计数。</li>
-<li>deny=3 拒绝后，3次尝试访问和锁定用户。</li>
-<li>even_deny_root  政策也适用于root用户。</li>
-<li>unlock_time=1200 帐户将被锁定，直到20分钟 。 （如果要永久锁定，直到手动解锁，请删除此参数。）</li>
-</ul>
-<pre><code class="language-bash"># 配置文件来配置的登录尝试的访问次数
-/etc/pam.d/password-auth
-
-# 验证部分
-auth        required      pam_tally2.so  file=/var/log/tallylog deny=3 even_deny_root unlock_time=1200
-
-# 账号部分
-account     required      pam_tally2.so
-
-# 验证或检查用户尝试的计数器
-pam_tally2 --user=root
-
-# 重置或解锁用户帐户以再次启用访问
-pam_tally2 --user=root --reset
-</code></pre>
-<h2 id="3利用-iptables-设置防火墙">3.利用 iptables 设置防火墙</h2>
-<p>// todo</p>
 ]]></content>
     </entry>
 </feed>

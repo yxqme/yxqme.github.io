@@ -1,0 +1,405 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title> MySQL 数据类型 | yxqme</title>
+<meta name="description" content="最渺小的我，有大大的梦" />
+<link
+  rel="shortcut icon"
+  href="https://yxq.me/favicon.ico?v=1571798225424"
+/>
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css"
+/>
+<link rel="stylesheet" href="https://yxq.me/styles/main.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.3.1/mermaid.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700"
+/>
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://yxq.me">
+  <img class="avatar" src="https://yxq.me/images/avatar.png?v=1571798225424" alt="">
+  </a>
+  <h1 class="site-title">
+    yxqme
+  </h1>
+  <p class="site-description">
+    最渺小的我，有大大的梦
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/daily" class="menu">
+          日常
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+               MySQL 数据类型
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-10-23
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="数值类型">数值类型</h2>
+<h3 id="整数类型">整数类型</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用存储(Bytes)</th>
+<th>最小值(Signed)</th>
+<th>最大值(Signed)</th>
+<th>最小值(Unsigned)</th>
+<th>最大值(Unsigned)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TINYINT</td>
+<td>1</td>
+<td>-128</td>
+<td>127</td>
+<td>0</td>
+<td>255</td>
+</tr>
+<tr>
+<td>SAMLLINT</td>
+<td>2</td>
+<td>-32768</td>
+<td>32767</td>
+<td>0</td>
+<td>65535</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3</td>
+<td>-8388608</td>
+<td>8388607</td>
+<td>0</td>
+<td>16777215</td>
+</tr>
+<tr>
+<td>INT</td>
+<td>4</td>
+<td>-2147483648</td>
+<td>2147483647</td>
+<td>0</td>
+<td>4294967295</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8</td>
+<td>-9223372036854775808</td>
+<td>9223372036854775807</td>
+<td>0</td>
+<td>18446744073709551615</td>
+</tr>
+</tbody>
+</table>
+<h3 id="定点数">定点数</h3>
+<p><code>DECIMAL</code> 和 <code>NUMERIC</code> 在MySQL中视为相同的类型。它们用于保存必须为确切精度的值</p>
+<p>使用方式：</p>
+<pre><code>salary DECIMAL(M,D)
+</code></pre>
+<p>其中</p>
+<ul>
+<li><code>M</code> 表示十进制数字总的个数，默认值为 <code>10</code></li>
+<li><code>D</code> 表示小数点后面数字的位数，默认值为 <code>0</code></li>
+</ul>
+<blockquote>
+<p>存储时，整数部分超出了范围，会报错；</p>
+<p>小数点部分若超出范围，分为以下几种情况：</p>
+<ul>
+<li>若四舍五入后，整数部分没有超出范围，则只警告</li>
+<li>若四舍五入后，整数部分超出范围，则MySql报错，并拒绝处理</li>
+</ul>
+<p><code>M</code> 的取值范围为1~65，取0时会被设为默认值，超出范围会报错</p>
+<p><code>D</code> 的取值范围为0~30，而且必须&lt;=M，超出范围会报错</p>
+</blockquote>
+<h3 id="浮点数">浮点数</h3>
+<p>浮点类型有 <code>FLOAT</code>和  <code>DOUBLE</code> ，它们的定义方式如下：</p>
+<pre><code>FLOAT(M,D)
+DOUBLE(M,D)
+</code></pre>
+<p><code>FLOAT</code>  和 <code>DOUBLE</code> 中的 <code>M</code> 和 <code>D</code> 的取值默认都为 <code>0</code>，即除了最大最小值，不限制位数</p>
+<h3 id="bit">BIT</h3>
+<p><code>BIT</code> 数据类型可用来保存位字段值。<code>BIT(M)</code> 类型允许存储 <code>M</code> 位值。<code>M</code> 范围为 <code>1~64</code>，默认为 <code>1</code></p>
+<h2 id="字符类型">字符类型</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CHAR</td>
+<td>0-255字节</td>
+<td>定长字符串</td>
+</tr>
+<tr>
+<td>VARCHAR</td>
+<td>0-65535 字节</td>
+<td>变长字符串</td>
+</tr>
+<tr>
+<td>TINYBLOB</td>
+<td>0-255字节</td>
+<td>不超过 255 个字符的二进制字符串</td>
+</tr>
+<tr>
+<td>TINYTEXT</td>
+<td>0-255字节</td>
+<td>短文本字符串</td>
+</tr>
+<tr>
+<td>BLOB</td>
+<td>0-65 535字节</td>
+<td>二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>0-65 535字节</td>
+<td>长文本数据</td>
+</tr>
+<tr>
+<td>MEDIUMBLOB</td>
+<td>0-16 777 215字节</td>
+<td>二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td>MEDIUMTEXT</td>
+<td>0-16 777 215字节</td>
+<td>中等长度文本数据</td>
+</tr>
+<tr>
+<td>LONGBLOB</td>
+<td>0-4 294 967 295字节</td>
+<td>二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>0-4 294 967 295字节</td>
+<td>极大文本数据</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>UTF－8</strong>：一个汉字＝3个字节</p>
+<p><strong>GBK</strong>：一个汉字＝2个字节</p>
+</blockquote>
+<h2 id="日期和时间类型">日期和时间类型</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小（字节）</th>
+<th>范围</th>
+<th>格式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DATE</td>
+<td>3</td>
+<td>1000-01-01/9999-12-31</td>
+<td>YYYY-MM-DD</td>
+<td>日期值</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>3</td>
+<td>'-838:59:59'/'838:59:59'</td>
+<td>HH:MM:SS</td>
+<td>时间值或持续时间</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>1</td>
+<td>1901/2155</td>
+<td>YYYY</td>
+<td>年份值</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>8</td>
+<td>1000-01-01 00:00:00/9999-12-31 23:59:59</td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>混合日期和时间值</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>4</td>
+<td>1970-01-01 00:00:00/2038</td>
+<td>YYYYMMDD HHMMSS</td>
+<td>混合日期和时间值，时间戳</td>
+</tr>
+</tbody>
+</table>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B">数值类型</a>
+<ul>
+<li><a href="#%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B">整数类型</a></li>
+<li><a href="#%E5%AE%9A%E7%82%B9%E6%95%B0">定点数</a></li>
+<li><a href="#%E6%B5%AE%E7%82%B9%E6%95%B0">浮点数</a></li>
+<li><a href="#bit">BIT</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E7%B1%BB%E5%9E%8B">字符类型</a></li>
+<li><a href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E7%B1%BB%E5%9E%8B">日期和时间类型</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://yxq.me/post/dockerfile-zhi-ling-xue-xi">
+              <h3 class="post-title">
+                Dockerfile - 指令学习
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  ©2019 yxqme |
+  <a class="rss" href="https://yxq.me/atom.xml" target="_blank"
+    >RSS</a
+  >
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad();
+
+  document.querySelectorAll(".language-mermaid").forEach(node => {
+    const newEL = document.createElement("div");
+    newEL.className = "mermaid";
+    newEL.textContent = node.textContent;
+    node.parentNode.parentNode.replaceChild(newEL, node.parentNode);
+  });
+
+  // mermaidAPI.initialize({
+  //   securityLevel: "loose"
+  // });
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null;
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(
+          decodeURI(mainNavLinks[index + 1].hash).substring(1)
+        );
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
